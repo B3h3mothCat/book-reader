@@ -1,0 +1,130 @@
+
+/* themes related */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-align: center;
+  box-sizing: border-box;
+  color: #213547;
+  line-height: 1.5;
+
+  --background-color-light: rgb(159, 225, 236); 
+  /* Default light background color */
+  --background-color-dark: rgb(10,10,10);
+  /* Dark theme background color */
+
+  --primary-text-color: #0a0a0a;
+  --toggle-bg: #f0eb9d;
+  --toggle-fg: #ffd000;
+
+  --background-module-light: rgb(245, 240, 211);
+  --background-module-dark: rgb(28,28,28);
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+body {
+  --background-color: var(--background-color);
+  background-color: var(--background-color);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 320px;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-color-light);
+  transition: 
+    background-color 250ms ease-in-out, 
+}
+
+
+[data-theme="dark"] {
+  --background-color-light: var(--background-color-dark); 
+  --background-module-light: var(--background-module-dark)
+}
+/* themes related */
+
+/*
+---------------
+ Reader screen 
+---------------
+*/
+.initial-wrapper {
+  /* background-color: var(--background-color); */
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.text-wrapper {
+  border: 1px black solid;
+  background-color: var(--background-module-light);
+}
+
+
+
+a {
+  text-decoration: inherit;
+}
+a:hover {
+  color: #f71f79;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* buttons related */
+.button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #7b8158;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 2px;
+}
+.button:hover {
+  border-color: #646cff;
+}
+.button:focus,
+.button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.active {
+  background-color: #2970ad93;
+} 
+/* buttons related */
+
+
+.home-page{
+  background-color: var(--background-color);
+}
+
+
+html, body {
+  height: 100%;
+}
+
