@@ -19,6 +19,17 @@ export default function LibraryOfBooks() {
                     >
                         {book.title}
                     </Link>
+
+                    {/* <Link
+                        to={`/book-front/${encodeURIComponent(book.title)}`}
+                        state={{
+                            chapters: book.chapters,
+                            title: book.title,
+                            description: book.description,
+                        }}
+                    >
+                        {book.title}
+                    </Link> */}
                     <br />
                     <span>{book.description}</span>
                 </div >
