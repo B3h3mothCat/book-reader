@@ -4,13 +4,17 @@ import CustomizerProvider from "../../Context/ReaderCustomizer"
 
 export default function SingleChapter() {
     const { chapterId } = useParams()
-    const { chapters } = useLocation().state
+    const { chapters, title } = useLocation().state
 
     return (
         <div>
             <h3>Chapter content</h3>
             <CustomizerProvider>
-                <ExpReaderScreen file={decodeURIComponent(chapterId)} chapters={chapters}></ExpReaderScreen>
+                <ExpReaderScreen
+                    file={decodeURIComponent(chapterId)}
+                    chapters={chapters}
+                    title={title}
+                ></ExpReaderScreen>
             </CustomizerProvider>
         </div>
     )

@@ -9,7 +9,7 @@ import List from '../components/Book/List'
 // Book folder imports
 
 import LoginPage from '../Pages/LoginPage'
-import ExpReaderScreen from '../components/ExpReaderScreen'
+
 
 
 export default function NavigationMain() {
@@ -40,7 +40,6 @@ export default function NavigationMain() {
                 <Route path='chapter/:chapterId' element={<SingleChapter />} />
 
                 {/* Book folder routes */}
-
 
             </Routes>
         </>

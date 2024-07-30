@@ -17,6 +17,9 @@ export default function List() {
                             state={{
                                 currentChapterIndex: index,
                                 chapters: chapters,
+
+                                title: title,
+
                             }}
                         >{chapter.title}</Link>
                     </li>
