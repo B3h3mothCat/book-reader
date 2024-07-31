@@ -1,8 +1,10 @@
 import List from "../components/Book/List"
 import { Link, useLocation } from "react-router-dom"
+import { useState } from "react";
 
 export default function BookFrontPage() {
-    // const { chapters, title, description } = useLocation().state;
+    const { chapters, title, description } = useLocation().state;
+    const [activeTab, setActiveTab] = useState('description')
 
     return (
         <>
@@ -16,14 +18,29 @@ export default function BookFrontPage() {
                 <div>Button to start reaad From 1st page for now</div>
 
                 <div className="">Navbar for book tabs
-                    <div>Default: Description</div>
-                    <div>Selectable: List component</div>
+                    <div>
+                        <button onClick={() => setActiveTab('description')}>
+                            Description
+                        </button>
+                        <button onClick={() => setActiveTab('list')}>
+                            List
+                        </button>
+                    </div>
                 </div>
-                {/* <List
-                    chapters={chapters}
-                    title={title}
-                    description={description}
-                ></List> */}
+
+                {activeTab === 'description' && (
+                    <div>
+                        <h3>{title}</h3>
+                        <p>{description}</p>
+                    </div>
+                )}
+
+                {activeTab === 'list' && (
+                    <List
+                        chapters={chapters}
+                        title={title}
+                    />
+                )}
             </div>
         </>
     )

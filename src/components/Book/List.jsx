@@ -2,12 +2,12 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function List() {
-    const { chapters, title, description } = useLocation().state;
+    const { chapters, title } = useLocation().state;
 
     return (
         <>
             <h1>{title}</h1>
-            <p>{description}</p>
+            {/* <p>{description}</p> */}
             <h3>Chapters:</h3>
             <ul>
                 {chapters.map((chapter, index) => (

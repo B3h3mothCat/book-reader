@@ -15,8 +15,6 @@ export default function MainPage() {
                     {/* Book folder routes */}
                     <li><Link to={'/library'}>LIBRARY</Link></li>
                     {/* Book folder routes */}
-                    <br />
-                    <li><Link to={'book-front'}>Book_Front_Page</Link></li>
                 </ul>
             </nav>
 

@@ -29,7 +29,7 @@ export default function NavigationMain() {
                 <Route path='chapter/:chapterId' element={<SingleChapter />} />
 
 
-                <Route path='/book-front' element={<BookFrontPage />} />
+                <Route path='/book-front/:bookId' element={<BookFrontPage />} />
                 {/* Book folder routes */}
             </Routes>
         </>
