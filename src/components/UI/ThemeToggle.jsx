@@ -10,7 +10,7 @@ export default function Toggletheme({ handleChange, isChecked }) {
                 onChange={handleChange}
                 checked={isChecked}
             />
-            <label htmlFor="check">Dark mode</label>
+            <label htmlFor="check">Dark</label>
         </div>
     )
 }

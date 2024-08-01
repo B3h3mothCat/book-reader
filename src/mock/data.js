@@ -1,4 +1,5 @@
-export const bookOne = {
+
+const bookOne = {
     title: 'Власть книжного червя',
     description: 'История повествует о Майн — девушке из Японии, которая всю жизнь провела в окружении книг и даже умерла в их объятиях.\
 «Книги — это всё для меня». Главная героиня перед смертью взмолилась Богам, чтобы в следующей жизни жить посреди книг, а на деле... Она в магическом Средневековье, где, как и в нашей истории, книга стоит, как хороший двухэтажный дом в центре города. Всё было бы хорошо, если бы Майн была принцессой, но на деле она всего лишь простолюдинка, дочь солдата.\
@@ -20,7 +21,7 @@ export const bookOne = {
     ]
 }
 
-export const bookTwo = {
+const bookTwo = {
     title: 'Повелитель тайн',
     description: 'С развитием паровых машин и механизмов кто может приблизиться к тому, чтобы стать Потусторонним? Окутанный туманом истории и тьмы, кто или что является затаившимся злом, которое шепчет нам на ухо?\
 \
@@ -41,7 +42,86 @@ export const bookTwo = {
         },
     ]
 }
-export const BOOKS_DATA = [bookOne, bookTwo]
 
 
-export const backgroundColors = ['#e5cf9d', ]
+export const book3 = {
+    title: 'book3',
+    description: 'book3book3',
+    picture: '',
+    chapters: [
+        {
+            title: 'Chapter 1',
+            content: 'Content of Chapter 1...'
+        },
+        {
+            title: 'Chapter 2',
+            content: 'Content of Chapter 2...'
+        },
+        {
+            title: 'Chapter 3',
+            content: 'Content of Chapter 3...'
+        },
+    ]
+}
+export const book4 = {
+    title: 'book4',
+    description: 'book4book4',
+    picture: '',
+    chapters: [
+        {
+            title: 'Chapter 1',
+            content: 'Content of Chapter 1...'
+        },
+        {
+            title: 'Chapter 2',
+            content: 'Content of Chapter 2...'
+        },
+        {
+            title: 'Chapter 3',
+            content: 'Content of Chapter 3...'
+        },
+    ]
+}
+export const book5 = {
+    title: 'book5',
+    description: 'book5book5',
+    picture: '',
+    chapters: [
+        {
+            title: 'Chapter 1',
+            content: 'Content of Chapter 1...'
+        },
+        {
+            title: 'Chapter 2',
+            content: 'Content of Chapter 2...'
+        },
+        {
+            title: 'Chapter 3',
+            content: 'Content of Chapter 3...'
+        },
+    ]
+}
+export const book6 = {
+    title: 'book6',
+    description: 'book6book6',
+    picture: '',
+    chapters: [
+        {
+            title: 'Chapter 1',
+            content: 'Content of Chapter 1...'
+        },
+        {
+            title: 'Chapter 2',
+            content: 'Content of Chapter 2...'
+        },
+        {
+            title: 'Chapter 3',
+            content: 'Content of Chapter 3...'
+        },
+    ]
+}
+
+export const BOOKS_DATA = [
+    bookOne, bookTwo,
+     book3, book4, book5, book6
+]

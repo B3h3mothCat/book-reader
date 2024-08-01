@@ -1,6 +1,8 @@
 import List from "../components/Book/List"
 import { Link, useLocation } from "react-router-dom"
 import { useState } from "react";
+import MainNavBar from "../components/MainNavBar";
+
 
 export default function BookFrontPage() {
     const { chapters, title, description } = useLocation().state;
@@ -8,10 +10,8 @@ export default function BookFrontPage() {
 
     return (
         <>
-            <div>THIS IS NAVBAR IN FUTURE
-                <br />
-                <Link to='/'>Home</Link>
-            </div>
+            <MainNavBar></MainNavBar>
+
             <div>
                 <div>here should be wide banner picture</div>
                 <div>cover of book</div>
