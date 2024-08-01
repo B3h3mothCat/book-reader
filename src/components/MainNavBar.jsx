@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../Context/AuthContext"
+import ThemeToggle from "./UI/ThemeToggle"
 
 export default function MainNavBar() {
     const { isLoggedIn } = useAuth()
@@ -14,6 +15,7 @@ export default function MainNavBar() {
             {!isLoggedIn && (
                 <Link to={'/Login'}>Login</Link>
             )}
+            <ThemeToggle />
         </div>
     )
 }

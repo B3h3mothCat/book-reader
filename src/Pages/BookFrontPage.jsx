@@ -16,6 +16,8 @@ export default function BookFrontPage() {
                 <div>here should be wide banner picture</div>
                 <div>cover of book</div>
                 <div>Button to start reaad From 1st page for now</div>
+                <button onClick={() =>
+                    console.log('implement 1st page openening btn here')}>Start reading now!</button>
 
                 <div className="">Navbar for book tabs
                     <div>

@@ -1,16 +1,18 @@
 import './ThemeToggle.css'
+import { useTheme } from '../../Hooks/useTheme'
 
-export default function Toggletheme({ handleChange, isChecked }) {
+export default function ThemeToggle() {
+
+    const [isDark, setIsDark] = useTheme()
+
     return (
         <div className="toggle-container">
-            <input
-                type="checkbox"
-                id="check"
-                className="toggle"
-                onChange={handleChange}
-                checked={isChecked}
-            />
-            <label htmlFor="check">Dark</label>
+            <button
+                onClick={() => setIsDark(!isDark)}
+                className="theme-toggle-button">
+                {isDark ? 'Light Theme' : 'Dark Theme'}
+            </button>
         </div>
     )
 }
+
