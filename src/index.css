@@ -189,3 +189,26 @@ border: 1px black solid;
   align-items: center;
   background-color: #61656e;
 }
+
+/* .tab-container {
+  display: flex;
+  margin: 5px;
+  width: 75%;
+} */
+
+.desription-tab {
+
+  border: 1px rgb(87, 221, 94) solid;
+}
+
+.book-banner {
+  width: 80%;
+  height: 250px;
+}
+
+.book-banner img {
+  height: 100%;
+  width: 100%;
+  /* object-fit: cover;  */
+  border-radius: 10px;
+}
