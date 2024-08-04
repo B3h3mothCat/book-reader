@@ -6,6 +6,8 @@ import BookUnit from './BookUnit'
 import SearchBar from "./SearchBar";
 import useModal from '../../Hooks/useModal'
 
+import './catalog.css'
+
 export default function LibraryOfBooks() {
     const books = BOOKS_DATA
 

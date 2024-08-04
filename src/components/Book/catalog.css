@@ -1,0 +1,81 @@
+/* catalog related css */
+
+.catalog-container {
+    display: flex;
+  border: 1px black solid;
+  }
+  
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1em;
+    width: 100%;
+    margin: 1em;
+  }
+  
+.book-list-modal {
+    display: flex;
+    position: fixed;
+    top: 30%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); /* Centers modal */
+    background-color: rgba(245, 239, 239, 0.76);
+    padding: 20px;
+    z-index: 9;
+    box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
+    gap: 5px;
+  }
+  
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  
+.book-unit {
+  
+    border: 1px solid green;
+    height: 290px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+.book-picture {
+    height: 225px;
+    width: 160px;
+  }
+  
+.book-picture img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; 
+    border-radius: 10px;
+  }
+  
+  
+.desription-tab {
+  
+    border: 1px rgb(87, 221, 94) solid;
+  }
+  
+.book-banner {
+    width: 80%;
+    height: 250px;
+  }
+  
+.book-banner img {
+    height: 100%;
+    width: 100%;
+    /* object-fit: cover;  */
+    border-radius: 10px;
+  }

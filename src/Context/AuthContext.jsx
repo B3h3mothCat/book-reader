@@ -2,8 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { registeredUsers } from "../mock/usersList";
 
 const AuthContext = createContext();
-//  custom hook provides easy access to authentication context values 
-// (isLoggedIn, userRole, login, logout) in any component that needs them.
+
 export const useAuth = () => useContext(AuthContext)
 
 export default function AuthProvider({ children }) {
@@ -12,6 +11,8 @@ export default function AuthProvider({ children }) {
     const [userRole, setUserRole] = useState('guest')
     const [username, setUsername] = useState('');
 
+    const [currentUser, setCurrentUser] = useState(null)
+
     function login(username, password) {
         const user = registeredUsers
             .find(user => user.username === username && user.password === password);
@@ -19,6 +20,7 @@ export default function AuthProvider({ children }) {
             setIsLoggedIn(true);
             setUserRole(user.role || 'user'); // Default to 'user' if no role is provided
             setUsername(username);
+            setCurrentUser(user)
         } else {
             alert('Invalid username or password');
         }
@@ -30,8 +32,29 @@ export default function AuthProvider({ children }) {
         setUsername('');
     }
 
+    function addBookToUser(book) {
+        if (currentUser) {
+            setCurrentUser((prevUser) => {
+                const updatedUser = {
+                    ...prevUser,
+                    books: [...prevUser.books, book]
+                }
+                // update array to presist changes
+                const userIndex = registeredUsers.findIndex(user => user.username === prevUser.username);
+                if (userIndex !== -1) {
+                    registeredUsers[userIndex] = updatedUser;
+                }
+                return updatedUser;
+            })
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{ isLoggedIn, userRole, username, login, logout }}>
+        <AuthContext.Provider value={{
+            isLoggedIn, userRole, username,
+            login, logout, addBookToUser, books: currentUser?.books
+        }}
+        >
             {children}
         </AuthContext.Provider>
     )

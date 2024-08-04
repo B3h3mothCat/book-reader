@@ -3,11 +3,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useState } from "react";
 import MainNavBar from "../components/MainNavBar";
 
+import { useAuth } from "../Context/AuthContext";
 
 export default function BookFrontPage() {
     const { chapters, title, description, book } = useLocation().state;
     const [activeTab, setActiveTab] = useState('description')
     const navigate = useNavigate()
+    const { addBookToUser } = useAuth()
 
     const handleStartReading = () => {
         navigate(`/chapter/${encodeURIComponent(chapters[0].content)}`, {
@@ -17,6 +19,10 @@ export default function BookFrontPage() {
                 title: title,
             }
         });
+    };
+
+    const handleAddToPersonalList = () => {
+        addBookToUser(book)
     };
 
     return (
@@ -30,6 +36,7 @@ export default function BookFrontPage() {
                 <div>cover of book</div>
 
                 <button onClick={handleStartReading}>Start reading now!</button>
+                <button onClick={handleAddToPersonalList}>Add book to personal list</button>
 
                 <div className="">Navbar for book tabs
                     <div>
