@@ -9,28 +9,47 @@
 
   text-align: center;
   box-sizing: border-box;
-  color: #213547;
+  color: var(--primary-text-color-light);
   line-height: 1.5;
 
-  --background-color-light: rgb(159, 225, 236); 
+  --background-color-light: rgb(242,242,243); 
   /* Default light background color */
   --background-color-dark: rgb(20, 20, 19);
   /* Dark theme background color */
 
-  --primary-text-color: #0a0a0a;
+  --primary-text-color-light: #0a0a0a;
+  --primary-text-color-dark: rgb(221,221,221);
+  
   --toggle-bg: #f0eb9d;
   --toggle-fg: #ffd000;
 
-  --background-module-light: rgb(245, 240, 211);
+  --background-module-light: rgb(255,255,255);
   --background-module-dark: rgb(28,28,28);
 
+  --reader-background-light: rgb(255,255,255);
+  --reader-background-dark: rgb(28,28,28);
+  
 }
+
+*Link {
+  background-color: green;
+}
+
+[data-theme="dark"] {
+  --background-color-light: var(--background-color-dark); 
+  --background-module-light: var(--background-module-dark);
+  --primary-text-color-light: var(--primary-text-color-dark);
+  --background-module-light: var(--background-module-dark);
+  --reader-background-light: var(--reader-background-dark);
+
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
+
 body {
   --background-color: var(--background-color);
   background-color: var(--background-color);
@@ -53,10 +72,6 @@ body {
 }
 
 
-[data-theme="dark"] {
-  --background-color-light: var(--background-color-dark); 
-  --background-module-light: var(--background-module-dark)
-}
 /* themes related */
 
 /*
@@ -71,10 +86,15 @@ body {
   align-items: flex-start;
   justify-content: center;
   box-sizing: border-box;
+
 }
 
 .text-wrapper {
   border: 1px black solid;
+  background-color: var(--reader-background-light);
+}
+
+.reader-menu-wrap {
   background-color: var(--background-module-light);
 }
 
@@ -82,6 +102,7 @@ body {
 
 a {
   text-decoration: inherit;
+  color: var(--primary-text-color-light);
 }
 a:hover {
   color: #f71f79;
@@ -148,6 +169,6 @@ html, body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #61656e;
+  background-color: var(--background-module-light);
   z-index: 11;
 }

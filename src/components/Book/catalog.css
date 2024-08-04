@@ -3,6 +3,7 @@
 .catalog-container {
     display: flex;
   border: 1px black solid;
+  background-color: var(--background-module-light);
   }
   
 .book-list {
@@ -19,7 +20,7 @@
     top: 30%; 
     left: 50%; 
     transform: translate(-50%, -50%); /* Centers modal */
-    background-color: rgba(245, 239, 239, 0.76);
+    background-color: var(--background-module-light);
     padding: 20px;
     z-index: 9;
     box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
