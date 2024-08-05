@@ -3,7 +3,7 @@ import { useAuth } from "../Context/AuthContext"
 import ThemeToggle from "./UI/ThemeToggle"
 
 export default function MainNavBar() {
-    const { isLoggedIn, username } = useAuth()
+    const { isLoggedIn } = useAuth()
 
     return (
         <div className="main-navbar-container">

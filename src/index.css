@@ -31,9 +31,6 @@
   
 }
 
-*Link {
-  background-color: green;
-}
 
 [data-theme="dark"] {
   --background-color-light: var(--background-color-dark); 
@@ -154,16 +151,15 @@ html, body {
   display: flex;
   height: 50px;
   width: 100%;
-  
   flex-direction: row;
   justify-content: space-around;
-
-  border: 1px green solid;
+  border: 1px gray solid;
+  border-radius: 5px;
 }
 
 
 .main-navbar-container {
-  border: 1px purple solid;
+  border-bottom: 2px gray solid;
   height: 3em;
   width: 100%;
   display: flex;

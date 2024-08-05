@@ -15,14 +15,17 @@ export default function PersonalAccount() {
                     <button onClick={logout}>Logout button</button>
                 </div>
 
-                <div className="added-books">
-                    Here we can place list of added books
-                    {books.map((book, index) => (
-                        <BookUnit book={book} key={index} />
-                    ))}
-                </div>
+                {books && (
+                    <div className="added-books">
+                        Here we can place list of added books
+                        {books.map((book, index) => (
+                            <BookUnit book={book} key={index} />
+                        ))}
+                    </div>
+                )}
             </div>
         </>
-
     )
 }
+
+// After user log out - there should be no books

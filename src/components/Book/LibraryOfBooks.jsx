@@ -30,6 +30,10 @@ export default function LibraryOfBooks() {
                         <BookUnit book={book} key={index} />
                     ))}
                 </div>
+
+                <div className="book-filter">
+                    Here we place book filter
+                </div>
             </div>
 
             {isModalOpen && (
