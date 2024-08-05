@@ -97,3 +97,39 @@
     /* object-fit: cover;  */
     border-radius: 10px;
   }
+
+.book-filter {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.filter-section {
+border-bottom: 1px gray solid;
+padding: 10%;
+}
+
+
+.checkbox-item {
+  display: flex;
+  gap: 5px;
+}
+
+.filter-btn-container {
+  padding-top: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  place-items: center;
+}
+
+.filter-btn-container button {
+  border-radius: 3px;
+  border: 1px solid transparent;
+  padding: 0.2em 0.6em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}

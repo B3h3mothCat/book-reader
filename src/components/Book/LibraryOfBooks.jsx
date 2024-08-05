@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import useModal from '../../Hooks/useModal'
 
 import BookFilter from "./BookFilter";
+import { useBookFilter } from "../../Hooks/useBookFilter";
 
 import './catalog.css'
 
@@ -16,30 +17,13 @@ export default function LibraryOfBooks() {
     const [searchResult, setSearchReasult] = useState([])
     const { isModalOpen, openModal, modalRef } = useModal(false)
 
+    const { filteredBooks, applyFilters, clearFilters } = useBookFilter(books);
+
     function handleSearchResult(result) {
         setSearchReasult(result)
         openModal()
     }
 
-    //
-    const [filteredBooks, setFilteredBooks] = useState(books);
-
-    const applyFilters = (filters) => {
-        const { genres, status, adultRating } = filters;
-        const filtered = books.filter((book) => {
-            const { genres: bookGenres, adultRating: bookAdultRating, titleStatus: bookStatus } = book.filterInfo;
-            const matchGenres = genres.length ? genres.some((genre) => bookGenres.includes(genre)) : true;
-            const matchStatus = status ? bookStatus === status : true;
-            const matchAdultRating = adultRating ? bookAdultRating === adultRating : true;
-            return matchGenres && matchStatus && matchAdultRating;
-        });
-        setFilteredBooks(filtered);
-    };
-
-    const clearFilters = () => {
-        setFilteredBooks(books);
-    };
-    //
 
     return (
         <>

@@ -37,10 +37,10 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
 
     return (
         <div className="book-filter">
-            <div>
+            <div className="filter-section">
                 <h3>Genres</h3>
                 {genres.map((genre) => (
-                    <div key={genre}>
+                    <div key={genre} className="checkbox-item">
                         <input
                             type="checkbox"
                             checked={selectedGenres.includes(genre)}
@@ -50,10 +50,10 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                     </div>
                 ))}
             </div>
-            <div>
+            <div className="filter-section">
                 <h3>Status</h3>
                 {statuses.map((status) => (
-                    <div key={status}>
+                    <div key={status} className="checkbox-item">
                         <input
                             type="radio"
                             name="status"
@@ -64,10 +64,10 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                     </div>
                 ))}
             </div>
-            <div>
+            <div className="filter-section">
                 <h3>Adult Rating</h3>
                 {adultRatings.map((rating) => (
-                    <div key={rating}>
+                    <div key={rating} className="checkbox-item">
                         <input
                             type="radio"
                             name="adultRating"
@@ -78,8 +78,11 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                     </div>
                 ))}
             </div>
-            <button onClick={handleApply}>Apply</button>
-            <button onClick={handleClear}>Clear All</button>
+            <div className="filter-btn-container">
+                <button onClick={handleClear}>Clear All</button>
+                <button onClick={handleApply}>Apply</button>
+            </div>
+
         </div>
     )
 }
