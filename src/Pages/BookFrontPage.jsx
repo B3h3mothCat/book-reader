@@ -56,10 +56,16 @@ export default function BookFrontPage() {
 
                 <div className="tab-container">
                     {activeTab === 'description' && (
-                        <div className="desription-tab">
+                        <>
                             <h3>{title}</h3>
-                            <p>{description}</p>
-                        </div>
+                            <p>Genres: {book.filterInfo.genres.join(', ')}</p>
+                            <p>Status: {book.filterInfo.titleStatus}</p>
+                            <p>Adult Rating: {book.filterInfo.adultRating}</p>
+                            <div className="desription-tab">
+                                <p>{description}</p>
+                            </div>
+                        </>
+
                     )}
 
                     {activeTab === 'list' && (

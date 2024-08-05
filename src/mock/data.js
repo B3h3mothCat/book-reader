@@ -4,6 +4,11 @@ const bookOne = {
     description: 'История повествует о Майн — девушке из Японии, которая всю жизнь провела в окружении книг и даже умерла в их объятиях. «Книги — это всё для меня». Главная героиня перед смертью взмолилась Богам, чтобы в следующей жизни жить посреди книг, а на деле... Она в магическом Средневековье, где, как и в нашей истории, книга стоит, как хороший двухэтажный дом в центре города. Всё было бы хорошо, если бы Майн была принцессой, но на деле она всего лишь простолюдинка, дочь солдата. Но Майн не отчаялась, хотя была на грани этого, и решила для себя, что сделает книги сама.',
     picture: '/img/worm_1.jpg',
     banner: '/img/banners/worm_1.jpg',
+    filterInfo: {
+        genres: ['Comedy', 'Romance',],
+        adultRating: '',
+        titleStatus: 'Completed',
+    },
     chapters: [
         {
             title: 'Chapter 1',
@@ -31,6 +36,11 @@ const bookTwo = {
 Как и соответствующая карта Таро, Шут, которая имеет номер 0 - число неограниченного потенциала - это легенда о "Шуте"."',
     picture: '/img/pov_1.jpg',
     banner: '/img/banners/pov_1.png',
+    filterInfo: {
+        genres: ['Drama', 'Adventure', 'Fantasy'],
+        adultRating: '16+',
+        titleStatus: 'Ongoing',
+    },
     chapters: [
         {
             title: 'Chapter 1',
@@ -48,6 +58,11 @@ export const book3 = {
     title: 'book3',
     description: 'book3book3',
     picture: '',
+    filterInfo: {
+        genres: ['Romance', 'Drama'],
+        adultRating: '',
+        titleStatus: 'Ongoing',
+    },
     chapters: [
         {
             title: 'Chapter 1',
@@ -67,6 +82,11 @@ export const book4 = {
     title: 'book4',
     description: 'book4book4',
     picture: '',
+    filterInfo: {
+        genres: ['Comedy', 'Drama'],
+        adultRating: '16+',
+        titleStatus: 'Completed',
+    },
     chapters: [
         {
             title: 'Chapter 1',
@@ -86,6 +106,11 @@ export const book5 = {
     title: 'book5',
     description: 'book5book5',
     picture: '',
+    filterInfo: {
+        genres: ['Fantasy', 'Cruelty'],
+        adultRating: '18+',
+        titleStatus: 'Ongoing',
+    },
     chapters: [
         {
             title: 'Chapter 1',
@@ -105,6 +130,11 @@ export const book6 = {
     title: 'book6',
     description: 'book6book6',
     picture: '',
+    filterInfo: {
+        genres: ['Comedy', 'Romance'],
+        adultRating: '16+',
+        titleStatus: 'Completed',
+    },
     chapters: [
         {
             title: 'Chapter 1',

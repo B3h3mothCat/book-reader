@@ -6,6 +6,8 @@ import BookUnit from './BookUnit'
 import SearchBar from "./SearchBar";
 import useModal from '../../Hooks/useModal'
 
+import BookFilter from "./BookFilter";
+
 import './catalog.css'
 
 export default function LibraryOfBooks() {
@@ -19,21 +21,38 @@ export default function LibraryOfBooks() {
         openModal()
     }
 
+    //
+    const [filteredBooks, setFilteredBooks] = useState(books);
+
+    const applyFilters = (filters) => {
+        const { genres, status, adultRating } = filters;
+        const filtered = books.filter((book) => {
+            const { genres: bookGenres, adultRating: bookAdultRating, titleStatus: bookStatus } = book.filterInfo;
+            const matchGenres = genres.length ? genres.some((genre) => bookGenres.includes(genre)) : true;
+            const matchStatus = status ? bookStatus === status : true;
+            const matchAdultRating = adultRating ? bookAdultRating === adultRating : true;
+            return matchGenres && matchStatus && matchAdultRating;
+        });
+        setFilteredBooks(filtered);
+    };
+
+    const clearFilters = () => {
+        setFilteredBooks(books);
+    };
+    //
 
     return (
         <>
             <MainNavBar />
-            <SearchBar books={books} onSearch={handleSearchResult}></SearchBar>
+            <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
             <div className="catalog-container">
                 <div className="book-list">
-                    {books.map((book, index) => (
+                    {filteredBooks.map((book, index) => (
                         <BookUnit book={book} key={index} />
                     ))}
                 </div>
 
-                <div className="book-filter">
-                    Here we place book filter
-                </div>
+                <BookFilter onApplyFilters={applyFilters} onClearFilters={clearFilters} />
             </div>
 
             {isModalOpen && (

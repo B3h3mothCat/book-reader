@@ -23,7 +23,6 @@ export default function MainPage() {
 
             <div className="home-page">
                 <h3>MAIN PAGE</h3>
-                <span>Lorem?</span>
                 <br />
                 <span>Current user role is: {userRole}</span>
             </div>
