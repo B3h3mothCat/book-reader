@@ -6,6 +6,8 @@ import AuthProvider from './Context/AuthContext.jsx'
 
 import './App.css'
 
+import './i18n';
+
 // const pathsWithThemeToggle = [
 //   '/',
 //   '/login',

@@ -2,9 +2,13 @@ import { useAuth } from "../Context/AuthContext"
 import { Link } from "react-router-dom"
 import MainNavBar from "../components/MainNavBar";
 
+import { useTranslation } from "react-i18next";
 
 export default function MainPage() {
+
     const { userRole } = useAuth()
+    const { t } = useTranslation()
+
 
     return (
         <>
@@ -13,7 +17,7 @@ export default function MainPage() {
                 <ul>
                     {/* <li><Link to={'/'}>Main Page</Link></li>
                     <li><Link to={'/login'}>Login page</Link></li> */}
-                    <li><Link to={'/read-file'}>Read File</Link></li>
+                    <li><Link to={'/read-file'}>{t('mainPage.readFile')}</Link></li>
                     <br />
                     {/* Book folder routes */}
                     {/* <li><Link to={'/library'}>LIBRARY</Link></li> */}
@@ -22,9 +26,9 @@ export default function MainPage() {
             </nav>
 
             <div className="home-page">
-                <h3>MAIN PAGE</h3>
+                <h3>{t('mainPage.mainPage')}</h3>
                 <br />
-                <span>Current user role is: {userRole}</span>
+                <span>{t('mainPage.currentRole')}{userRole}</span>
             </div>
         </>
     )

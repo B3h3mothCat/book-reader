@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-const genres = ['Comedy', 'Romance', 'Drama', 'Fantasy', 'Adventure', 'Cruelty'];
+const genres = ['comedy', 'romance', 'drama', 'fantasy', 'adventure', 'cruelty'];
 const statuses = ['Ongoing', 'Completed', 'Hiatus'];
 const adultRatings = ['', '16+', '18+'];
 
@@ -11,6 +12,8 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
     const [selectedAdultRating, setSelectedAdultRating] = useState('');
     const [minChapters, setMinChapters] = useState('');
     const [maxChapters, setMaxChapters] = useState('');
+
+    const { t } = useTranslation();
 
     const handleGenreChange = (genre) => {
         setSelectedGenres((prev =>
@@ -55,31 +58,8 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
 
     return (
         <div className="book-filter">
-
             <div className="filter-section">
-                <h3>Number of Chapters</h3>
-                <div className="input-section">
-
-                    <input
-                        className="filter-input"
-                        type="number"
-                        value={minChapters}
-                        onChange={handleMinChaptersChange}
-                        placeholder="min"
-                    />
-
-                    <input
-                        className="filter-input"
-                        type="number"
-                        value={maxChapters}
-                        onChange={handleMaxChaptersChange}
-                        placeholder="max"
-                    />
-                </div>
-            </div>
-
-            <div className="filter-section">
-                <h3>Genres</h3>
+                <h3>{t('bookFilterGenres.title')}</h3>
                 {genres.map((genre) => (
                     <label key={genre} className="checkbox-item">
                         <input
@@ -88,7 +68,7 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                             checked={selectedGenres.includes(genre)}
                             onChange={() => handleGenreChange(genre)}
                         />
-                        <label htmlFor={`genre-${genre}`}>{genre}</label>
+                        <label htmlFor={`genre-${genre}`}>{t(`bookFilterGenres.${genre}`)}</label>
                     </label>
                 ))}
             </div>
@@ -122,6 +102,28 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                     </label>
                 ))}
             </div>
+            <div className="filter-section">
+                <h3>Number of Chapters</h3>
+                <div className="input-section">
+
+                    <input
+                        className="filter-input"
+                        type="number"
+                        value={minChapters}
+                        onChange={handleMinChaptersChange}
+                        placeholder="min"
+                    />
+
+                    <input
+                        className="filter-input"
+                        type="number"
+                        value={maxChapters}
+                        onChange={handleMaxChaptersChange}
+                        placeholder="max"
+                    />
+                </div>
+            </div>
+
             <div className="filter-btn-container">
                 <button onClick={handleClear}>Clear All</button>
                 <button onClick={handleApply}>Apply</button>
