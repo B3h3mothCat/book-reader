@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const genres = ['comedy', 'romance', 'drama', 'fantasy', 'adventure', 'cruelty'];
+const genres = ['Comedy', 'Romance', 'Drama', 'Fantasy', 'Adventure', 'Cruelty'];
 const statuses = ['Ongoing', 'Completed', 'Hiatus'];
 const adultRatings = ['', '16+', '18+'];
 
@@ -68,12 +68,12 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                             checked={selectedGenres.includes(genre)}
                             onChange={() => handleGenreChange(genre)}
                         />
-                        <label htmlFor={`genre-${genre}`}>{t(`bookFilterGenres.${genre}`)}</label>
+                        <label htmlFor={`genre-${genre}`}>{t(`bookFilterGenres.${genre.toLowerCase()}`)}</label>
                     </label>
                 ))}
             </div>
             <div className="filter-section">
-                <h3>Status</h3>
+                <h3>{t('bookFilterStatus.title')}</h3>
                 {statuses.map((status) => (
                     <label key={status} className="checkbox-item">
                         <input
@@ -83,12 +83,12 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                             checked={selectedStatus === status}
                             onChange={() => handleStatusChange(status)}
                         />
-                        <label htmlFor={`status-${status}`}>{status}</label>
+                        <label htmlFor={`status-${status}`}>{t(`bookFilterStatus.${status.toLowerCase()}`)}</label>
                     </label>
                 ))}
             </div>
             <div className="filter-section">
-                <h3>Adult Rating</h3>
+                <h3>{t('bookFilterRating.title')}</h3>
                 {adultRatings.map((rating) => (
                     <label key={rating} className="checkbox-item">
                         <input
@@ -103,7 +103,7 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                 ))}
             </div>
             <div className="filter-section">
-                <h3>Number of Chapters</h3>
+                <h3>{t('bookFilter.numOfChapters')}</h3>
                 <div className="input-section">
 
                     <input
@@ -111,7 +111,7 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                         type="number"
                         value={minChapters}
                         onChange={handleMinChaptersChange}
-                        placeholder="min"
+                        placeholder={t('bookFilter.placeholderMin')}
                     />
 
                     <input
@@ -119,14 +119,14 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                         type="number"
                         value={maxChapters}
                         onChange={handleMaxChaptersChange}
-                        placeholder="max"
+                        placeholder={t('bookFilter.placeholderMax')}
                     />
                 </div>
             </div>
 
             <div className="filter-btn-container">
-                <button onClick={handleClear}>Clear All</button>
-                <button onClick={handleApply}>Apply</button>
+                <button onClick={handleClear}>{t('bookFilter.clearAll')}</button>
+                <button onClick={handleApply}>{t('bookFilter.apply')}</button>
             </div>
 
         </div>

@@ -5,10 +5,13 @@ import MainNavBar from "../components/MainNavBar";
 
 import { useAuth } from "../Context/AuthContext";
 
+import { useTranslation } from "react-i18next";
+
 export default function BookFrontPage() {
     const { chapters, title, description, book } = useLocation().state;
     const [activeTab, setActiveTab] = useState('description')
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const { addBookToUser, isLoggedIn } = useAuth()
 

@@ -18,7 +18,37 @@ const en = {
         fantasy: 'Fantasy',
         adventure: 'Adventure',
         cruelty: 'Cruelty'
+    },
+    bookFilterStatus: {
+        title: 'Status',
+        ongoing: 'Ongoing',
+        completed: 'Completed',
+        hiatus: 'Hiatus',
+    },
+    bookFilterRating: {
+        title: 'Adult rating'
+    },
+    bookFilter: {
+        numOfChapters: 'Number of chapters',
+        clearAll: 'Clear all',
+        apply: 'Apply',
+        placeholderMin: 'min',
+        placeholderMax: 'max',
+    },
+    themeToggle: {
+        light: 'Light Theme',
+        dark: 'Dark Theme',
+    },
+    bookFrontPage: {
+        startReading: '',
+        addBook: '',
+        description: '',
+        list: '',
+        genres: '',
+        status: '',
+        rating: '',
     }
+
 }
 
 export default en
