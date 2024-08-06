@@ -115,8 +115,12 @@ padding: 10%;
   gap: 5px;
 }
 
+.checkbox-item input, label {
+  cursor: pointer;
+}
+
 .filter-btn-container {
-  padding-top: 50%;
+  padding-top: 5%;
   display: flex;
   justify-content: center;
   gap: 5px;
@@ -133,3 +137,15 @@ padding: 10%;
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
+.input-section {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.filter-input {
+  outline: none;
+  width: 80px;
+}
+
