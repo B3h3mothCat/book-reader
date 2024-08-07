@@ -40,19 +40,19 @@ export default function BookFrontPage() {
                 </div>
                 <div>cover of book</div>
 
-                <button onClick={handleStartReading}>Start reading now!</button>
+                <button onClick={handleStartReading}>{t('bookFrontPage.startReading')}</button>
 
                 {isLoggedIn && (
-                    <button onClick={handleAddToPersonalList}>Add book to personal list</button>
+                    <button onClick={handleAddToPersonalList}>{t('bookFrontPage.addBook')}</button>
                 )}
 
                 <div className="">Navbar for book tabs
                     <div>
                         <button onClick={() => setActiveTab('description')}>
-                            Description
+                            {t('bookFrontPage.description')}
                         </button>
                         <button onClick={() => setActiveTab('list')}>
-                            List
+                            {t('bookFrontPage.list')}
                         </button>
                     </div>
                 </div>
@@ -61,9 +61,9 @@ export default function BookFrontPage() {
                     {activeTab === 'description' && (
                         <>
                             <h3>{title}</h3>
-                            <p>Genres: {book.filterInfo.genres.join(', ')}</p>
-                            <p>Status: {book.filterInfo.titleStatus}</p>
-                            <p>Adult Rating: {book.filterInfo.adultRating}</p>
+                            <p>{t('bookFrontPage.genres')}{book.filterInfo.genres.join(', ')}</p>
+                            <p>{t('bookFrontPage.status')}{book.filterInfo.titleStatus}</p>
+                            <p>{t('bookFrontPage.rating')}{book.filterInfo.adultRating}</p>
                             <div className="desription-tab">
                                 <p>{description}</p>
                             </div>

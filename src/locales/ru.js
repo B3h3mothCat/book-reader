@@ -40,13 +40,13 @@ export const ru = {
         dark: 'Темная тема',
     },
     bookFrontPage: {
-        startReading: '',
-        addBook: '',
-        description: '',
-        list: '',
-        genres: '',
-        status: '',
-        rating: '',
+        startReading: 'Начать четние!',
+        addBook: 'Добавить в избранное',
+        description: 'Описание',
+        list: 'Список глав',
+        genres: 'Жанры: ',
+        status: 'Статус: ',
+        rating: 'Возрастной рейтинг: ',
     }
 
 }

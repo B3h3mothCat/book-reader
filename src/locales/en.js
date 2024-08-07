@@ -40,13 +40,13 @@ const en = {
         dark: 'Dark Theme',
     },
     bookFrontPage: {
-        startReading: '',
-        addBook: '',
-        description: '',
-        list: '',
-        genres: '',
-        status: '',
-        rating: '',
+        startReading: 'Start reading now!',
+        addBook: 'Add book to personal list',
+        description: 'Description',
+        list: 'List',
+        genres: 'Genres: ',
+        status: 'Status:',
+        rating: 'Adult Rating:',
     }
 
 }

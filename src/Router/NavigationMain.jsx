@@ -10,6 +10,7 @@ import BookFrontPage from '../Pages/BookFrontPage'
 import LoginPage from '../Pages/LoginPage'
 
 import PersonalAccount from '../components/PersonalAccount'
+import Catalog from '../components/Book/Catalog'
 
 
 export default function NavigationMain() {
@@ -24,6 +25,10 @@ export default function NavigationMain() {
                 <Route path='list/:listId' element={<List />} />
                 <Route path='chapter/:chapterId' element={<SingleChapter />} />
                 <Route path='/book-front/:bookId' element={<BookFrontPage />} />
+
+
+                <Route path='/catalog' element={<Catalog />} />
+
                 {/* Book folder routes */}
                 <Route path='/account' element={<PersonalAccount />}></Route>
 
