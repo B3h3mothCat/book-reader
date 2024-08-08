@@ -125,8 +125,8 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
             </div>
 
             <div className="filter-btn-container">
-                <button onClick={handleClear}>{t('bookFilter.clearAll')}</button>
                 <button onClick={handleApply}>{t('bookFilter.apply')}</button>
+                <button onClick={handleClear}>{t('bookFilter.clearAll')}</button>
             </div>
 
         </div>

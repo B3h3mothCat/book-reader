@@ -12,16 +12,16 @@ export default function MainNavBar() {
 
     return (
         <div className="main-navbar-container">
-            <div><Link to={'/'}>{t('mainNavBar.home')}</Link></div>
-            <div><Link to={'/library'}>{t('mainNavBar.library')}</Link></div>
+            <Link className="nav-link" to={'/'}>{t('mainNavBar.home')}</Link>
+            <Link className="nav-link" to={'/library'}>{t('mainNavBar.library')}</Link>
             {isLoggedIn && (
-                <Link to={'/account'}>{t('mainNavBar.personalAccount')}</Link>
+                <Link className="nav-link" to={'/account'}>{t('mainNavBar.personalAccount')}</Link>
             )}
             {!isLoggedIn && (
-                <Link to={'/Login'}>{t('mainNavBar.login')}</Link>
+                <Link className="nav-link" to={'/Login'}>{t('mainNavBar.login')}</Link>
             )}
-            <ThemeToggle />
             <LanguageSwitcher></LanguageSwitcher>
+            <ThemeToggle />
         </div>
     )
 }

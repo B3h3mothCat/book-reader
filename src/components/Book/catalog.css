@@ -2,29 +2,37 @@
 
 .catalog-container {
     display: flex;
-    /* border: 1px black solid; */
     background-color: var(--background-color-light);
-    padding-left: 5%;
-    padding-right: 5%;
-    gap: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    gap: 1%;
+    /* width: calc(100% - 10%); */
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: hidden;
   }
 
 .book-filter {
-  /* border-left: 1px grey solid; */
   width: 20%;
   background-color: var(--background-module-light);
   border-radius: 5px;
 }
   
 .book-list {
+    /* display: flex;
+    flex-wrap: wrap; */
+
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 0.5em;
     width: 100%;
     padding: 1%;
     background-color: var(--background-module-light);
     height: 100%;
     border-radius: 5px;
+    overflow-x: hidden;
+ 
   }
   
 .book-list-modal {
@@ -94,7 +102,6 @@
 .book-banner img {
     height: 100%;
     width: 100%;
-    /* object-fit: cover;  */
     border-radius: 10px;
   }
 

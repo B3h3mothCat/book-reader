@@ -12,7 +12,7 @@ export default function PersonalAccount() {
                 <div className="personal-acc-bar">
                     <div>Hello: {username}</div>
                     <div>Your current role is: {userRole}</div>
-                    <button onClick={logout}>Logout button</button>
+                    <button onClick={logout}>Logout</button>
                 </div>
 
                 {books && (

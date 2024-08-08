@@ -8,5 +8,6 @@ export default function Catalog() {
     return (
         <LibraryOfBooks key={i18n.language} />
     )
-
 }
+
+// DISABLED FOR NOW

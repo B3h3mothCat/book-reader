@@ -41,7 +41,9 @@
 
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -56,7 +58,6 @@ body {
   align-items: flex-start;
   min-width: 320px;
   min-height: 100vh;
-  box-sizing: border-box;
 
 }
 
@@ -167,4 +168,11 @@ html, body {
   align-items: center;
   background-color: var(--background-module-light);
   z-index: 11;
+}
+
+.nav-link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 120px;
 }

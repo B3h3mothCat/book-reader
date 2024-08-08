@@ -1,7 +1,8 @@
 .toggle-container {
-    position: absolute;
+    /* position: absolute; */
     margin-top: 5px;
     right: 5px;
+
     }
   
 .theme-toggle-button {
@@ -9,9 +10,12 @@
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
+    height: 35px;
+    width: 115px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+
   }
   
 .theme-toggle-button:hover {

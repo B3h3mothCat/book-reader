@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { BOOKS_DATA_RU } from "../../mock/data_ru"
 import MainNavBar from "../MainNavBar";
 import BookUnit from './BookUnit'
@@ -9,13 +8,11 @@ import useModal from '../../Hooks/useModal'
 import BookFilter from "./BookFilter";
 import { useBookFilter } from "../../Hooks/useBookFilter";
 
-import useBooksData from "../../Hooks/useBooksData"
-
 import './catalog.css'
 
 export default function LibraryOfBooks() {
-    const books = useBooksData();
-    // const books = BOOKS_DATA_RU
+
+    const books = BOOKS_DATA_RU
 
     const [searchResult, setSearchReasult] = useState([])
     const { isModalOpen, openModal, modalRef } = useModal(false)

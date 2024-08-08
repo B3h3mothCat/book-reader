@@ -25,3 +25,6 @@ const useBooksData = () => {
 };
 
 export default useBooksData;
+
+// To make this hook properly switch books, we need to pass key to 
+// <LibraryOfBooks key={i18n.language} />
