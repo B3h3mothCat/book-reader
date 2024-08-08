@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "Adam",
+      "password": "aaa",
+      "role": "user",
+      "books": [
+        {
+          "title": "Повелитель тайн",
+          "description": "С развитием паровых машин и механизмов кто может приблизиться к тому, чтобы стать Потусторонним? Окутанный туманом истории и тьмы, кто или что является затаившимся злом, которое шепчет нам на ухо?Проснувшись и столкнувшись с целым рядом загадок, Чжоу Минжуй обнаруживает, что перевоплотился в Клейна Моретти в альтернативном мире Викторианской эпохи, где он видит мир, наполненный механизмами, пушками, дредноутами, дирижаблями, разностными машинами, а также зельями, гаданиями, приворотами, картами Таро, запечатанными артефактами...Свет продолжает сиять, но тайна никогда не уходила далеко. Следуйте за Клейном, когда он окажется втянутым в дела мировых церквей - как ортодоксальных, так и неортодоксальных, - в то время как он постепенно обретает новые силы благодаря Потусторонним зельям.Как и соответствующая карта Таро, Шут, которая имеет номер 0 - число неограниченного потенциала - это легенда о \"Шуте\".\"",
+          "picture": "/img/pov_1.jpg",
+          "banner": "/img/banners/pov_1.png",
+          "filterInfo": {
+            "genres": [
+              "Drama",
+              "Adventure",
+              "Fantasy"
+            ],
+            "adultRating": "16+",
+            "titleStatus": "Ongoing"
+          },
+          "chapters": [
+            {
+              "title": "Chapter 1",
+              "content": "/Books_EMU/2/3.txt"
+            },
+            {
+              "title": "Chapter 2",
+              "content": "/Books_EMU/2/4.txt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "username": "Ben",
+      "password": "bbb",
+      "role": "user",
+      "books": [
+        {
+          "title": "book4",
+          "description": "book4book4",
+          "picture": "",
+          "filterInfo": {
+            "genres": [
+              "Comedy",
+              "Drama"
+            ],
+            "adultRating": "16+",
+            "titleStatus": "Completed"
+          },
+          "chapters": [
+            {
+              "title": "Chapter 1",
+              "content": "Content of Chapter 1..."
+            },
+            {
+              "title": "Chapter 2",
+              "content": "Content of Chapter 2..."
+            },
+            {
+              "title": "Chapter 3",
+              "content": "Content of Chapter 3..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "username": "Smith",
+      "password": "sss",
+      "role": "user",
+      "books": []
+    },
+    {
+      "id": "4",
+      "username": "David",
+      "password": "ddd",
+      "role": "premium member",
+      "books": []
+    }
+  ]
+}
