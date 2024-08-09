@@ -14,26 +14,22 @@ export default function AuthProvider({ children }) {
     const [username, setUsername] = useState('');
     const [currentUser, setCurrentUser] = useState(null)
 
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(response => response.json())
-            .then(data => {
-                setCurrentUser(data[0])
-            })
-            .catch(error => console.error('Error fetching users:', error))
-    }, [])
 
     function login(username, password) {
         // Fetch user based on username and password from the API
-        fetch(`http://localhost:5000/users?username=${username}&password=${password}`)
+        fetch(`http://localhost:5000/users?username=${username}`)
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
                     const user = data[0]; // Assuming username and password uniquely identify a user
-                    setIsLoggedIn(true);
-                    setUserRole(user.role || 'user');
-                    setUsername(username);
-                    setCurrentUser(user);
+                    if (user.password === password) {
+                        setIsLoggedIn(true);
+                        setUserRole(user.role || 'user');
+                        setUsername(username);
+                        setCurrentUser(user);
+                    } else {
+                        alert('Invalid username or password');
+                    }
                 } else {
                     alert('Invalid username or password');
                 }
@@ -48,11 +44,11 @@ export default function AuthProvider({ children }) {
         setCurrentUser(null);
     }
 
-    function addBookToUser(book) {
+    function updateUserBooks(updatedBooks) {
         if (currentUser) {
             const updatedUser = {
                 ...currentUser,
-                books: [...currentUser.books, book],
+                books: updatedBooks,
             };
 
             fetch(`http://localhost:5000/users/${currentUser.id}`, {
@@ -64,9 +60,23 @@ export default function AuthProvider({ children }) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    setCurrentUser(data); // Update currentUser state with updated data from server
+                    setCurrentUser(data);
                 })
-                .catch(error => console.error('Error adding book:', error));
+                .catch(error => console.error('Error updating books:', error));
+        }
+    }
+
+    function addBookToUser(book) {
+        if (currentUser) {
+            const updatedBooks = [...currentUser.books, book];
+            updateUserBooks(updatedBooks);
+        }
+    } // right now we can add same book X times
+
+    function delBookFromUser(book) {
+        if (currentUser) {
+            const updatedBooks = currentUser.books.filter(b => b !== book);
+            updateUserBooks(updatedBooks);
         }
     }
 
@@ -78,7 +88,8 @@ export default function AuthProvider({ children }) {
             login,
             logout,
             addBookToUser,
-            books: currentUser?.books
+            delBookFromUser,
+            books: currentUser?.books // вместо целых книг лучше передавать id книг
         }}
         >
             {children}

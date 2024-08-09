@@ -40,16 +40,52 @@
       "role": "user",
       "books": [
         {
-          "title": "book4",
-          "description": "book4book4",
+          "title": "book3",
+          "description": "book3book3",
           "picture": "",
           "filterInfo": {
             "genres": [
-              "Comedy",
+              "Romance",
               "Drama"
             ],
-            "adultRating": "16+",
+            "adultRating": "",
+            "titleStatus": "Ongoing"
+          },
+          "chapters": [
+            {
+              "title": "Chapter 1",
+              "content": "Content of Chapter 1..."
+            },
+            {
+              "title": "Chapter 2",
+              "content": "Content of Chapter 2..."
+            },
+            {
+              "title": "Chapter 3",
+              "content": "Content of Chapter 3..."
+            }
+          ]
+        },
+        {
+          "title": "Власть книжного червя",
+          "description": "История повествует о Майн — девушке из Японии, которая всю жизнь провела в окружении книг и даже умерла в их объятиях. «Книги — это всё для меня». Главная героиня перед смертью взмолилась Богам, чтобы в следующей жизни жить посреди книг, а на деле... Она в магическом Средневековье, где, как и в нашей истории, книга стоит, как хороший двухэтажный дом в центре города. Всё было бы хорошо, если бы Майн была принцессой, но на деле она всего лишь простолюдинка, дочь солдата. Но Майн не отчаялась, хотя была на грани этого, и решила для себя, что сделает книги сама.",
+          "picture": "/img/worm_1.jpg",
+          "banner": "/img/banners/worm_1.jpg",
+          "filterInfo": {
+            "genres": [
+              "Comedy",
+              "Romance"
+            ],
+            "adultRating": "",
             "titleStatus": "Completed"
+          },
+          "bookCover": {
+            "genres": [
+              "Комедия",
+              "Романтика"
+            ],
+            "adultRating": "",
+            "titleStatus": "Завершен"
           },
           "chapters": [
             {

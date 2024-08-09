@@ -3,7 +3,8 @@ import MainNavBar from "./MainNavBar";
 import BookUnit from "./Book/BookUnit";
 
 export default function PersonalAccount() {
-    const { username, userRole, logout, books } = useAuth()
+    const { username, userRole, logout, books, delBookFromUser } = useAuth()
+
 
     return (
         <>
@@ -17,9 +18,12 @@ export default function PersonalAccount() {
 
                 {books && (
                     <div className="added-books">
-                        Here we can place list of added books
+                        <div>Here we can place UI for added books</div>
                         {books.map((book, index) => (
-                            <BookUnit book={book} key={index} />
+                            <div className="account-book" key={index}>
+                                <BookUnit book={book} key={index} />
+                                <button onClick={() => delBookFromUser(book)}>Del book</button>
+                            </div>
                         ))}
                     </div>
                 )}

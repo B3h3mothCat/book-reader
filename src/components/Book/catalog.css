@@ -6,11 +6,21 @@
     padding-left: 3%;
     padding-right: 3%;
     gap: 1%;
-    /* width: calc(100% - 10%); */
     margin-left: auto;
     margin-right: auto;
     overflow-x: hidden;
+    /* width: calc(100% - 10%); */
   }
+
+.added-books {
+    display: flex;
+    background-color: var(--background-module-light);
+    padding-left: 3%;
+    padding-right: 3%;
+    gap: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .book-filter {
   width: 20%;
@@ -76,6 +86,14 @@
   box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
 }
   
+.account-book {
+  height: 320px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .book-picture {
     height: 225px;
     width: 160px;
