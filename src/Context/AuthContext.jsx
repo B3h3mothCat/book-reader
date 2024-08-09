@@ -16,12 +16,11 @@ export default function AuthProvider({ children }) {
 
 
     function login(username, password) {
-        // Fetch user based on username and password from the API
         fetch(`http://localhost:5000/users?username=${username}`)
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
-                    const user = data[0]; // Assuming username and password uniquely identify a user
+                    const user = data[0];
                     if (user.password === password) {
                         setIsLoggedIn(true);
                         setUserRole(user.role || 'user');
@@ -44,11 +43,11 @@ export default function AuthProvider({ children }) {
         setCurrentUser(null);
     }
 
-    function updateUserBooks(updatedBooks) {
+    function updateUserBooksId(updatedBooksId) {
         if (currentUser) {
             const updatedUser = {
                 ...currentUser,
-                books: updatedBooks,
+                booksId: updatedBooksId,  // Updating only booksId
             };
 
             fetch(`http://localhost:5000/users/${currentUser.id}`, {
@@ -60,23 +59,28 @@ export default function AuthProvider({ children }) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    setCurrentUser(data);
+                    setCurrentUser(data)
                 })
-                .catch(error => console.error('Error updating books:', error));
+                .catch(error => console.error('Error updating user books:', error));
         }
     }
 
     function addBookToUser(book) {
         if (currentUser) {
-            const updatedBooks = [...currentUser.books, book];
-            updateUserBooks(updatedBooks);
+            // Check if the book is already in the user's booksId array
+            if (!currentUser.booksId.includes(book.id)) {
+                const updatedBooksId = [...currentUser.booksId, book.id];
+                updateUserBooksId(updatedBooksId);
+            } else {
+                alert("Book is already in your collection.");
+            }
         }
-    } // right now we can add same book X times
+    }
 
     function delBookFromUser(book) {
         if (currentUser) {
-            const updatedBooks = currentUser.books.filter(b => b !== book);
-            updateUserBooks(updatedBooks);
+            const updatedBooksId = currentUser.booksId.filter(id => id !== book.id);
+            updateUserBooksId(updatedBooksId);
         }
     }
 
@@ -89,7 +93,7 @@ export default function AuthProvider({ children }) {
             logout,
             addBookToUser,
             delBookFromUser,
-            books: currentUser?.books // вместо целых книг лучше передавать id книг
+            booksId: currentUser?.booksId
         }}
         >
             {children}

@@ -1,5 +1,6 @@
 
 const bookOne = {
+    id: '1',
     title: 'Власть книжного червя',
     description: 'История повествует о Майн — девушке из Японии, которая всю жизнь провела в окружении книг и даже умерла в их объятиях. «Книги — это всё для меня». Главная героиня перед смертью взмолилась Богам, чтобы в следующей жизни жить посреди книг, а на деле... Она в магическом Средневековье, где, как и в нашей истории, книга стоит, как хороший двухэтажный дом в центре города. Всё было бы хорошо, если бы Майн была принцессой, но на деле она всего лишь простолюдинка, дочь солдата. Но Майн не отчаялась, хотя была на грани этого, и решила для себя, что сделает книги сама.',
     picture: '/img/worm_1.jpg',
@@ -31,6 +32,7 @@ const bookOne = {
 }
 
 const bookTwo = {
+    id: '2',
     title: 'Повелитель тайн',
     description: 'С развитием паровых машин и механизмов кто может приблизиться к тому, чтобы стать Потусторонним? Окутанный туманом истории и тьмы, кто или что является затаившимся злом, которое шепчет нам на ухо?\
 \
@@ -60,6 +62,7 @@ const bookTwo = {
 
 
 export const book3 = {
+    id: '3',
     title: 'book3',
     description: 'book3book3',
     picture: '',
@@ -84,6 +87,7 @@ export const book3 = {
     ]
 }
 export const book4 = {
+    id: '4',
     title: 'book4',
     description: 'book4book4',
     picture: '',
@@ -108,6 +112,7 @@ export const book4 = {
     ]
 }
 export const book5 = {
+    id: '5',
     title: 'book5',
     description: 'book5book5',
     picture: '',
@@ -132,6 +137,7 @@ export const book5 = {
     ]
 }
 export const book6 = {
+    id: '6',
     title: 'book6',
     description: 'book6book6',
     picture: '',
@@ -156,6 +162,7 @@ export const book6 = {
     ]
 }
 export const book7 = {
+    id: '7',
     title: 'book7',
     description: 'book6book6',
     picture: '',

@@ -2,9 +2,12 @@ import { useAuth } from "../Context/AuthContext";
 import MainNavBar from "./MainNavBar";
 import BookUnit from "./Book/BookUnit";
 
-export default function PersonalAccount() {
-    const { username, userRole, logout, books, delBookFromUser } = useAuth()
+import { BOOKS_DATA_RU } from "../mock/data_ru"
 
+export default function PersonalAccount() {
+    const { username, userRole, logout, delBookFromUser, booksId = [] } = useAuth()
+
+    const userBooks = BOOKS_DATA_RU.filter(book => booksId.includes(book.id))
 
     return (
         <>
@@ -16,10 +19,10 @@ export default function PersonalAccount() {
                     <button onClick={logout}>Logout</button>
                 </div>
 
-                {books && (
+                {booksId && (
                     <div className="added-books">
-                        <div>Here we can place UI for added books</div>
-                        {books.map((book, index) => (
+                        <div>Now we using id instead of entire book</div>
+                        {userBooks.map((book, index) => (
                             <div className="account-book" key={index}>
                                 <BookUnit book={book} key={index} />
                                 <button onClick={() => delBookFromUser(book)}>Del book</button>
@@ -27,6 +30,7 @@ export default function PersonalAccount() {
                         ))}
                     </div>
                 )}
+
             </div>
         </>
     )
