@@ -176,3 +176,49 @@ html, body {
   align-items: center;
   width: 120px;
 }
+
+/* MainPage */
+
+.mainpage-dashboard{
+width: 100%;
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+margin-top: 15px;
+}
+
+.news-container {
+
+  background-color: var(--background-module-light);
+  height: 650px;
+  width: 550px;
+  border-radius: 6px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: default;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* .custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
+.no-select {
+  user-select: none; /* Prevent text selection */
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none; /* For older IE versions */
+}
