@@ -173,10 +173,57 @@ padding: 10%;
   border-radius: 10px;
 }
 
+/*
+PERSONAL ACC 
+*/
+
 .added-books-container {
   display: flex;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
+  width: 80%;
 }
 
+.acc-book-unit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushing button to right corner */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: var(--background-module-light);
+}
+
+.acc-book-unit:hover {
+  box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
+}
+
+
+.acc-book-unit img {
+  height: 120px;
+  width: 120px;
+  margin-right: 30px; 
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px grey solid;
+}
+
+
+.acc-book-unit a {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;   /* Allows all space of container to be clickable link */
+}
+
+.acc-book-unit button {
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.acc-book-unit button:hover {
+  background-color: #ff1a1a;
+}
