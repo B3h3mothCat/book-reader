@@ -2,6 +2,23 @@ import { Link } from "react-router-dom"
 
 export default function BookUnit({ book, specialCss }) {
     return (
+        // <div className={`${specialCss ? specialCss : 'book-unit'}`}>
+        //     <Link
+        //         to={`/book-front/${encodeURIComponent(book.title)}`}
+        //         state={{
+        //             chapters: book.chapters,
+        //             title: book.title,
+        //             description: book.description,
+        //             book: book,
+        //         }}
+        //     >
+        //         <div className='book-picture'>
+        //             <img src={book.picture} alt={book.title} />
+        //         </div>
+        //         {book.title}
+        //     </Link>
+        // </div>
+
         <div className={`${specialCss ? specialCss : 'book-unit'}`}>
             <Link
                 to={`/book-front/${encodeURIComponent(book.title)}`}
@@ -12,9 +29,7 @@ export default function BookUnit({ book, specialCss }) {
                     book: book,
                 }}
             >
-                <div className='book-picture'>
-                    <img src={book.picture} alt={book.title} />
-                </div>
+                <img src={book.picture} alt={book.title} />
                 {book.title}
             </Link>
         </div>

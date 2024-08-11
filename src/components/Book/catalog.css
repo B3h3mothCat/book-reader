@@ -60,35 +60,7 @@
     justify-content: center;
     z-index: 10;
   }
-  
-.book-unit {
-  border: 1px solid gray;
-  height: 290px;
-  width: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.book-unit:hover {
-  box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
-}
-
-.book-picture {
-    height: 225px;
-    width: 160px;
-  }
-  
-.book-picture img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover; 
-    border-radius: 10px;
-  }
-  
-  
+    
 .desription-tab {
     border-bottom: 1px gray solid;
     border-top: 1px gray solid;
@@ -174,6 +146,41 @@ padding: 10%;
 }
 
 /*
+Book units
+*/
+
+.book-unit {
+  border: 1px solid gray;
+  height: 290px;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.book-unit:hover {
+  box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
+}
+
+.book-unit img {
+    height: 225px;
+    width: 160px;
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+.book-unit a {
+  /* display: flex; 
+  flex-direction: column;
+  align-items: center;  */
+  height: 100%; 
+  width: 100%; 
+}
+
+
+/*
 PERSONAL ACC 
 */
 
@@ -188,15 +195,7 @@ PERSONAL ACC
 .acc-book-unit {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Pushing button to right corner */
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
   background-color: var(--background-module-light);
-}
-
-.acc-book-unit:hover {
-  box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
 }
 
 
@@ -213,10 +212,20 @@ PERSONAL ACC
 .acc-book-unit a {
   display: flex;
   align-items: center;
-  flex-grow: 1;   /* Allows all space of container to be clickable link */
+  /* width: 950px; */
 }
 
-.acc-book-unit button {
+.acc-book-unit-b {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: var(--background-module-light);
+  justify-content: space-between; /* Pushing button to right corner */
+}
+
+.acc-book-unit-b button {
   padding: 5px 10px;
   background-color: #ff4d4d;
   border: none;
@@ -224,6 +233,10 @@ PERSONAL ACC
   cursor: pointer;
 }
 
-.acc-book-unit button:hover {
+.acc-book-unit-b:hover {
+  box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
+}
+
+.acc-book-unit-b button:hover {
   background-color: #ff1a1a;
 }
