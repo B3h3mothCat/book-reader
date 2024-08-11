@@ -20,11 +20,13 @@ export default function PersonalAccount() {
                 </div>
 
                 {booksId && (
-                    <div className="added-books">
+                    <div className="added-books-container">
                         <div>Now we using id instead of entire book</div>
                         {userBooks.map((book, index) => (
-                            <div className="account-book" key={index}>
-                                <BookUnit book={book} key={index} />
+                            <div className="account-book-container" key={index}>
+                                <BookUnit book={book} key={index}
+                                // specialCss={'account-book-unit'}
+                                />
                                 <button onClick={() => delBookFromUser(book)}>Del book</button>
                             </div>
                         ))}

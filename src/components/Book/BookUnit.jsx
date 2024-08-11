@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 
-export default function BookUnit({ book }) {
+export default function BookUnit({ book, specialCss }) {
     return (
-        <div className="book-unit">
+        <div className={`${specialCss ? specialCss : 'book-unit'}`}>
             <Link
                 to={`/book-front/${encodeURIComponent(book.title)}`}
                 state={{
@@ -12,7 +12,7 @@ export default function BookUnit({ book }) {
                     book: book,
                 }}
             >
-                <div className="book-picture">
+                <div className='book-picture'>
                     <img src={book.picture} alt={book.title} />
                 </div>
                 {book.title}

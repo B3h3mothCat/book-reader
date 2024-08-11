@@ -6,7 +6,10 @@
       "password": "aaa",
       "role": "user",
       "books": [],
-      "booksId": []
+      "booksId": [
+        "2",
+        "1"
+      ]
     },
     {
       "id": "2",
@@ -32,7 +35,8 @@
       "books": [],
       "booksId": [
         "1",
-        "7"
+        "2",
+        "6"
       ]
     }
   ]

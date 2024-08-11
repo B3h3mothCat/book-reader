@@ -34,11 +34,10 @@ export default function BookFrontPage() {
         <>
             <MainNavBar></MainNavBar>
 
-            <div>
-                <div className="book-banner">
+            <div className="boookfrontpage-container">
+                <div className="book-banner"> cover of book
                     <img src={book.banner} alt={'banner-tile'} />
                 </div>
-                <div>cover of book</div>
 
                 <button onClick={handleStartReading}>{t('bookFrontPage.startReading')}</button>
 

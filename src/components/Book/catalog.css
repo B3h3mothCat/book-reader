@@ -12,16 +12,6 @@
     /* width: calc(100% - 10%); */
   }
 
-.added-books {
-    display: flex;
-    background-color: var(--background-module-light);
-    padding-left: 3%;
-    padding-right: 3%;
-    gap: 1%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .book-filter {
   width: 20%;
   background-color: var(--background-module-light);
@@ -85,14 +75,6 @@
 .book-unit:hover {
   box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
 }
-  
-.account-book {
-  height: 320px;
-  width: 180px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
 
 .book-picture {
     height: 225px;
@@ -111,17 +93,26 @@
     border-bottom: 1px gray solid;
     border-top: 1px gray solid;
  }
+
+.boookfrontpage-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
   
 .book-banner {
-    width: 80%;
-    height: 250px;
+    max-width: 1200px;
+    height: 360px;
+    border-radius: 15px;
   }
   
-.book-banner img {
-    height: 100%;
-    width: 100%;
-    border-radius: 10px;
-  }
+  .book-banner img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
 
 .book-filter {
   display: flex;
@@ -172,5 +163,20 @@ padding: 10%;
 .filter-input {
   outline: none;
   width: 80px;
+}
+
+.tab-container {
+  background-color: var(--background-module-light);
+  max-width: 1200px;
+  margin-left: 3%;
+  margin-right: 3%;
+  border-radius: 10px;
+}
+
+.added-books-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
 }
 
