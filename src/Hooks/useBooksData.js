@@ -1,30 +1,30 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { BOOKS_DATA_EN } from '../mock/data_en';
-import { BOOKS_DATA_RU } from '../mock/data_ru';
 
-const loadBooksData = (language) => {
-  switch (language) {
-    case 'ru':
-      return BOOKS_DATA_RU;
-    case 'en':
-    default:
-      return BOOKS_DATA_EN;
-  }
-};
+async function fecthBooksData() {
+    const res = await fetch('http://localhost:5000/books')
+    const data = await res.json()
+    return data
+}
 
-const useBooksData = () => {
-  const { i18n } = useTranslation();
-  const [books, setBooks] = useState(loadBooksData(i18n.language));
+function useBooksData() {
+    const [booksData, setBooksData] = useState([])
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    setBooks(loadBooksData(i18n.language));
-  }, [i18n.language]);
+    useEffect(() => {
+        async function loadBooks() {
+            try {
+                const data = await fecthBooksData()
+                setBooksData(data)
+            } catch (err) {
+                setError(err.message)
+            } finally {
+                setLoading(false)
+            }
+        }
+        loadBooks()
+    }, [])
+    return {booksData, loading, error}
+}
 
-  return books;
-};
-
-export default useBooksData;
-
-// To make this hook properly switch books, we need to pass key to 
-// <LibraryOfBooks key={i18n.language} />
+export default useBooksData

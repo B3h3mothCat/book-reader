@@ -4,20 +4,22 @@ import MainNavBar from "../MainNavBar";
 import BookUnit from './BookUnit'
 import SearchBar from "./SearchBar";
 import useModal from '../../Hooks/useModal'
-
 import BookFilter from "./BookFilter";
 import { useBookFilter } from "../../Hooks/useBookFilter";
+
+import useBooksData from "../../Hooks/useBooksData";
 
 import './catalog.css'
 
 export default function LibraryOfBooks() {
 
-    const books = BOOKS_DATA_RU
+    const books = BOOKS_DATA_RU // static JS file
 
+    const { booksData, loading, error } = useBooksData() // fetching from fake API
     const [searchResult, setSearchReasult] = useState([])
     const { isModalOpen, openModal, modalRef } = useModal(false)
+    const { filteredBooks, applyFilters, clearFilters } = useBookFilter(booksData);
 
-    const { filteredBooks, applyFilters, clearFilters } = useBookFilter(books);
 
     function handleSearchResult(result) {
         setSearchReasult(result)

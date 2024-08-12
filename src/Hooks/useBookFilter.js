@@ -4,6 +4,14 @@ export function useBookFilter(initialBooks) {
     const [books, setBooks] = useState(initialBooks);
     const [filteredBooks, setFilteredBooks] = useState(initialBooks);
 
+    // handle initial books data since its API call
+    useEffect(() => {
+        if (initialBooks && initialBooks.length > 0) {
+            setBooks(initialBooks);
+            setFilteredBooks(initialBooks); 
+        }
+    }, [initialBooks]); 
+
     const applyFilters = (filters) => {
         const { genres, status, adultRating, minChapters, maxChapters } = filters;
         
