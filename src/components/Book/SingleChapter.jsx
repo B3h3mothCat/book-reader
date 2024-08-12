@@ -8,7 +8,7 @@ export default function SingleChapter() {
 
     return (
         <div>
-            <h3>Chapter content</h3>
+            {/* <h3>Chapter content</h3> */}
             <CustomizerProvider>
                 <ExpReaderScreen
                     file={decodeURIComponent(chapterId)}

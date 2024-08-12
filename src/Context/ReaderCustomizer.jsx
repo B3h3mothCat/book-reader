@@ -5,7 +5,7 @@ const CustomizerContext = createContext()
 export const useCustomizer = () => useContext(CustomizerContext)
 
 export default function CustomizerProvider({ children }) {
-    const [popupVisible, setPopupVisible] = useState(false);
+    const [popupVisible, setPopupVisible] = useState(false); // openPopup basically calls this hook
     const [settings, setSettings] = useState({
         color: '',
         width: '',

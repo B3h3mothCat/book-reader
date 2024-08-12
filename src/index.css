@@ -80,16 +80,20 @@ body {
 .initial-wrapper {
   /* background-color: var(--background-color); */
 
-  /* display: flex; */
-  align-items: flex-start;
-  justify-content: center;
-  box-sizing: border-box;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  height: 100vh;
+  width: 100%;
 }
 
 .text-wrapper {
-  border: 1px black solid;
-  background-color: var(--reader-background-light);
+  margin-top: 5px;
+  /* background-color: var(--reader-background-light); */
+  height: 100%;
+  width: 100%;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 .reader-menu-wrap {
