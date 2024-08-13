@@ -7,8 +7,8 @@
       "role": "user",
       "books": [],
       "booksId": [
-        "2",
-        "1"
+        "1",
+        "2"
       ]
     },
     {
@@ -48,12 +48,18 @@
       "picture": "/img/worm_1.jpg",
       "banner": "/img/banners/worm_1.jpg",
       "filterInfo": {
-        "genres": ["Comedy", "Romance"],
+        "genres": [
+          "Comedy",
+          "Romance"
+        ],
         "adultRating": "",
         "titleStatus": "Completed"
       },
       "bookCover": {
-        "genres": ["Комедия", "Романтика"],
+        "genres": [
+          "Комедия",
+          "Романтика"
+        ],
         "adultRating": "",
         "titleStatus": "Завершен"
       },
@@ -79,7 +85,11 @@
       "picture": "/img/pov_1.jpg",
       "banner": "/img/banners/pov_1.png",
       "filterInfo": {
-        "genres": ["Drama", "Adventure", "Fantasy"],
+        "genres": [
+          "Drama",
+          "Adventure",
+          "Fantasy"
+        ],
         "adultRating": "16+",
         "titleStatus": "Ongoing"
       },
@@ -100,7 +110,10 @@
       "description": "book3book3",
       "picture": "",
       "filterInfo": {
-        "genres": ["Romance", "Drama"],
+        "genres": [
+          "Romance",
+          "Drama"
+        ],
         "adultRating": "",
         "titleStatus": "Ongoing"
       },
@@ -125,7 +138,10 @@
       "description": "book4book4",
       "picture": "",
       "filterInfo": {
-        "genres": ["Comedy", "Drama"],
+        "genres": [
+          "Comedy",
+          "Drama"
+        ],
         "adultRating": "16+",
         "titleStatus": "Completed"
       },
@@ -150,7 +166,10 @@
       "description": "book5book5",
       "picture": "",
       "filterInfo": {
-        "genres": ["Fantasy", "Cruelty"],
+        "genres": [
+          "Fantasy",
+          "Cruelty"
+        ],
         "adultRating": "18+",
         "titleStatus": "Ongoing"
       },
@@ -175,7 +194,10 @@
       "description": "book6book6",
       "picture": "",
       "filterInfo": {
-        "genres": ["Fantasy", "Cruelty"],
+        "genres": [
+          "Fantasy",
+          "Cruelty"
+        ],
         "adultRating": "18+",
         "titleStatus": "Ongoing"
       },

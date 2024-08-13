@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { ENDPOINTS } from '../utils/apiEndpoints';
 
 async function fecthBooksData() {
-    const res = await fetch('http://localhost:5000/books')
+    const res = await fetch(ENDPOINTS.GET_BOOKS)
     const data = await res.json()
     return data
 }

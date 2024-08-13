@@ -1,9 +1,8 @@
+// import { registeredUsers } from "../mock/usersList";  -- static userBase
 import { createContext, useContext, useEffect, useState } from "react";
-// import { registeredUsers } from "../mock/usersList";
+import { ENDPOINTS } from "../utils/apiEndpoints";
 
 const AuthContext = createContext();
-// const BASE_URL = 'http://localhost:5000'
-
 
 export const useAuth = () => useContext(AuthContext)
 
@@ -16,7 +15,7 @@ export default function AuthProvider({ children }) {
 
 
     function login(username, password) {
-        fetch(`http://localhost:5000/users?username=${username}`)
+        fetch(ENDPOINTS.GET_USERNAME(username))
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
@@ -50,7 +49,7 @@ export default function AuthProvider({ children }) {
                 booksId: updatedBooksId,  // Updating only booksId
             };
 
-            fetch(`http://localhost:5000/users/${currentUser.id}`, {
+            fetch(ENDPOINTS.UPDATE_USER_BY_ID(currentUser.id), {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
