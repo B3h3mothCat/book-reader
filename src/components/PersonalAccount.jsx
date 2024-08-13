@@ -1,14 +1,44 @@
 import { useAuth } from "../Context/AuthContext";
 import MainNavBar from "./MainNavBar";
-import { Link } from "react-router-dom";
 import BookUnit from "./Book/BookUnit";
+import useBooksData from "../Hooks/useBooksData";
+import { useState, useEffect, useRef } from "react";
 
-import { BOOKS_DATA_RU } from "../mock/data_ru"
+// static book source:
+// import { BOOKS_DATA_RU } from "../mock/data_ru"
+
+// for static rendering (but for api we need useEffect): 
+// const userBooks = BOOKS_DATA_RU.filter(book => booksId.includes(book.id))
 
 export default function PersonalAccount() {
-    const { username, userRole, logout, delBookFromUser, booksId = [] } = useAuth()
+    const { username, userRole, isLoggedIn, logout, delBookFromUser, booksId = [] } = useAuth()
+    const { booksData = [] } = useBooksData()
 
-    const userBooks = BOOKS_DATA_RU.filter(book => booksId.includes(book.id))
+
+    const [userBooks, setUserBooks] = useState([]);
+
+    // avoiding infinite loop of re-renders with ref
+    const isLoggedInRef = useRef(isLoggedIn);
+
+    useEffect(() => {
+        isLoggedInRef.current = isLoggedIn; // update the ref on auth state change
+    }, [isLoggedIn]);
+
+    useEffect(() => {
+        if (isLoggedInRef.current) {
+            if (booksData.length > 0) {
+                const accountBooks = booksData.filter(book => booksId.includes(book.id));
+                setUserBooks(accountBooks);
+            } else {
+                setUserBooks([]);
+            }
+        } else {
+            if (userBooks.length > 0) {
+                setUserBooks([]);
+            }
+        }
+    }, [booksId, booksData]);
+
 
     return (
         <>
@@ -20,7 +50,7 @@ export default function PersonalAccount() {
                     <button onClick={logout}>Logout</button>
                 </div>
 
-                {booksId && (
+                {booksId.length > 0 && booksData.length > 0 && (
                     <div className="added-books-container">
                         {userBooks.map((book, index) => (
                             <div className="acc-book-unit-b" key={index}>

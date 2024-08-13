@@ -17,7 +17,9 @@
       "password": "bbb",
       "role": "user",
       "books": [],
-      "booksId": []
+      "booksId": [
+        "1"
+      ]
     },
     {
       "id": "3",
@@ -35,8 +37,9 @@
       "books": [],
       "booksId": [
         "1",
+        "3",
         "2",
-        "3"
+        "4"
       ]
     }
   ],
