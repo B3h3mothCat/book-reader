@@ -28,7 +28,6 @@
 
   --reader-background-light: rgb(255,255,255);
   --reader-background-dark: rgb(28,28,28);
-  
 }
 
 
@@ -56,7 +55,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-width: 320px;
+  /* min-width: 320px; */
   min-height: 100vh;
 
 }
@@ -65,8 +64,10 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: var(--background-color-light);
+  overflow-x: hidden;
   transition: 
     background-color 250ms ease-in-out, 
+  
 }
 
 
@@ -78,22 +79,22 @@ body {
 ---------------
 */
 .initial-wrapper {
-  /* background-color: var(--background-color); */
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
+  background-color: var(--background-module-light);
 }
 
 .text-wrapper {
   margin-top: 5px;
-  /* background-color: var(--reader-background-light); */
   height: 100%;
-  width: 100%;
+  width: 60%;
   font-family:Arial, Helvetica, sans-serif;
+
+  white-space: normal;
+  text-align: start;
 }
 
 .reader-menu-wrap {

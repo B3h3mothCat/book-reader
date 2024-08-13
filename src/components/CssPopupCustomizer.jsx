@@ -3,11 +3,13 @@ import { useState } from "react";
 
 export default function CssPopupCustomizer({ onClose, onSave }) {
     const [color, setColor] = useState('');
-    const [width, setWidth] = useState('');
-    const [fontSize, setFontSize] = useState('');
+    const [width, setWidth] = useState(55);
+    const [fontSize, setFontSize] = useState(16);
+
+    const [textPosition, setTextPosition] = useState('start')
 
     function handleSave() {
-        onSave({ color, width, fontSize });
+        onSave({ color, width, fontSize, textPosition });
         onClose()
     }
 
@@ -24,13 +26,33 @@ export default function CssPopupCustomizer({ onClose, onSave }) {
                 </label>
 
                 <label>
-                    Container width:
-                    <input type="text" value={width} onChange={(e) => setWidth(e.target.value)} />
+                    Container width: {width}%
+                    <input
+                        type="range"
+                        min="10"
+                        max="100"
+                        step="1"
+                        value={width}
+                        onChange={(e) => setWidth(e.target.value)}
+                    />
                 </label>
 
                 <label>
-                    Font Size:
-                    <input type="text" value={fontSize} onChange={(e) => setFontSize(e.target.value)} />
+                    Font Size: {fontSize}px
+                    <input
+                        type="range"
+                        min="10"
+                        max="50"
+                        step="1"
+                        value={fontSize}
+                        onChange={(e) => setFontSize(e.target.value)}
+                    />
+                </label>
+
+                <label>
+                    Text position:
+                    <button type="button" onClick={() => setTextPosition('center')}>Center</button>
+                    <button type="button" onClick={() => setTextPosition('start')}>Start</button>
                 </label>
             </form>
 

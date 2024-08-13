@@ -65,7 +65,7 @@ export default function ExpReaderScreen({ file, chapters, title: initialTitle })
                 />
             )}
 
-            <div className="text-wrapper" style={{ width: settings.width }}>
+            <div className="text-wrapper" style={{ width: settings.width, textAlign: settings.textPosition }}>
                 <h1>Название главы</h1>
                 {sentences.map((sentanse, index) => (
                     <p
