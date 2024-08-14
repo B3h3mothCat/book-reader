@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useCustomizer } from "../Context/ReaderCustomizer";
 
 import ReaderMenuBar from "./Book/ReaderMenuBar";
-
+import useModal from "../Hooks/useModal";
 
 
 function splitIntoSentences(text) {
@@ -20,6 +20,7 @@ export default function ExpReaderScreen({ file, chapters, title: initialTitle })
 
     const [title, setTitle] = useState(initialTitle);
 
+    const { isModalOpen, openModal, modalRef } = useModal(false)
 
     useEffect(() => {
         if (chapters && chapters.length > 0) {
@@ -58,25 +59,32 @@ export default function ExpReaderScreen({ file, chapters, title: initialTitle })
                 <ReaderMenuBar
                     currentChapterIndex={currentChapterIndex}
                     chapters={chapters}
-
                     openPopup={openPopup}
 
                     title={title}
                 />
             )}
 
-            <div className="text-wrapper" style={{ width: settings.width, textAlign: settings.textPosition }}>
+            <div className="text-wrapper" style={{
+                width: settings.width + '%',
+                textAlign: settings.textPosition
+
+            }}>
                 <h1>Название главы</h1>
                 {sentences.map((sentanse, index) => (
                     <p
                         key={index}
-                        style={{ fontSize: settings.fontSize }}
+                        style={{ fontSize: settings.fontSize + 'px' }}
                     >{sentanse}</p>
                 ))}
 
             </div>
-            {popupVisible && <CssPopupCustomizer onClose={closePopup} onSave={saveSettings} />}
-            {/* всплывающее окно (возможно отдельный компонент?) */}
+            {popupVisible && <CssPopupCustomizer
+                onClose={closePopup}
+                onSave={saveSettings}
+                isVisible={popupVisible}
+            />}
+
         </div>
     )
 }

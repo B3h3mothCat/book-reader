@@ -1,13 +1,14 @@
-import Button from "../modules/Button/Button";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import Button from "../../modules/Button/Button";
 
-export default function CssPopupCustomizer({ onClose, onSave, isVisible }) {
+export default function ReaderSettings({ }) {
     const [color, setColor] = useState('');
     const [width, setWidth] = useState(55);
     const [fontSize, setFontSize] = useState(16);
 
     const [textPosition, setTextPosition] = useState('start')
 
+    const { isModalOpen, openModal, modalRef } = useModal(false)
 
     function handleSave() {
         onSave({ color, width, fontSize, textPosition });
@@ -15,8 +16,8 @@ export default function CssPopupCustomizer({ onClose, onSave, isVisible }) {
     }
 
     return (
-        <div className="modal-overlay">
-            <div className={`popup-customizer ${isVisible ? 'popup-active' : ''}`}>
+        <div className={isModalOpen ? "modal-overlay" : ""}>
+            <div className={`popup-customizer ${isVisible ? 'popup-active' : ''}`} ref={modalRef}>
                 <form>
                     <div className="customizer-item">
                         <label>

@@ -23,7 +23,9 @@ export default function ReaderMenuBar({ currentChapterIndex, chapters, openPopup
                 chapters={chapters}
             ></ReaderNavButtons>
 
-            <Button onClick={openPopup}>Customize Page</Button>
+            <Button
+                onClick={openPopup}
+            >Customize Page</Button>
         </div>
     )
 }
