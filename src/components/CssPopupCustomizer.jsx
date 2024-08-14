@@ -15,8 +15,8 @@ export default function CssPopupCustomizer({ onClose, onSave, isVisible }) {
     }
 
     return (
-        <div className="modal-overlay">
-            <div className={`popup-customizer ${isVisible ? 'popup-active' : ''}`}>
+        <div className="modal-overlay" onClick={() => handleSave()}>
+            <div className={`popup-customizer ${isVisible ? 'popup-active' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <form>
                     <div className="customizer-item">
                         <label>

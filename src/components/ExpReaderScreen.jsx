@@ -85,6 +85,19 @@ export default function ExpReaderScreen({ file, chapters, title: initialTitle })
                 isVisible={popupVisible}
             />}
 
+            {/* {isModalOpen && (
+                <div className="modal-overlay">
+                    <div className="" ref={modalRef}>
+                        <CssPopupCustomizer
+                            onClose={closePopup}
+                            onSave={saveSettings}
+                            isVisible={popupVisible}
+                        />
+                    </div>
+                </div>
+            )}
+            <button onClick={openModal}>OPEN IT</button> */}
+
         </div>
     )
 }
