@@ -24,7 +24,6 @@ export default function CustomizerProvider({ children }) {
 
     const saveSettings = (newSettings) => {
         setSettings(newSettings);
-
         document.documentElement.style.setProperty('--reader-background-light', newSettings.color);
     };
 

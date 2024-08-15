@@ -2,6 +2,7 @@ import TextFileOpener from "../components/TextFileOpener/TextFileOpener"
 import ExpReaderScreen from "../components/ExpReaderScreen"
 import CustomizerProvider from "../Context/ReaderCustomizer"
 
+
 import { useState } from "react"
 
 export default function FileReaderPage() {
@@ -15,7 +16,6 @@ export default function FileReaderPage() {
         <>
             <h3>File Reader!</h3>
             <TextFileOpener inputContent={handleFile}></TextFileOpener>
-
 
 
             <CustomizerProvider>

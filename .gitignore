@@ -27,9 +27,10 @@ dist-ssr
 package.json
 package-lock.json
 Experimental
-_Check_and_delete
+dump
 documentation
 public
 README.md
 vite.config.js
 assets
+other

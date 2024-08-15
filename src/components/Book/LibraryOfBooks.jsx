@@ -1,29 +1,30 @@
 import { useState } from "react";
-import { BOOKS_DATA_RU } from "../../mock/data_ru"
+// import { BOOKS_DATA_RU } from "../../mock/data_ru"
 import MainNavBar from "../MainNavBar";
 import BookUnit from './BookUnit'
 import SearchBar from "./SearchBar";
-import useModal from '../../Hooks/useModal'
 import BookFilter from "./BookFilter";
 import { useBookFilter } from "../../Hooks/useBookFilter";
 
 import useBooksData from "../../Hooks/useBooksData";
 
+import ModalWrapper from "../UI/ModalWrapper";
+
 import './catalog.css'
 
 export default function LibraryOfBooks() {
 
-    const books = BOOKS_DATA_RU // static JS file
-
     const { booksData, loading, error } = useBooksData() // fetching from fake API
     const [searchResult, setSearchReasult] = useState([])
-    const { isModalOpen, openModal, modalRef } = useModal(false)
     const { filteredBooks, applyFilters, clearFilters } = useBookFilter(booksData);
 
 
+    // ModalWrapper logic
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     function handleSearchResult(result) {
         setSearchReasult(result)
-        openModal()
+        setIsModalOpen(true)
     }
 
     return (
@@ -40,18 +41,14 @@ export default function LibraryOfBooks() {
                 <BookFilter onApplyFilters={applyFilters} onClearFilters={clearFilters} />
             </div>
 
-            {isModalOpen && (
-                <div className="modal-overlay">
-                    <div
-                        className="book-list-modal"
-                        ref={modalRef}
-                    >
-                        {searchResult.map((book, index) => (
-                            <BookUnit book={book} key={index} />
-                        ))}
-                    </div>
+
+            <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <div className="book-list-modal">
+                    {searchResult.map((book, index) => (
+                        <BookUnit book={book} key={index} />
+                    ))}
                 </div>
-            )}
+            </ModalWrapper>
         </>
     );
 }

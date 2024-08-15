@@ -4,18 +4,22 @@ import { useTranslation } from "react-i18next";
 import MainNavBar from "../components/MainNavBar";
 import DevNews from "../components/Temp/DevNews";
 
-import useModal from "../Hooks/useModal";
+import { useState } from "react";
+
+import ModalWrapper from "../components/UI/ModalWrapper";
 
 export default function MainPage() {
 
     const { userRole } = useAuth()
     const { t } = useTranslation()
 
-    const { isModalOpen, openModal, modalRef } = useModal(false)
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     return (
         <>
-            <MainNavBar />
+            <MainNavBar openModal={openModal} />
             <nav>
                 <ul>
                     <li><Link to={'/read-file'}>{t('mainPage.readFile')}</Link></li>
@@ -30,15 +34,15 @@ export default function MainPage() {
                 <DevNews></DevNews>
             </div>
 
-
-            {/* <button onClick={openModal}>OPEN IN</button>
-            {isModalOpen && (
-                <div className="modal-overlay">
-                    <div className="mainpage-dashboard" ref={modalRef}>
-                        <DevNews ></DevNews>
+            {/* <div>
+                <button onClick={openModal}>Open Modal</button>
+                <ModalWrapper isOpen={isModalOpen} onClose={closeModal}>
+                    <div className="mainpage-dashboard">
+                        <DevNews></DevNews>
                     </div>
-                </div>
-            )} */}
+                </ModalWrapper>
+            </div> */}
+
         </>
     )
 }
