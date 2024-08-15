@@ -4,7 +4,7 @@ import Button from "../../modules/Button/Button"
 
 import ReaderNavButtons from "./ReaderNavButtons"
 
-export default function ReaderMenuBar({ currentChapterIndex, chapters, openPopup, title }) {
+export default function ReaderMenuBar({ currentChapterIndex, chapters, openPopup, title, openCustomizer }) {
 
 
     return (
@@ -26,6 +26,8 @@ export default function ReaderMenuBar({ currentChapterIndex, chapters, openPopup
             <Button
                 onClick={openPopup}
             >Customize Page</Button>
+
+            <button onClick={openCustomizer}>Open Customizer</button>
         </div>
     )
 }

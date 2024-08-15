@@ -6,7 +6,8 @@ export const useCustomizer = () => useContext(CustomizerContext)
 
 
 export default function CustomizerProvider({ children }) {
-    const [popupVisible, setPopupVisible] = useState(false); // openPopup basically calls this hook
+
+    // const [popupVisible, setPopupVisible] = useState(false); 
     const [settings, setSettings] = useState({
         color: '',
         width: '',
@@ -14,13 +15,13 @@ export default function CustomizerProvider({ children }) {
     });
 
 
-    const openPopup = () => {
-        setPopupVisible(true);
-    };
+    // const openPopup = () => {
+    //     setPopupVisible(true);
+    // };
 
-    const closePopup = () => {
-        setPopupVisible(false);
-    };
+    // const closePopup = () => {
+    //     setPopupVisible(false);
+    // };
 
     const saveSettings = (newSettings) => {
         setSettings(newSettings);
@@ -28,8 +29,10 @@ export default function CustomizerProvider({ children }) {
     };
 
     return (
-        <CustomizerContext.Provider value={{ popupVisible, settings, openPopup, closePopup, saveSettings }}>
+        <CustomizerContext.Provider value={{ settings, saveSettings }}>
             {children}
         </CustomizerContext.Provider>
     )
 }
+
+// popupVisible, settings, openPopup, closePopup, saveSettings

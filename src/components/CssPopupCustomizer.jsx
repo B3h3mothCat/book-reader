@@ -1,7 +1,7 @@
 import Button from "../modules/Button/Button";
 import { useState } from "react";
 
-export default function CssPopupCustomizer({ onClose, onSave, isVisible }) {
+export default function CssPopupCustomizer({ onSave }) {
     const [color, setColor] = useState('');
     const [width, setWidth] = useState(55);
     const [fontSize, setFontSize] = useState(16);
@@ -11,12 +11,15 @@ export default function CssPopupCustomizer({ onClose, onSave, isVisible }) {
 
     function handleSave() {
         onSave({ color, width, fontSize, textPosition });
-        onClose()
     }
 
     return (
-        <div className="modal-overlay" onClick={() => handleSave()}>
-            <div className={`popup-customizer ${isVisible ? 'popup-active' : ''}`} onClick={(e) => e.stopPropagation()}>
+        <div
+            // className="modal-overlay" 
+            onClick={() => handleSave()}
+        >
+            {/* <div className={`popup-customizer ${isVisible ? 'popup-active' : ''}`} onClick={(e) => e.stopPropagation()}> */}
+            <div className={'popup-customizer popup-active'}>
                 <form>
                     <div className="customizer-item">
                         <label>
@@ -64,7 +67,7 @@ export default function CssPopupCustomizer({ onClose, onSave, isVisible }) {
 
                 <div className="customizer-item">
                     <Button onClick={handleSave}>Save</Button>
-                    <Button onClick={onClose}>Cancel</Button>
+                    {/* <Button onClick={onClose}>Cancel</Button> */}
                 </div>
 
             </div>

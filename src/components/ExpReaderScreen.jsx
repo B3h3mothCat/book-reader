@@ -6,7 +6,6 @@ import ReaderMenuBar from "./Book/ReaderMenuBar";
 import { useCustomizer } from "../Context/ReaderCustomizer";
 
 import ModalWrapper from "./UI/ModalWrapper";
-import Customizer from './other/Customizer'
 
 
 function splitIntoSentences(text) {
@@ -14,7 +13,8 @@ function splitIntoSentences(text) {
 }
 
 export default function ExpReaderScreen({ file, chapters, title: initialTitle }) {
-    const { popupVisible, settings, openPopup, closePopup, saveSettings } = useCustomizer()
+    // const { popupVisible, settings, openPopup, closePopup, saveSettings } = useCustomizer()
+    const { settings, saveSettings } = useCustomizer()
 
     const [sentences, setSentences] = useState([]);
     const [currentChapterIndex, setCurrentChapterIndex] = useState(0); //
@@ -23,14 +23,11 @@ export default function ExpReaderScreen({ file, chapters, title: initialTitle })
 
     // ModalWrapper logic
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const openModal = () => {
+
+    function openCustomizer() {
         setIsModalOpen(true)
     }
-    const closeModal = () => {
-        saveSettings()
-        setIsModalOpen(false);
-    }
-    // ModalWrapper logic
+
 
     useEffect(() => {
         if (chapters && chapters.length > 0) {
@@ -69,7 +66,8 @@ export default function ExpReaderScreen({ file, chapters, title: initialTitle })
                 <ReaderMenuBar
                     currentChapterIndex={currentChapterIndex}
                     chapters={chapters}
-                    openPopup={openPopup}
+                    // openPopup={openPopup}
+                    openCustomizer={openCustomizer}
 
                     title={title}
                 />
@@ -89,21 +87,17 @@ export default function ExpReaderScreen({ file, chapters, title: initialTitle })
                 ))}
 
             </div>
-            {popupVisible && <CssPopupCustomizer
+            {/* {popupVisible && <CssPopupCustomizer
                 onClose={closePopup}
                 onSave={saveSettings}
                 isVisible={popupVisible}
-            />}
+            />} */}
 
-            {/* <button onClick={openModal}>XXX</button>
-            <ModalWrapper isOpen={isModalOpen} onClose={(closeModal)}>
-                <Customizer></Customizer>
-            </ModalWrapper> */}
+            <button onClick={openCustomizer}>YYY</button>
+            <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <CssPopupCustomizer onSave={saveSettings}></CssPopupCustomizer>
+            </ModalWrapper>
 
-            {/* <Customizer
-                settings={settings}
-                isVisible={popupVisible}
-            ></Customizer> */}
         </div>
     )
 }
