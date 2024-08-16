@@ -13,7 +13,6 @@ function splitIntoSentences(text) {
 }
 
 export default function ExpReaderScreen({ file, chapters, title: initialTitle }) {
-    // const { popupVisible, settings, openPopup, closePopup, saveSettings } = useCustomizer()
     const { settings, saveSettings } = useCustomizer()
 
     const [sentences, setSentences] = useState([]);
@@ -66,7 +65,6 @@ export default function ExpReaderScreen({ file, chapters, title: initialTitle })
                 <ReaderMenuBar
                     currentChapterIndex={currentChapterIndex}
                     chapters={chapters}
-                    // openPopup={openPopup}
                     openCustomizer={openCustomizer}
 
                     title={title}
@@ -87,13 +85,7 @@ export default function ExpReaderScreen({ file, chapters, title: initialTitle })
                 ))}
 
             </div>
-            {/* {popupVisible && <CssPopupCustomizer
-                onClose={closePopup}
-                onSave={saveSettings}
-                isVisible={popupVisible}
-            />} */}
 
-            <button onClick={openCustomizer}>YYY</button>
             <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <CssPopupCustomizer onSave={saveSettings}></CssPopupCustomizer>
             </ModalWrapper>
