@@ -2,9 +2,9 @@
 import { Link } from "react-router-dom"
 import Button from "../../modules/Button/Button"
 
-import ReaderNavButtons from "./ReaderNavButtons"
+import ReaderNavButtons from "../Book/ReaderNavButtons"
 
-export default function ReaderMenuBar({ currentChapterIndex, chapters, title, openCustomizer }) {
+export default function ReaderMenuBar({ currentChapterIndex, chapters, title, openPopup }) {
 
 
     return (
@@ -24,7 +24,7 @@ export default function ReaderMenuBar({ currentChapterIndex, chapters, title, op
             ></ReaderNavButtons>
 
             <Button
-                onClick={openCustomizer}
+                onClick={openPopup}
             >Customize Page</Button>
         </div>
     )

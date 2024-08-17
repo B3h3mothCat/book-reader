@@ -1,4 +1,4 @@
-import Login from "../components/UI/Login"
+import Login from "../components/ui/Login"
 import MainNavBar from "../components/MainNavBar"
 
 export default function LoginPage() {

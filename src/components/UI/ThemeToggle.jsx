@@ -1,4 +1,4 @@
-import './ThemeToggle.css'
+import '../ui/ThemeToggle.css'
 import { useTheme } from '../../Hooks/useTheme'
 import { useTranslation } from 'react-i18next'
 

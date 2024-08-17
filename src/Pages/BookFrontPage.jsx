@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useState } from "react";
 import MainNavBar from "../components/MainNavBar";
 
-import { useAuth } from "../Context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 import { useTranslation } from "react-i18next";
 

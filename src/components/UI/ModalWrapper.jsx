@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import "./ModalWrapper.css"
+import "../ui/ModalWrapper.css"
 
 
 export default function ModalWrapper({ children, isOpen, onClose }) {
     const modalRef = useRef(null)
 
+
     const closeModal = () => {
         if (onClose) onClose();
     };
+
 
     const handleClickOutside = (event) => {
         if (modalRef.current && !modalRef.current.contains(event.target) && event.button !== 2) {
@@ -45,14 +47,3 @@ export default function ModalWrapper({ children, isOpen, onClose }) {
         </>
     );
 }
-
-// add isModal so we can use it for showing\hiding stuff
-// add class on mount \ dismount
-
-// useEffect(() => {
-//     const childElement = document.getElementById('customizer');
-//     if (childElement) {
-//         childElement.style.transform = isOpen ? 'scale(1)' : 'scale(0.5)';
-//         childElement.style.transition = 'transform 1s ease-in-out';
-//     }
-// }, [isOpen]);

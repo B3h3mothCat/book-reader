@@ -1,34 +1,26 @@
-import Button from "../modules/Button/Button";
-import { useState, useEffect } from "react";
+import Button from "../../modules/Button/Button";
+import { useState } from "react";
 
-export default function CssPopupCustomizer({ onSave, onClose }) {
+export default function CustomizerPopup({ onClose, onSave, isVisible }) {
     const [color, setColor] = useState('');
     const [width, setWidth] = useState(55);
     const [fontSize, setFontSize] = useState(16);
     const [textPosition, setTextPosition] = useState('start')
 
-    const [isMounted, setIsMounted] = useState(false);
-
-
 
     function handleSave() {
         onSave({ color, width, fontSize, textPosition });
-
+        onClose()
     }
 
-
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+    // wrap it here, and handle click outside here
 
     return (
         <div
-            onClick={() => handleSave()}
+            className="modal-overlay"
+        // onClick={() => handleSave()}
         >
-            <div className={`customizer ${isMounted ? 'active' : ''}`}
-            //  id="customizer"
-            >
+            <div className={`customizer ${isVisible ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <form>
                     <div className="customizer-item">
                         <label>
@@ -75,12 +67,10 @@ export default function CssPopupCustomizer({ onSave, onClose }) {
                 </form>
 
                 <div className="customizer-item">
-                    {/* <Button onClick={handleSave}>Save</Button> */}
+                    <Button onClick={handleSave}>Save</Button>
+                    <Button onClick={onClose}>Cancel</Button>
                 </div>
-
             </div>
         </div>
-
-
     )
 }

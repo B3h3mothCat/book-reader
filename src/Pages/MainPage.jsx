@@ -1,4 +1,4 @@
-import { useAuth } from "../Context/AuthContext"
+import { useAuth } from "../context/AuthContext"
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next";
 import MainNavBar from "../components/MainNavBar";
@@ -6,7 +6,7 @@ import DevNews from "../components/Temp/DevNews";
 
 import { useState } from "react";
 
-import ModalWrapper from "../components/UI/ModalWrapper";
+import ModalWrapper from "../components/ui/ModalWrapper";
 
 export default function MainPage() {
 

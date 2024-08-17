@@ -2,13 +2,13 @@ import { useState } from "react";
 // import { BOOKS_DATA_RU } from "../../mock/data_ru"
 import MainNavBar from "../MainNavBar";
 import BookUnit from './BookUnit'
-import SearchBar from "./SearchBar";
+import SearchBar from "../ui/SearchBar";
 import BookFilter from "./BookFilter";
 import { useBookFilter } from "../../Hooks/useBookFilter";
 
 import useBooksData from "../../Hooks/useBooksData";
 
-import ModalWrapper from "../UI/ModalWrapper";
+import ModalWrapper from "../ui/ModalWrapper";
 
 import './catalog.css'
 
@@ -29,7 +29,7 @@ export default function LibraryOfBooks() {
 
     return (
         <>
-            <MainNavBar />
+            {/* <MainNavBar /> */}
             <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
             <div className="catalog-container">
                 <div className="book-list">

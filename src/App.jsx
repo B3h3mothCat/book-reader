@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import NavigationMain from './Router/NavigationMain'
-import AuthProvider from './Context/AuthContext.jsx'
+import AuthProvider from './context/AuthContext'
 
 import './App.css'
 

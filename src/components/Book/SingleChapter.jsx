@@ -1,6 +1,6 @@
 import { useLocation, useParams } from "react-router-dom"
-import ExpReaderScreen from "../ExpReaderScreen"
-import CustomizerProvider from "../../Context/ReaderCustomizer"
+import ExpReaderScreen from "../BookReaderScreen"
+import CustomizerProvider from "../Customizer/CustomizerContext"
 
 export default function SingleChapter() {
     const { chapterId } = useParams()
