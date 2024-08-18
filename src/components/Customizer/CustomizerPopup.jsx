@@ -1,30 +1,29 @@
 import Button from "../../modules/Button/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useCustomizer } from "./CustomizerContext";
 
 export default function CustomizerPopup({ onClose, onSave, isVisible }) {
-    const [color, setColor] = useState('');
-    const [width, setWidth] = useState(55);
-    const [fontSize, setFontSize] = useState(16);
-    const [textPosition, setTextPosition] = useState('start')
+    const { settings, updateSetting } = useCustomizer()
 
 
     function handleSave() {
-        onSave({ color, width, fontSize, textPosition });
+        onSave(settings)
         onClose()
     }
-
-    // wrap it here, and handle click outside here
 
     return (
         <div
             className="modal-overlay"
-        // onClick={() => handleSave()}
+            onClick={() => handleSave()}
         >
             <div className={`customizer ${isVisible ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <form>
                     <div className="customizer-item">
                         <label>
-                            <select value={color} onChange={(e) => setColor(e.target.value)}>
+                            <select
+                                value={settings.color}
+                                onChange={(e) => updateSetting('color', e.target.value)}
+                            >
                                 <option value="">Select a color</option>
                                 <option value="#e5cf9d">Good one</option>
                                 <option value="brown">Okay color</option>
@@ -33,43 +32,38 @@ export default function CustomizerPopup({ onClose, onSave, isVisible }) {
                     </div>
                     <div className="customizer-item">
                         <label>
-                            Container width: {width}%
+                            Container width: {settings.width}%
                             <input
                                 type="range"
                                 min="10"
                                 max="100"
                                 step="1"
-                                value={width}
-                                onChange={(e) => setWidth(e.target.value)}
+                                value={settings.width}
+                                onChange={(e) => updateSetting('width', e.target.value)}
                             />
                         </label>
                     </div>
                     <div className="customizer-item">
                         <label>
-                            Font Size: {fontSize}px
+                            Font Size: {settings.fontSize}px
                             <input
                                 type="range"
                                 min="10"
                                 max="50"
                                 step="1"
-                                value={fontSize}
-                                onChange={(e) => setFontSize(e.target.value)}
+                                value={settings.fontSize}
+                                onChange={(e) => updateSetting('fontSize', e.target.value)}
                             />
                         </label>
                     </div>
                     <div className="customizer-item">
                         <label>
                             Text position:
-                            <button type="button" onClick={() => setTextPosition('center')}>Center</button>
-                            <button type="button" onClick={() => setTextPosition('start')}>Start</button>
+                            <button type="button" onClick={() => updateSetting('textPosition', 'center')}>Center</button>
+                            <button type="button" onClick={() => updateSetting('textPosition', 'start')}>Start</button>
                         </label>
                     </div>
                 </form>
-
-                <div className="customizer-item">
-                    <Button onClick={handleSave}>Save</Button>
-                    <Button onClick={onClose}>Cancel</Button>
-                </div>
             </div>
         </div>
     )

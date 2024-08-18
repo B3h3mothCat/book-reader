@@ -47,7 +47,7 @@ export default function AuthProvider({ children }) {
         if (currentUser) {
             const updatedUser = {
                 ...currentUser,
-                booksId: updatedBooksId,  // Updating only booksId
+                booksId: updatedBooksId,  // we passing only booksId in functions below
             };
 
             fetch(ENDPOINTS.UPDATE_USER_BY_ID(currentUser.id), {

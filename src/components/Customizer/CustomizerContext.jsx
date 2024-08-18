@@ -12,8 +12,23 @@ export default function CustomizerProvider({ children }) {
         color: '',
         width: '',
         fontSize: '',
+        textPosition: ''
     });
 
+    const updateSetting = (key, value) => {
+        setSettings((prevSettings) => {
+            const newSettings = {
+                ...prevSettings,
+                [key]: value,
+            };
+
+            if (newSettings.color) {
+                document.documentElement.style.setProperty('--reader-background-light', newSettings.color);
+            }
+
+            return newSettings;
+        })
+    }
 
     const openPopup = () => {
         setPopupVisible(true);
@@ -29,7 +44,14 @@ export default function CustomizerProvider({ children }) {
     };
 
     return (
-        <CustomizerContext.Provider value={{ settings, saveSettings, popupVisible, openPopup, closePopup }}>
+        <CustomizerContext.Provider value={{
+            settings,
+            saveSettings,
+            popupVisible,
+            openPopup,
+            closePopup,
+            updateSetting
+        }}>
             {children}
         </CustomizerContext.Provider>
     )

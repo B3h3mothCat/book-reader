@@ -4,10 +4,8 @@ import BookUnit from './BookUnit'
 import SearchBar from "../ui/SearchBar";
 import BookFilter from "./BookFilter";
 import { useBookFilter } from "../../Hooks/useBookFilter";
-
 import useBooksData from "../../Hooks/useBooksData";
 
-import ModalWrapper from "../ui/ModalWrapper";
 
 import './catalog.css'
 
@@ -18,12 +16,12 @@ export default function LibraryOfBooks() {
     const { filteredBooks, applyFilters, clearFilters } = useBookFilter(booksData);
 
 
-    // ModalWrapper logic
-    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [isSearchOpen, setIsSearchOpen] = useState(false)
 
     function handleSearchResult(result) {
         setSearchReasult(result)
-        setIsModalOpen(true)
+        setIsSearchOpen(true)
     }
 
     return (
@@ -39,14 +37,15 @@ export default function LibraryOfBooks() {
                 <BookFilter onApplyFilters={applyFilters} onClearFilters={clearFilters} />
             </div>
 
-
-            <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <div className="book-list-modal">
-                    {searchResult.map((book, index) => (
-                        <BookUnit book={book} key={index} />
-                    ))}
+            {isSearchOpen && (
+                <div className="modal-overlay" onClick={() => setIsSearchOpen(false)}>
+                    <div className="book-list-modal" onClick={(e) => e.stopPropagation()}>
+                        {searchResult.map((book, index) => (
+                            <BookUnit book={book} key={index} />
+                        ))}
+                    </div>
                 </div>
-            </ModalWrapper>
+            )}
         </>
     );
 }

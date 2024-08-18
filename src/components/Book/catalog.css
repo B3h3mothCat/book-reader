@@ -43,7 +43,7 @@
     transform: translate(-50%, -50%); /* Centers modal */
     background-color: var(--background-module-light);
     padding: 20px;
-    z-index: 9;
+    z-index: 99;
     box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
     gap: 5px;
   }
