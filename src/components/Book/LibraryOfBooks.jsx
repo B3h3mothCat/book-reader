@@ -1,6 +1,5 @@
 import { useState } from "react";
 // import { BOOKS_DATA_RU } from "../../mock/data_ru"
-import MainNavBar from "../MainNavBar";
 import BookUnit from './BookUnit'
 import SearchBar from "../ui/SearchBar";
 import BookFilter from "./BookFilter";
@@ -29,7 +28,6 @@ export default function LibraryOfBooks() {
 
     return (
         <>
-            {/* <MainNavBar /> */}
             <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
             <div className="catalog-container">
                 <div className="book-list">

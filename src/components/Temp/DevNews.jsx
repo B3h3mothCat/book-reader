@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import ReactMarkdown from 'react-markdown'
 
+import './DevNews.css'
 
 export default function DevNews() {
     const [markdown, setMarkdown] = useState('')

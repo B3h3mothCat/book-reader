@@ -12,28 +12,27 @@ import LoginPage from '../Pages/LoginPage'
 import PersonalAccount from '../components/PersonalAccount'
 import LibraryPage from '../Pages/LibraryPage'
 
+import MainNavBarLayout from '../components/layouts/MainNavBarLayout'
 
 
 export default function NavigationMain() {
     return (
         <>
             <Routes>
-                <Route exact path='/' element={<MainPage />}></Route>
-                <Route exact path='/Login' element={<LoginPage />}></Route>
-                <Route path='/read-file' element={<FileReaderPage />}></Route>
-                {/* Book folder routes */}
-                <Route exact path='/library' element={<LibraryPage />} />
-                <Route path='list/:listId' element={<List />} />
+                <Route element={<MainNavBarLayout />}>
+                    <Route exact path='/' element={<MainPage />} />
+                    <Route exact path='/Login' element={<LoginPage />} />
+                    <Route exact path='/library' element={<LibraryPage />} />
+                    <Route path='list/:listId' element={<List />} />
+                    <Route path='/book-front/:bookId' element={<BookFrontPage />} />
+                    <Route path='/account' element={<PersonalAccount />} />
+
+                    <Route path='*' element={<MainPage />} />
+                </Route>
+
                 <Route path='chapter/:chapterId' element={<SingleChapter />} />
-                <Route path='/book-front/:bookId' element={<BookFrontPage />} />
+                <Route path='/read-file' element={<FileReaderPage />} />
 
-
-                {/* <Route path='/catalog' element={<Catalog />} /> */}
-
-                {/* Book folder routes */}
-                <Route path='/account' element={<PersonalAccount />}></Route>
-
-                <Route path='*' element={<MainPage />} />
             </Routes>
         </>
     )

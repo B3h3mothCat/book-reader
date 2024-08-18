@@ -1,6 +1,7 @@
 // import { registeredUsers } from "../mock/usersList";  -- static userBase
 import { createContext, useContext, useEffect, useState } from "react";
 import { ENDPOINTS } from "../utils/apiEndpoints";
+import { saveUserToStorage, clearUserFromStorage, loadUserFromStorage } from '../utils/authStorage';
 
 const AuthContext = createContext();
 
@@ -42,6 +43,7 @@ export default function AuthProvider({ children }) {
         setCurrentUser(null);
     }
 
+    // BOOKS RELATED LOGIC
     function updateUserBooksId(updatedBooksId) {
         if (currentUser) {
             const updatedUser = {
@@ -82,6 +84,7 @@ export default function AuthProvider({ children }) {
             updateUserBooksId(updatedBooksId);
         }
     }
+    // BOOKS RELATED LOGIC
 
     return (
         <AuthContext.Provider value={{

@@ -215,17 +215,6 @@ align-items: center;
 margin-top: 15px;
 }
 
-.news-container {
-
-  background-color: var(--background-module-light);
-  height: 650px;
-  width: 550px;
-  border-radius: 6px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  cursor: default;
-}
-
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -243,12 +232,7 @@ margin-top: 15px;
   background: #555;
 } */
 
-.no-select {
-  user-select: none; /* Prevent text selection */
-  -webkit-user-select: none; /* For Safari */
-  -moz-user-select: none; /* For Firefox */
-  -ms-user-select: none; /* For older IE versions */
-}
+
 
 .search-bar {
   height: 50px;

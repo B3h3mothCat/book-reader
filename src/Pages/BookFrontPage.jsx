@@ -1,7 +1,6 @@
 import List from "../components/Book/List"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useState } from "react";
-import MainNavBar from "../components/MainNavBar";
 
 import { useAuth } from "../context/AuthContext";
 
@@ -32,8 +31,6 @@ export default function BookFrontPage() {
 
     return (
         <>
-            <MainNavBar></MainNavBar>
-
             <div className="boookfrontpage-container">
                 <div className="book-banner"> cover of book
                     <img src={book.banner} alt={'banner-tile'} />

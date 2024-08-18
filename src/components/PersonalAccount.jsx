@@ -1,5 +1,4 @@
 import { useAuth } from "../context/AuthContext";
-import MainNavBar from "./MainNavBar";
 import BookUnit from "./Book/BookUnit";
 import useBooksData from "../Hooks/useBooksData";
 import { useState, useEffect, useRef } from "react";
@@ -42,7 +41,6 @@ export default function PersonalAccount() {
 
     return (
         <>
-            <MainNavBar></MainNavBar>
             <div className="personal-acc-container">
                 <div className="personal-acc-bar">
                     <div>Hello: {username}</div>
