@@ -1,7 +1,8 @@
 // import { registeredUsers } from "../mock/usersList";  -- static userBase
 import { createContext, useContext, useEffect, useState } from "react";
 import { ENDPOINTS } from "../utils/apiEndpoints";
-import { saveUserToStorage, clearUserFromStorage, loadUserFromStorage } from '../utils/authStorage';
+import useAuthStorage from '../Hooks/useAuthStorage'
+
 
 const AuthContext = createContext();
 
@@ -9,11 +10,15 @@ export const useAuth = () => useContext(AuthContext)
 
 export default function AuthProvider({ children }) {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [userRole, setUserRole] = useState('guest')
-    const [username, setUsername] = useState('');
-    const [currentUser, setCurrentUser] = useState(null)
-
+    const {
+        isLoggedIn,
+        userRole,
+        username,
+        currentUser,
+        saveUserData,
+        clearUserData,
+        setCurrentUser,  // setter from the custom hook
+    } = useAuthStorage();
 
     function login(username, password) {
         fetch(ENDPOINTS.GET_USERNAME(username))
@@ -22,10 +27,7 @@ export default function AuthProvider({ children }) {
                 if (data.length > 0) {
                     const user = data[0];
                     if (user.password === password) {
-                        setIsLoggedIn(true);
-                        setUserRole(user.role || 'user');
-                        setUsername(username);
-                        setCurrentUser(user);
+                        saveUserData({ ...user, username })
                     } else {
                         alert('Invalid username or password');
                     }
@@ -37,13 +39,10 @@ export default function AuthProvider({ children }) {
     }
 
     function logout() {
-        setIsLoggedIn(false)
-        setUserRole('guest')
-        setUsername('');
-        setCurrentUser(null);
+        clearUserData()
     }
 
-    // BOOKS RELATED LOGIC
+    // BOOKS RELATED LOGIC <>
     function updateUserBooksId(updatedBooksId) {
         if (currentUser) {
             const updatedUser = {
@@ -84,7 +83,7 @@ export default function AuthProvider({ children }) {
             updateUserBooksId(updatedBooksId);
         }
     }
-    // BOOKS RELATED LOGIC
+    // BOOKS RELATED LOGIC </>
 
     return (
         <AuthContext.Provider value={{
@@ -102,5 +101,3 @@ export default function AuthProvider({ children }) {
         </AuthContext.Provider>
     )
 }
-
-// login and logout should be not global, move to => Login
