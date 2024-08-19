@@ -22,16 +22,25 @@ export default function ReaderNavButtons({ currentChapterIndex, chapters }) {
 
     return (
         <>
-            {currentChapterIndex > 0 && (
-                <Button onClick={handlePrevious}>Prev</Button>
-            )}
+            <Button
+                onClick={handlePrevious}
+                disabled={currentChapterIndex <= 0}
+            >
+                &lt; {/* This is the "<" symbol */}
+            </Button>
 
-            {currentChapterIndex < chapters.length - 1 && (
-                <Button onClick={handleNext}>Next</Button>
-            )}
+            <div className="chapter-info">
+                <div>Оглавление</div>
+                <div>Том Глава</div>
+            </div>
+
+            <Button
+                onClick={handleNext}
+                disabled={currentChapterIndex >= chapters.length - 1}
+            >
+                &gt; {/* This is the ">" symbol */}
+            </Button>
         </>
     )
 }
 
-
-// change Buttons to => some small element

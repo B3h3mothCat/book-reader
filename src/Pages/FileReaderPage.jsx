@@ -1,5 +1,5 @@
 import TextFileOpener from "../components/TextFileOpener/TextFileOpener"
-import BookReaderScreen from "../components/BookReaderScreen"
+import BookReaderScreen from "../components/Book/BookReaderScreen"
 import CustomizerProvider from "../components/Customizer/CustomizerContext"
 
 

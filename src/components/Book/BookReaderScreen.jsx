@@ -5,7 +5,7 @@ import ReaderMenuBar from "./ReaderMenuBar";
 //original customizer context
 import { useCustomizer } from "../Customizer/CustomizerContext";
 
-import ModalWrapper from "../ui/ModalWrapper";
+import ModalWrapper from "../ui/ModalWrapper" //we uing css from this place C:
 
 
 function splitIntoSentences(text) {

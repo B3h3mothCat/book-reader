@@ -1,5 +1,5 @@
 import { useLocation, useParams } from "react-router-dom"
-import ExpReaderScreen from "../BookReaderScreen"
+import BookReaderScreen from "./BookReaderScreen"
 import CustomizerProvider from "../Customizer/CustomizerContext"
 
 export default function SingleChapter() {
@@ -9,11 +9,11 @@ export default function SingleChapter() {
     return (
         <div>
             <CustomizerProvider>
-                <ExpReaderScreen
+                <BookReaderScreen
                     file={decodeURIComponent(chapterId)}
                     chapters={chapters}
                     title={title}
-                ></ExpReaderScreen>
+                ></BookReaderScreen>
             </CustomizerProvider>
         </div>
     )

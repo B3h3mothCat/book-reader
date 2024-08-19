@@ -119,7 +119,7 @@ h1 {
 .button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.4em 0.8em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -127,6 +127,10 @@ h1 {
   cursor: pointer;
   transition: border-color 0.25s;
   margin: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .button:hover {
   border-color: #646cff;
@@ -139,6 +143,10 @@ h1 {
 .active {
   background-color: #2970ad93;
 } 
+.button img {
+  max-width: 40px;
+  max-height: 40px;
+}
 /* buttons related */
 
 

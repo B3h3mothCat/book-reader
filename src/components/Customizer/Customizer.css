@@ -13,6 +13,7 @@
 }
 .customizer.active {
     transform: translateX(0);
+    background-color: var(--background-module-light);
   }
   
   .customizer-item {
