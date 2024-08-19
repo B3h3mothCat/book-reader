@@ -2,21 +2,30 @@ import Button from "../../modules/Button/Button";
 import { useState, useEffect } from "react";
 import { useCustomizer } from "./CustomizerContext";
 
-export default function CustomizerPopup({ onClose, onSave, isVisible }) {
-    const { settings, updateSetting } = useCustomizer()
+import "./Customizer.css"
 
+export default function CustomizerPopup({ onClose, onSave }) {
+    const { settings, updateSetting } = useCustomizer()
+    const [isMounted, setIsMounted] = useState(false)
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     function handleSave() {
-        onSave(settings)
-        onClose()
+        onSave(settings);
+        setIsMounted(false);
+        setTimeout(() => {
+            onClose();
+        }, 250);
     }
 
     return (
         <div
-            className="modal-overlay"
+            className={`${isMounted ? 'modal-overlay' : ''}`}
             onClick={() => handleSave()}
         >
-            <div className={`customizer ${isVisible ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
+            <div className={`customizer ${isMounted ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <form>
                     <div className="customizer-item">
                         <label>
@@ -37,7 +46,7 @@ export default function CustomizerPopup({ onClose, onSave, isVisible }) {
                                 type="range"
                                 min="10"
                                 max="100"
-                                step="1"
+                                step="2"
                                 value={settings.width}
                                 onChange={(e) => updateSetting('width', e.target.value)}
                             />
@@ -49,7 +58,7 @@ export default function CustomizerPopup({ onClose, onSave, isVisible }) {
                             <input
                                 type="range"
                                 min="10"
-                                max="50"
+                                max="40"
                                 step="1"
                                 value={settings.fontSize}
                                 onChange={(e) => updateSetting('fontSize', e.target.value)}

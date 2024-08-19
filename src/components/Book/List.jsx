@@ -7,7 +7,6 @@ export default function List() {
     return (
         <>
             <h1>{title}</h1>
-            {/* <p>{description}</p> */}
             <h3>Chapters:</h3>
             <ul>
                 {chapters.map((chapter, index) => (

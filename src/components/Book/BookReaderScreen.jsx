@@ -1,11 +1,11 @@
-import CustomizerPopup from "./Customizer/CustomizerPopup"
-import Button from "../modules/Button/Button";
+import CustomizerPopup from "../Customizer/CustomizerPopup"
+import Button from "../../modules/Button/Button";
 import { useState, useEffect } from "react";
-import ReaderMenuBar from "./Book/ReaderMenuBar";
+import ReaderMenuBar from "./ReaderMenuBar";
 //original customizer context
-import { useCustomizer } from "./Customizer/CustomizerContext";
+import { useCustomizer } from "../Customizer/CustomizerContext";
 
-import ModalWrapper from "./ui/ModalWrapper";
+import ModalWrapper from "../ui/ModalWrapper";
 
 
 function splitIntoSentences(text) {
@@ -89,13 +89,6 @@ export default function BookReaderScreen({ file, chapters, title: initialTitle }
                 ))}
 
             </div>
-
-            {/* <ModalWrapper
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-            >
-                <CssPopupCustomizer onSave={saveSettings}></CssPopupCustomizer>
-            </ModalWrapper> */}
 
             {popupVisible && (
                 <CustomizerPopup
