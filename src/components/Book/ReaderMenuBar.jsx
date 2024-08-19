@@ -4,12 +4,13 @@ import Button from "../../modules/Button/Button"
 import ReaderNavButtons from "../Book/ReaderNavButtons"
 
 import settingsIcon from "../../assets/img/settings.svg"
+import styled from 'styled-components'
 
 export default function ReaderMenuBar({ currentChapterIndex, chapters, title, openPopup }) {
 
 
     return (
-        <div className="reader-menu-wrap">
+        <StyledReaderMenuWrap>
             <Link to={'/'}>Home</Link>
             <div>
                 <div className="">Название книги</div>
@@ -23,8 +24,17 @@ export default function ReaderMenuBar({ currentChapterIndex, chapters, title, op
 
             <Button onClick={openPopup}>
                 <img src={settingsIcon} alt="settings" />
-                {/* Customize Page */}
             </Button>
-        </div>
+        </StyledReaderMenuWrap>
     )
 }
+
+const StyledReaderMenuWrap = styled.div`
+  display: flex;
+  height: 50px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px gray solid;
+  border-radius: 5px;
+`
