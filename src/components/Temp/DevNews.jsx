@@ -1,24 +1,37 @@
 import { useState, useEffect } from "react"
 import ReactMarkdown from 'react-markdown'
 
-import './DevNews.css'
+import styled from "styled-components"
+
 
 export default function DevNews() {
-    const [markdown, setMarkdown] = useState('')
+    const [content, setContent] = useState('')
 
     useEffect(() => {
         fetch('/documentation/readme.md')
             .then(res => res.text())
-            .then(text => setMarkdown(text))
+            .then(text => setContent(text))
     }, [])
 
     return (
         <>
             <h3>Developer News</h3>
-            <div className="news-container custom-scrollbar no-select">
-                {/* <ReactMarkdown>{markdown}</ReactMarkdown> */}
-                <pre>{markdown}</pre>
-            </div>
+            <Div_NewsContainer className="custom-scrollbar no-select">
+                {/* <ReactMarkdown>{content}</ReactMarkdown> */}
+                <pre>{content}</pre>
+            </Div_NewsContainer>
         </>
     )
 }
+
+const Div_NewsContainer = styled.div`
+    background-color: var(--background-module-light);
+    height: 650px;
+    width: 550px;
+    border-radius: 6px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: start;
+    padding-left: 1%;
+    font-size: 15px;
+`;

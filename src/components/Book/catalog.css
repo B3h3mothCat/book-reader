@@ -35,52 +35,11 @@
   border-radius: 10px;
 }
 
-/*
-Book units
-*/
-
-.book-unit {
-  border: 1px solid gray;
-  height: 290px;
-  width: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.book-unit:hover {
-  box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
-}
-
-.book-unit img {
-    height: 225px;
-    width: 160px;
-    object-fit: cover; 
-    border-radius: 10px;
-}
-
-.book-unit a {
-  /* display: flex; 
-  flex-direction: column;
-  align-items: center;  */
-  height: 100%; 
-  width: 100%; 
-}
-
 
 /*
 PERSONAL ACC 
 */
 
-.added-books-container {
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-}
 
 .acc-book-unit {
   display: flex;
@@ -115,13 +74,6 @@ PERSONAL ACC
   justify-content: space-between; /* Pushing button to right corner */
 }
 
-.acc-book-unit-b button {
-  padding: 5px 10px;
-  background-color: #ff4d4d;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 .acc-book-unit-b:hover {
   box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);

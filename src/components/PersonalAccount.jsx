@@ -1,7 +1,11 @@
 import { useAuth } from "../context/AuthContext";
-import BookUnit from "./Book/BookUnit";
+// import BookUnit from "./Book/BookUnit";
 import useBooksData from "../Hooks/useBooksData";
 import { useState, useEffect, useRef } from "react";
+import styled from "styled-components"
+import { Link } from "react-router-dom";
+
+import AccountBookUnit from "./Book/AccountBookUnit";
 
 // static book source:
 // import { BOOKS_DATA_RU } from "../mock/data_ru"
@@ -49,17 +53,88 @@ export default function PersonalAccount() {
                 </div>
 
                 {booksId.length > 0 && booksData.length > 0 && (
-                    <div className="added-books-container">
+                    <Div_BooksContainer>
                         {userBooks.map((book, index) => (
-                            <div className="acc-book-unit-b" key={index}>
-                                <BookUnit book={book} specialCss={'acc-book-unit'} />
+
+                            <Div_BookUnit key={index}>
+                                <Link
+                                    to={`/book-front/${encodeURIComponent(book.title)}`}
+                                    state={{
+                                        chapters: book.chapters,
+                                        title: book.title,
+                                        description: book.description,
+                                        book: book,
+                                    }}
+                                >
+                                    <img src={book.picture} alt={book.title} />
+                                    {book.title}
+                                </Link>
                                 <button onClick={() => delBookFromUser(book)}>Del book</button>
-                            </div>
+                            </Div_BookUnit>
                         ))}
-                    </div>
+                    </Div_BooksContainer>
                 )}
 
             </div>
         </>
     )
 }
+
+const Div_AccContainer = styled.div`
+    
+`;
+
+const Div_AccBar = styled.div`
+    
+`;
+
+const Div_BooksContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+`;
+
+const Div_BookUnit = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background-module-light);
+    margin-top: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.25s ease;
+
+    &:hover {
+        box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);  
+    }
+
+    img {
+        height: 120px;
+        width: 120px;
+        margin-right: 30px; 
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px grey solid;
+        margin-left: 15px;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+    }
+
+    button {
+        padding: 5px 10px;
+        background-color: #ff4d4d;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 15px;
+
+        &:hover {
+            background-color: #ff7777;
+        }
+}
+
+`;
