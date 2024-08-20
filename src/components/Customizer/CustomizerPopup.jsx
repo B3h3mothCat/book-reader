@@ -1,6 +1,7 @@
 import Button from "../../modules/Button/Button";
 import { useState, useEffect } from "react";
 import { useCustomizer } from "./CustomizerContext";
+import { SketchPicker } from 'react-color';
 
 import styled from "styled-components";
 
@@ -36,6 +37,29 @@ export default function CustomizerPopup({ onClose, onSave }) {
                             </select>
                         </label>
                     </Div_CustomizerItem>
+
+                    <Div_CustomizerItem>
+                        <label>
+                            <span>Screen desired color:</span>
+                            <input
+                                type="color"
+                                value={settings.color || "#000000"}
+                                onChange={(e) => updateSetting('color', e.target.value)}
+                            />
+                        </label>
+                    </Div_CustomizerItem>
+
+                    <Div_CustomizerItem>
+                        <label>
+                            <span>Text desired color:</span>
+                            <input
+                                type="color"
+                                value={settings.textColor || "#000000"}
+                                onChange={(e) => updateSetting('textColor', e.target.value)}
+                            />
+                        </label>
+                    </Div_CustomizerItem>
+
                     <Div_CustomizerItem>
                         <label>
                             Container width: {settings.width}%

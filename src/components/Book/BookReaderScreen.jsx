@@ -77,14 +77,16 @@ export default function BookReaderScreen({ file, chapters, title: initialTitle }
 
             <div className="text-wrapper" style={{
                 width: settings.width + '%',
-                textAlign: settings.textPosition
+                textAlign: settings.textPosition,
+                fontSize: settings.fontSize + 'px',
+                color: settings.textColor
 
             }}>
                 <h1>Название главы</h1>
                 {sentences.map((sentanse, index) => (
                     <p
                         key={index}
-                        style={{ fontSize: settings.fontSize + 'px' }}
+                    // style={{ fontSize: settings.fontSize + 'px' }}
                     >{sentanse}</p>
                 ))}
 

@@ -12,7 +12,8 @@ export default function CustomizerProvider({ children }) {
         color: '',
         width: '',
         fontSize: '',
-        textPosition: ''
+        textPosition: '',
+        textColor: '',
     });
 
     const updateSetting = (key, value) => {
