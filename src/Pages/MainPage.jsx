@@ -3,13 +3,22 @@ import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next";
 import DevNews from "../components/Temp/DevNews";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+import LoaderScreen from "../components/ui/LoadingScreen";
 
 export default function MainPage() {
 
     const { userRole } = useAuth()
     const { t } = useTranslation()
+
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 2500);
+    }, [])
 
     return (
         <>
@@ -25,8 +34,13 @@ export default function MainPage() {
             </Div_HomePage>
 
             <Div_Dashboard>
-                <DevNews></DevNews>
+                {isLoading ? (
+                    <LoaderScreen />
+                ) : (
+                    <DevNews></DevNews>
+                )}
             </Div_Dashboard>
+
         </>
     )
 }
