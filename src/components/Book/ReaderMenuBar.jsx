@@ -10,7 +10,7 @@ export default function ReaderMenuBar({ currentChapterIndex, chapters, title, op
 
 
     return (
-        <StyledReaderMenuWrap>
+        <Div_ReaderMenuWrap>
             <Link to={'/'}>Home</Link>
             <div>
                 <div className="">Название книги</div>
@@ -25,11 +25,11 @@ export default function ReaderMenuBar({ currentChapterIndex, chapters, title, op
             <Button onClick={openPopup}>
                 <img src={settingsIcon} alt="settings" />
             </Button>
-        </StyledReaderMenuWrap>
+        </Div_ReaderMenuWrap>
     )
 }
 
-const StyledReaderMenuWrap = styled.div`
+const Div_ReaderMenuWrap = styled.div`
   display: flex;
   height: 50px;
   width: 100%;

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import styled from "styled-components";
+
 const genres = ['Comedy', 'Romance', 'Drama', 'Fantasy', 'Adventure', 'Cruelty'];
 const statuses = ['Ongoing', 'Completed', 'Hiatus'];
 const adultRatings = ['', '16+', '18+'];
@@ -57,11 +59,11 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
     }
 
     return (
-        <div className="book-filter">
-            <div className="filter-section">
+        <Div_Container>
+            <Div_Section>
                 <h3>{t('bookFilterGenres.title')}</h3>
                 {genres.map((genre) => (
-                    <label key={genre} className="checkbox-item">
+                    <Label_CheckboxItem key={genre}>
                         <input
                             type="checkbox"
                             id={`genre-${genre}`}
@@ -69,13 +71,13 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                             onChange={() => handleGenreChange(genre)}
                         />
                         <label htmlFor={`genre-${genre}`}>{t(`bookFilterGenres.${genre.toLowerCase()}`)}</label>
-                    </label>
+                    </Label_CheckboxItem>
                 ))}
-            </div>
-            <div className="filter-section">
+            </Div_Section>
+            <Div_Section>
                 <h3>{t('bookFilterStatus.title')}</h3>
                 {statuses.map((status) => (
-                    <label key={status} className="checkbox-item">
+                    <Label_CheckboxItem key={status}>
                         <input
                             type="radio"
                             id={`status-${status}`}
@@ -84,13 +86,13 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                             onChange={() => handleStatusChange(status)}
                         />
                         <label htmlFor={`status-${status}`}>{t(`bookFilterStatus.${status.toLowerCase()}`)}</label>
-                    </label>
+                    </Label_CheckboxItem>
                 ))}
-            </div>
-            <div className="filter-section">
+            </Div_Section>
+            <Div_Section>
                 <h3>{t('bookFilterRating.title')}</h3>
                 {adultRatings.map((rating) => (
-                    <label key={rating} className="checkbox-item">
+                    <Label_CheckboxItem key={rating}>
                         <input
                             type="radio"
                             id={`rating=${rating}`}
@@ -99,36 +101,84 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                             onChange={() => handleAdultRatingChange(rating)}
                         />
                         <label htmlFor={`rating=${rating}`}>{rating}</label>
-                    </label>
+                    </Label_CheckboxItem>
                 ))}
-            </div>
-            <div className="filter-section">
+            </Div_Section>
+            <Div_Section>
                 <h3>{t('bookFilter.numOfChapters')}</h3>
-                <div className="input-section">
-
-                    <input
-                        className="filter-input"
+                <Div_InputGroup>
+                    <Input_Field
                         type="number"
                         value={minChapters}
                         onChange={handleMinChaptersChange}
                         placeholder={t('bookFilter.placeholderMin')}
                     />
 
-                    <input
-                        className="filter-input"
+                    <Input_Field
                         type="number"
                         value={maxChapters}
                         onChange={handleMaxChaptersChange}
                         placeholder={t('bookFilter.placeholderMax')}
                     />
-                </div>
-            </div>
+                </Div_InputGroup>
+            </Div_Section>
 
-            <div className="filter-btn-container">
+            <Div_ButtonGroup>
                 <button onClick={handleApply}>{t('bookFilter.apply')}</button>
                 <button onClick={handleClear}>{t('bookFilter.clearAll')}</button>
-            </div>
-
-        </div>
+            </Div_ButtonGroup>
+        </Div_Container>
     )
 }
+
+// Styled Components
+
+const Div_Container = styled.div`
+  width: 20%;
+  background-color: var(--background-module-light);
+  border-radius: 5px;
+`;
+
+const Div_Section = styled.div`
+  border-bottom: 1px gray solid;
+  padding: 10%;
+`;
+
+const Div_InputGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+`;
+
+const Input_Field = styled.input`
+  outline: none;
+  width: 80px;
+`;
+
+const Div_ButtonGroup = styled.div`
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  place-items: center;
+
+  button {
+    border-radius: 3px;
+    border: 1px solid transparent;
+    padding: 0.2em 0.6em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+`;
+
+const Label_CheckboxItem = styled.label`
+  display: flex;
+  gap: 5px;
+
+  input, label {
+    cursor: pointer;
+  }
+`;

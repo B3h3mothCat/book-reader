@@ -21,10 +21,10 @@ export default function CustomizerPopup({ onClose, onSave }) {
     }
 
     return (
-        <StyledModalOverlay isMounted={isMounted} onClick={handleSave}>
-            <StyledCustomizer isActive={isMounted} onClick={(e) => e.stopPropagation()}>
+        <Div_ModalOverlay isMounted={isMounted} onClick={handleSave}>
+            <Div_Customizer isActive={isMounted} onClick={(e) => e.stopPropagation()}>
                 <form>
-                    <StyledCustomizerItem>
+                    <Div_CustomizerItem>
                         <label>
                             <select
                                 value={settings.color}
@@ -35,8 +35,8 @@ export default function CustomizerPopup({ onClose, onSave }) {
                                 <option value="brown">Okay color</option>
                             </select>
                         </label>
-                    </StyledCustomizerItem>
-                    <StyledCustomizerItem>
+                    </Div_CustomizerItem>
+                    <Div_CustomizerItem>
                         <label>
                             Container width: {settings.width}%
                             <input
@@ -48,8 +48,8 @@ export default function CustomizerPopup({ onClose, onSave }) {
                                 onChange={(e) => updateSetting('width', e.target.value)}
                             />
                         </label>
-                    </StyledCustomizerItem>
-                    <StyledCustomizerItem>
+                    </Div_CustomizerItem>
+                    <Div_CustomizerItem>
                         <label>
                             Font Size: {settings.fontSize}px
                             <input
@@ -61,21 +61,21 @@ export default function CustomizerPopup({ onClose, onSave }) {
                                 onChange={(e) => updateSetting('fontSize', e.target.value)}
                             />
                         </label>
-                    </StyledCustomizerItem>
-                    <StyledCustomizerItem>
+                    </Div_CustomizerItem>
+                    <Div_CustomizerItem>
                         <label>
                             Text position:
                             <button type="button" onClick={() => updateSetting('textPosition', 'center')}>Center</button>
                             <button type="button" onClick={() => updateSetting('textPosition', 'start')}>Start</button>
                         </label>
-                    </StyledCustomizerItem>
+                    </Div_CustomizerItem>
                 </form>
-            </StyledCustomizer>
-        </StyledModalOverlay>
+            </Div_Customizer>
+        </Div_ModalOverlay>
     )
 }
 
-const StyledModalOverlay = styled.div.withConfig({
+const Div_ModalOverlay = styled.div.withConfig({
     shouldForwardProp: (prop) => prop !== 'isMounted'
 })`
     position: fixed;
@@ -92,7 +92,7 @@ const StyledModalOverlay = styled.div.withConfig({
     opacity: ${({ isMounted }) => (isMounted ? '1' : '0')};
 `;
 
-const StyledCustomizer = styled.div.withConfig({
+const Div_Customizer = styled.div.withConfig({
     shouldForwardProp: (prop) => prop !== 'isActive'
 })`
     position: fixed; 
@@ -108,7 +108,7 @@ const StyledCustomizer = styled.div.withConfig({
     transform: ${({ isActive }) => (isActive ? 'translateX(0)' : 'translateX(100%)')};
 `;
 
-const StyledCustomizerItem = styled.div`
+const Div_CustomizerItem = styled.div`
     margin-top: 2%;
 `;
 

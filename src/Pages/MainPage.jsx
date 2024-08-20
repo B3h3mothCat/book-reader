@@ -19,22 +19,22 @@ export default function MainPage() {
                 </ul>
             </nav>
 
-            <StyledHomePage>
+            <Div_HomePage>
                 <h3>{t('mainPage.mainPage')}</h3>
                 <span>{t('mainPage.currentRole')}{userRole}</span>
-            </StyledHomePage>
+            </Div_HomePage>
 
-            <StyledDashboard>
+            <Div_Dashboard>
                 <DevNews></DevNews>
-            </StyledDashboard>
+            </Div_Dashboard>
         </>
     )
 }
 
-const StyledHomePage = styled.div`
+const Div_HomePage = styled.div`
 background-color: var(--background-color);
 `;
-const StyledDashboard = styled.div`
+const Div_Dashboard = styled.div`
 width: 100%;
 display: flex;
 justify-content: center;

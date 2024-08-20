@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styled from "styled-components"
 
 export default function SearchBar({ books, onSearch }) {
     const [query, setQuery] = useState('')
@@ -26,7 +27,7 @@ export default function SearchBar({ books, onSearch }) {
     }
 
     return (
-        <div className="search-bar">
+        <Div_SearchBarContainer>
             <input
                 type="text"
                 value={query}
@@ -35,6 +36,25 @@ export default function SearchBar({ books, onSearch }) {
                 placeholder="Search for a book..."
             />
             <button onClick={handleSearch}>Find it!</button>
-        </div>
+        </Div_SearchBarContainer>
     )
 }
+
+const Div_SearchBarContainer = styled.div`
+  height: 50px;
+
+  input {
+    margin-top: 1%;
+    width: 50%;
+    height: 25px;
+    background-color: var(--background-module-light);
+    border-radius: 5px;
+    border: 1px solid grey;
+    outline: none;
+    color: var(--primary-text-color-light);
+
+    &:focus {
+      border-color: rgb(198, 198, 216);
+    }
+  }
+`
