@@ -7,6 +7,7 @@ import { useCustomizer } from "../Customizer/CustomizerContext";
 
 import ModalWrapper from "../ui/ModalWrapper" //we uing css from this place C:
 
+import styled from "styled-components"
 
 function splitIntoSentences(text) {
     return text.split(/[\.\?!]\s/);
@@ -62,7 +63,7 @@ export default function BookReaderScreen({ file, chapters, title: initialTitle }
     return (
 
 
-        <div className="initial-wrapper" style={{ backgroundColor: settings.color }}>
+        <Div_InitialWrapper style={{ backgroundColor: settings.color }}>
 
             {chapters && (
                 <ReaderMenuBar
@@ -75,7 +76,7 @@ export default function BookReaderScreen({ file, chapters, title: initialTitle }
                 />
             )}
 
-            <div className="text-wrapper" style={{
+            <Div_TextWrapper style={{
                 width: settings.width + '%',
                 textAlign: settings.textPosition,
                 fontSize: settings.fontSize + 'px',
@@ -90,7 +91,7 @@ export default function BookReaderScreen({ file, chapters, title: initialTitle }
                     >{sentanse}</p>
                 ))}
 
-            </div>
+            </Div_TextWrapper>
 
             {popupVisible && (
                 <CustomizerPopup
@@ -99,7 +100,26 @@ export default function BookReaderScreen({ file, chapters, title: initialTitle }
                 ></CustomizerPopup>
             )}
 
-        </div>
+        </Div_InitialWrapper>
     )
 }
 
+const Div_InitialWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--background-module-light);
+
+`
+const Div_TextWrapper = styled.div`
+    margin-top: 5px;
+    height: 100%;
+    width: 60%;
+    font-family:Arial, Helvetica, sans-serif;
+    white-space: normal;
+    text-align: start;
+    padding-top: 50px;    /* padding for MenuBar (maybe try outlet there?)*/
+
+`
