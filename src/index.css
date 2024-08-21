@@ -60,11 +60,11 @@ body {
 
 }
 
+
 .app {
   width: 100vw;
   height: 100vh;
   background-color: var(--background-color-light);
-  overflow-x: hidden;
   transition: 
     background-color 250ms ease-in-out, 
   
@@ -92,9 +92,9 @@ body {
   height: 100%;
   width: 60%;
   font-family:Arial, Helvetica, sans-serif;
-
   white-space: normal;
   text-align: start;
+  padding-top: 50px;    /* padding for MenuBar (maybe try outlet there?)*/
 }
 
 .reader-menu-wrap {

@@ -41,23 +41,23 @@ export default function CustomizerPopup({ onClose, onSave }) {
                     <Div_CustomizerItem>
                         <label>
                             <span>Screen desired color:</span>
-                            <input
-                                type="color"
+                            <Input_ColorPicker
                                 value={settings.color || "#000000"}
                                 onChange={(e) => updateSetting('color', e.target.value)}
                             />
                         </label>
+                        <Span_ColorHexCode>{settings.color}</Span_ColorHexCode>
                     </Div_CustomizerItem>
 
                     <Div_CustomizerItem>
                         <label>
                             <span>Text desired color:</span>
-                            <input
-                                type="color"
+                            <Input_ColorPicker
                                 value={settings.textColor || "#000000"}
                                 onChange={(e) => updateSetting('textColor', e.target.value)}
                             />
                         </label>
+                        <Span_ColorHexCode>{settings.textColor}</Span_ColorHexCode>
                     </Div_CustomizerItem>
 
                     <Div_CustomizerItem>
@@ -134,5 +134,33 @@ const Div_Customizer = styled.div.withConfig({
 
 const Div_CustomizerItem = styled.div`
     margin-top: 2%;
+`;
+
+const Input_ColorPicker = styled.input.attrs({ type: 'color' })`
+        width: 24px;
+        height: 24px;
+        border: none;
+        padding: 0;
+        border-radius: 10%;
+        background: none;
+        cursor: pointer;
+        appearance: none; 
+
+&::-webkit-color-swatch {
+    border: none; 
+    border-radius: 10%;
+}
+
+&::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border-radius: 10%;
+}
+`;
+
+const Span_ColorHexCode = styled.span`
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.5px
 `;
 

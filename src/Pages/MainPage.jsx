@@ -40,7 +40,6 @@ export default function MainPage() {
                     <DevNews></DevNews>
                 )}
             </Div_Dashboard>
-
         </>
     )
 }
