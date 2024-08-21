@@ -44,44 +44,41 @@ export default function PersonalAccount() {
 
 
     return (
-        <>
-            <div className="personal-acc-container">
-                <div className="personal-acc-bar">
-                    <div>Hello: {username}</div>
-                    <div>Your current role is: {userRole}</div>
-                    <button onClick={logout}>Logout</button>
-                </div>
-
-                {booksId.length > 0 && booksData.length > 0 && (
-                    <Div_BooksContainer>
-                        {userBooks.map((book, index) => (
-
-                            <Div_BookUnit key={index}>
-                                <Link
-                                    to={`/book-front/${encodeURIComponent(book.title)}`}
-                                    state={{
-                                        chapters: book.chapters,
-                                        title: book.title,
-                                        description: book.description,
-                                        book: book,
-                                    }}
-                                >
-                                    <img src={book.picture} alt={book.title} />
-                                    {book.title}
-                                </Link>
-                                <button onClick={() => delBookFromUser(book)}>Del book</button>
-                            </Div_BookUnit>
-                        ))}
-                    </Div_BooksContainer>
-                )}
-
+        <Div_AccContainer>
+            <div className="personal-acc-bar">
+                <div>Hello: {username}</div>
+                <div>Your current role is: {userRole}</div>
+                <button onClick={logout}>Logout</button>
             </div>
-        </>
+
+            {booksId.length > 0 && booksData.length > 0 && (
+                <Div_BooksContainer>
+                    {userBooks.map((book, index) => (
+
+                        <Div_BookUnit key={index}>
+                            <Link
+                                to={`/book-front/${encodeURIComponent(book.title)}`}
+                                state={{
+                                    chapters: book.chapters,
+                                    title: book.title,
+                                    description: book.description,
+                                    book: book,
+                                }}
+                            >
+                                <img src={book.picture} alt={book.title} />
+                                {book.title}
+                            </Link>
+                            <button onClick={() => delBookFromUser(book)}>Del book</button>
+                        </Div_BookUnit>
+                    ))}
+                </Div_BooksContainer>
+            )}
+        </Div_AccContainer>
     )
 }
 
 const Div_AccContainer = styled.div`
-    
+    width: 100vw;
 `;
 
 const Div_AccBar = styled.div`

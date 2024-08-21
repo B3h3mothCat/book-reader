@@ -83,6 +83,7 @@ const Div_Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100vw;
 `;
 
 const Div_BannerWrapper = styled.div`

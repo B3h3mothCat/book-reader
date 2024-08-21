@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+import styled from "styled-components"
 
 
 export default function Login() {
@@ -15,7 +16,7 @@ export default function Login() {
     }
 
     return (
-        <>
+        <Div_Container>
             {!isLoggedIn && (
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -51,6 +52,10 @@ export default function Login() {
                 </div>
             )}
 
-        </>
+        </Div_Container>
     )
 }
+
+const Div_Container = styled.div`
+    width: 100vw; 
+`;

@@ -28,6 +28,13 @@
 
   --reader-background-light: rgb(255,255,255);
   --reader-background-dark: rgb(28,28,28);
+
+  width: 100%;
+  /* max-width: 1920px; */
+  height: 100vh;
+  background-color: var(--background-color-light);
+  transition: 
+    background-color 250ms ease-in-out;
 }
 
 
@@ -56,22 +63,18 @@ body {
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-
+  width: 100%;
+  
 }
 
 
-.app {
-
-
+/* .app {
   width: 100vw;
-  /* width: 100%; */
   height: 100vh;
   background-color: var(--background-color-light);
   transition: 
     background-color 250ms ease-in-out;
-  /* overflow: auto; */
-
-}
+} */
 
 
 /* themes related */
@@ -114,12 +117,6 @@ a {
   max-width: 40px;
   max-height: 40px;
 }
-
-
-html, body {
-  height: 100%;
-}
-
 
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;

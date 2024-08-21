@@ -109,17 +109,17 @@ const Div_InitialWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    width: 100%;
+    width: calc(100vw - 17px); // temp solution
     background-color: var(--background-module-light);
 
 `
 const Div_TextWrapper = styled.div`
     margin-top: 5px;
     height: 100%;
-    width: 60%;
     font-family:Arial, Helvetica, sans-serif;
     white-space: normal;
     text-align: start;
     padding-top: 50px;    /* padding for MenuBar (maybe try outlet there?)*/
-
+    padding-left: 1%;
+    padding-right: 1%;
 `

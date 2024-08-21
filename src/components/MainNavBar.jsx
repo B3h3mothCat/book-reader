@@ -7,23 +7,23 @@ import styled from "styled-components"
 
 
 export default function MainNavBar() {
-    const { isLoggedIn } = useAuth()
-    const { t } = useTranslation()
+  const { isLoggedIn } = useAuth()
+  const { t } = useTranslation()
 
-    return (
-        <Div_Container>
-            <Link className="nav-link" to={'/'}>{t('mainNavBar.home')}</Link>
-            <Link className="nav-link" to={'/library'}>{t('mainNavBar.library')}</Link>
-            {isLoggedIn && (
-                <Link className="nav-link" to={'/account'}>{t('mainNavBar.personalAccount')}</Link>
-            )}
-            {!isLoggedIn && (
-                <Link className="nav-link" to={'/Login'}>{t('mainNavBar.login')}</Link>
-            )}
-            <LanguageSwitcher></LanguageSwitcher>
-            <ThemeToggle />
-        </Div_Container>
-    )
+  return (
+    <Div_Container>
+      <Link className="nav-link" to={'/'}>{t('mainNavBar.home')}</Link>
+      <Link className="nav-link" to={'/library'}>{t('mainNavBar.library')}</Link>
+      {isLoggedIn && (
+        <Link className="nav-link" to={'/account'}>{t('mainNavBar.personalAccount')}</Link>
+      )}
+      {!isLoggedIn && (
+        <Link className="nav-link" to={'/Login'}>{t('mainNavBar.login')}</Link>
+      )}
+      <LanguageSwitcher></LanguageSwitcher>
+      <ThemeToggle />
+    </Div_Container>
+  )
 }
 
 const Div_Container = styled.div`
@@ -50,6 +50,16 @@ const Div_Container = styled.div`
         }
 
   }
+`;
 
+const StyledLink = styled(Link)` // this is example of possible option
+  text-decoration: none;
+  color: var(--primary-text-color-light);
+  padding: 0.5em 1em;
+  border-radius: 5px;
 
+  &:hover {
+    color: #f71f79;
+    background-color: var(--background-module-dark);
+  }
 `;

@@ -46,6 +46,7 @@ export default function MainPage() {
 
 const Div_HomePage = styled.div`
 background-color: var(--background-color);
+width: 100vw;
 `;
 const Div_Dashboard = styled.div`
 width: 100%;

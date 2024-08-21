@@ -9,8 +9,6 @@ import useBooksData from "../../Hooks/useBooksData";
 import styled from "styled-components";
 
 
-import './catalog.css'
-
 export default function LibraryOfBooks() {
 
     const { booksData, loading, error } = useBooksData() // fetching from fake API
@@ -74,6 +72,7 @@ const Div_CatalogContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
     overflow-x: hidden;
+    width: 100vw;
 `;
 
 const Div_BookList = styled.div`

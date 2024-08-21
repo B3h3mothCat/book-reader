@@ -23,9 +23,9 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <div className='app'>
-        <NavigationMain></NavigationMain>
-      </div>
+      <NavigationMain>
+
+      </NavigationMain>
     </AuthProvider>
   )
 }
