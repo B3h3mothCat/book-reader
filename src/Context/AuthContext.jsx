@@ -42,6 +42,7 @@ export default function AuthProvider({ children }) {
         clearUserData()
     }
 
+
     // BOOKS RELATED LOGIC <>
     function updateUserBooksId(updatedBooksId) {
         if (currentUser) {

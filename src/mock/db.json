@@ -4,8 +4,8 @@
       "id": "1",
       "username": "Adam",
       "password": "aaa",
+      "email": "",
       "role": "user",
-      "books": [],
       "booksId": [
         "1",
         "3",
@@ -17,8 +17,8 @@
       "id": "2",
       "username": "Ben",
       "password": "bbb",
+      "email": "",
       "role": "user",
-      "books": [],
       "booksId": [
         "1"
       ]
@@ -27,21 +27,51 @@
       "id": "3",
       "username": "Smith",
       "password": "sss",
+      "email": "",
       "role": "user",
-      "books": [],
       "booksId": []
     },
     {
       "id": "4",
       "username": "David",
       "password": "ddd",
+      "email": "",
       "role": "premium member",
-      "books": [],
       "booksId": [
         "1",
         "3",
         "2",
         "4"
+      ]
+    },
+    {
+      "id": "843f",
+      "username": "Check",
+      "password": "111",
+      "email": "kot@mail.ru",
+      "role": "user",
+      "booksId": [
+        "2"
+      ]
+    },
+    {
+      "id": "c5d9",
+      "username": "Good",
+      "password": "ggg",
+      "email": "good@mail.by",
+      "role": "user",
+      "booksId": [
+        "5"
+      ]
+    },
+    {
+      "id": "51b6",
+      "username": "Arr",
+      "password": "aaa",
+      "email": "aa@da.tr",
+      "role": "user",
+      "booksId": [
+        "1"
       ]
     }
   ],
