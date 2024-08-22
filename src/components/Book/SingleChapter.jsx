@@ -1,6 +1,6 @@
 import { useLocation, useParams } from "react-router-dom"
-import BookReaderScreen from "./BookReaderScreen"
-import CustomizerProvider from "../Customizer/CustomizerContext"
+import ReaderScreen from "../../features/Reader/ReaderScreen"
+import CustomizerProvider from "../../features/Customizer/CustomizerContext"
 
 export default function SingleChapter() {
     const { chapterId } = useParams()
@@ -9,11 +9,11 @@ export default function SingleChapter() {
     return (
         <div>
             <CustomizerProvider>
-                <BookReaderScreen
+                <ReaderScreen
                     file={decodeURIComponent(chapterId)}
                     chapters={chapters}
                     title={title}
-                ></BookReaderScreen>
+                ></ReaderScreen>
             </CustomizerProvider>
         </div>
     )
@@ -21,3 +21,4 @@ export default function SingleChapter() {
 
 // нужен ли этот компонент "прокладка" ?
 // похоже что нужен! Тут мы можем обернуть ридер в контекст! [навигация страниц]
+// попробовать добавить сюда FileReader <=

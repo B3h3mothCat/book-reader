@@ -1,7 +1,6 @@
 import Button from "../../modules/Button/Button";
 import { useState, useEffect } from "react";
 import { useCustomizer } from "./CustomizerContext";
-import { SketchPicker } from 'react-color';
 
 import styled from "styled-components";
 

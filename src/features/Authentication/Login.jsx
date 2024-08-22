@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "./AuthContext";
 import styled from "styled-components"
-import RegistrationForm from "./RegistrationForm"
+import RegistrationForm from "../../components/ui/RegistrationForm"
 import { useNavigate } from "react-router-dom";
 
 

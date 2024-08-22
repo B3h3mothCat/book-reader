@@ -1,7 +1,7 @@
 // create custom buttons for small elements ?
 import { Link } from "react-router-dom"
 import Button from "../../modules/Button/Button"
-import ReaderNavButtons from "../Book/ReaderNavButtons"
+import ReaderNavButtons from "./ReaderNavButtons"
 import { useState, useEffect } from "react"
 import settingsIcon from "../../assets/img/settings.svg"
 import styled from 'styled-components'

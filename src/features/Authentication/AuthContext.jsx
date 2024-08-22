@@ -1,7 +1,7 @@
 // import { registeredUsers } from "../mock/usersList";  -- static userBase
 import { createContext, useContext, useEffect, useState } from "react";
-import { ENDPOINTS } from "../utils/apiEndpoints";
-import useAuthStorage from '../Hooks/useAuthStorage'
+import { ENDPOINTS } from "../../utils/apiEndpoints";
+import useAuthStorage from './useAuthStorage'
 
 
 const AuthContext = createContext();

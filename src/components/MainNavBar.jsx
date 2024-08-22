@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useAuth } from "../context/AuthContext"
+import { useAuth } from "../features/Authentication/AuthContext"
 import ThemeToggle from "./ui/ThemeToggle"
 import LanguageSwitcher from "./LanguageSwitcher"
 import { useTranslation } from "react-i18next";

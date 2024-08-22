@@ -5,7 +5,6 @@ import ReaderMenuBar from "./ReaderMenuBar";
 //original customizer context
 import { useCustomizer } from "../Customizer/CustomizerContext";
 
-import ModalWrapper from "../ui/ModalWrapper" //we uing css from this place C:
 
 import styled from "styled-components"
 
@@ -13,7 +12,7 @@ function splitIntoSentences(text) {
     return text.split(/[\.\?!]\s/);
 }
 
-export default function BookReaderScreen({ file, chapters, title: initialTitle }) {
+export default function ReaderScreen({ file, chapters, title: initialTitle }) {
     const { settings, saveSettings, popupVisible, openPopup, closePopup } = useCustomizer()
 
     const [sentences, setSentences] = useState([]);

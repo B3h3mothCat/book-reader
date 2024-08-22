@@ -1,6 +1,6 @@
 import TextFileOpener from "../components/TextFileOpener/TextFileOpener"
-import BookReaderScreen from "../components/Book/BookReaderScreen"
-import CustomizerProvider from "../components/Customizer/CustomizerContext"
+import ReaderScreen from "../features/Reader/ReaderScreen"
+import CustomizerProvider from "../features/Customizer/CustomizerContext"
 
 
 import { useState } from "react"
@@ -19,7 +19,7 @@ export default function FileReaderPage() {
 
 
             <CustomizerProvider>
-                <BookReaderScreen file={fileContent}></BookReaderScreen>
+                <ReaderScreen file={fileContent}></ReaderScreen>
             </CustomizerProvider>
         </>
     )
