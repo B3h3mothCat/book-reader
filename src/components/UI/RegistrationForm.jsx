@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import { ENDPOINTS } from "../../utils/apiEndpoints"
+import { useNavigate } from 'react-router-dom';
+import LoadingScreen from "./LoadingScreen"
 
-export default function RegistrationForm() {
+export default function RegistrationForm({ onCancel }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const [users, setUsers] = useState([]);
+
+    const [isRedirecting, setIsRedirecting] = useState(false)
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -18,7 +22,6 @@ export default function RegistrationForm() {
                 console.error('Failed to fetch users:', err);
             }
         };
-
         fetchUsers();
     }, []);
 
@@ -57,38 +60,50 @@ export default function RegistrationForm() {
             }
 
             await createAccount(username, password, email);
-            // redirect to login page or show success message
+            setIsRedirecting(true)
+            setTimeout(() => {
+                onCancel()
+            }, 2000)
         } catch (err) {
             setError(err.message);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-            />
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
-            <button type="submit">Create IT!!</button>
-            {error && <p>{error}</p>}
-        </form>
+        <>
+            {!isRedirecting ? (
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <button type="submit">Create IT!!</button>
+                    {error && <p>{error}</p>}
+                </form>
+            ) : (
+                <LoadingScreen
+                    message={'Регистрация прошла успешно'}></LoadingScreen>
+            )}
+
+        </>
+
     );
 }
 

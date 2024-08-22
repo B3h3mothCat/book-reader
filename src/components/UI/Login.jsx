@@ -2,32 +2,26 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import styled from "styled-components"
 import RegistrationForm from "./RegistrationForm"
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
 
     const [usernameInput, setUsernameInput] = useState('');
     const [password, setPassword] = useState('');
-
-    const [email, setEmail] = useState('')
-
     const [isNewAccount, setItNewAccount] = useState(false)
-
     const { isLoggedIn, userRole, username, login, logout } = useAuth();
+    const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault();
         login(usernameInput, password)
+        navigate('/account')
     }
-
-    // function handleNewAccount(e) {
-    //     e.preventDefault();
-    //     createAccount(usernameInput, password, email)
-    // }
 
     return (
         <Div_Container>
-            {!isLoggedIn && (
+            {!isNewAccount && !isLoggedIn && (
                 <>
                     <form
                         onSubmit={handleSubmit}
@@ -57,22 +51,19 @@ export default function Login() {
                         <button onClick={handleSubmit}>Sumbmit</button>
                         <button onClick={() => setItNewAccount(true)}>Create account</button>
                     </div>
+
                 </>
+
             )}
-
-
 
             {isNewAccount && (
                 <>
-                    <RegistrationForm />
+                    <RegistrationForm onCancel={() => setItNewAccount(false)} />
                     <div className="btn-group">
-                        <button onClick={() => setItNewAccount(false)}>RUN</button>
-
+                        <button onClick={() => setItNewAccount(false)}>Return</button>
                     </div>
                 </>
             )}
-
-
 
             {isLoggedIn && (
                 <div className="login-confirmed">

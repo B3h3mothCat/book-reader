@@ -1,11 +1,16 @@
 import styled from "styled-components"
 import loaderIcon from "../../assets/loader.gif"
+import { useState } from "react"
 
-export default function LoaderScreen() {
+export default function LoaderScreen({ message }) {
     return (
-        <Img_Icon
-            src={loaderIcon}
-            alt="Loading..." />
+        <>
+            <H1_Message>{message}</H1_Message>
+            <Img_Icon
+                src={loaderIcon}
+                alt="Loading..." />
+        </>
+
     )
 }
 
@@ -21,4 +26,9 @@ const Img_Icon = styled.img`
     justify-content: center;
     align-items: center;
     z-index: 2; 
+`
+
+const H1_Message = styled.h1`
+    
+
 `

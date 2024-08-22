@@ -4,8 +4,7 @@ import useBooksData from "../Hooks/useBooksData";
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components"
 import { Link } from "react-router-dom";
-
-import AccountBookUnit from "./Book/AccountBookUnit";
+import { useNavigate } from "react-router-dom";
 
 // static book source:
 // import { BOOKS_DATA_RU } from "../mock/data_ru"
@@ -16,7 +15,7 @@ import AccountBookUnit from "./Book/AccountBookUnit";
 export default function PersonalAccount() {
     const { username, userRole, isLoggedIn, logout, delBookFromUser, booksId = [] } = useAuth()
     const { booksData = [] } = useBooksData()
-
+    const navigate = useNavigate()
 
     const [userBooks, setUserBooks] = useState([]);
 
@@ -42,13 +41,18 @@ export default function PersonalAccount() {
         }
     }, [booksId, booksData]);
 
+    function handleLogout() {
+        logout()
+        navigate('/login')
+    }
+
 
     return (
         <Div_AccContainer>
             <div className="personal-acc-bar">
                 <div>Hello: {username}</div>
                 <div>Your current role is: {userRole}</div>
-                <button onClick={logout}>Logout</button>
+                <button onClick={handleLogout}>Logout</button>
             </div>
 
             {booksId.length > 0 && booksData.length > 0 && (

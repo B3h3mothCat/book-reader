@@ -35,7 +35,7 @@ export default function MainPage() {
 
             <Div_Dashboard>
                 {isLoading ? (
-                    <LoaderScreen />
+                    <LoaderScreen message={'hello cutie!'} />
                 ) : (
                     <DevNews></DevNews>
                 )}

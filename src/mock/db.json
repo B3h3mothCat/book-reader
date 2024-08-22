@@ -45,30 +45,10 @@
       ]
     },
     {
-      "id": "843f",
-      "username": "Check",
-      "password": "111",
-      "email": "kot@mail.ru",
-      "role": "user",
-      "booksId": [
-        "2"
-      ]
-    },
-    {
-      "id": "c5d9",
-      "username": "Good",
-      "password": "ggg",
-      "email": "good@mail.by",
-      "role": "user",
-      "booksId": [
-        "5"
-      ]
-    },
-    {
-      "id": "51b6",
-      "username": "Arr",
-      "password": "aaa",
-      "email": "aa@da.tr",
+      "id": "8733",
+      "username": "Set",
+      "password": "sss",
+      "email": "sss@ss.ss",
       "role": "user",
       "booksId": [
         "1"
