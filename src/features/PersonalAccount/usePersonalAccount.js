@@ -8,16 +8,23 @@ export function usePersonalAccount() {
     const [userBooks, setUserBooks] = useState([]);
     const isLoggedInRef = useRef(isLoggedIn);
 
+
     useEffect(() => {
         isLoggedInRef.current = isLoggedIn;
     }, [isLoggedIn]);
 
     useEffect(() => {
         if (isLoggedInRef.current) {
-            const accountBooks = booksData.filter(book => booksId.includes(book.id));
-            setUserBooks(accountBooks);
+            if (booksData.length > 0) {
+                const accountBooks = booksData.filter(book => booksId.includes(book.id));
+                setUserBooks(accountBooks);
+            } else {
+                setUserBooks([]);
+            }
         } else {
-            setUserBooks([]);
+            if (userBooks.length > 0) {
+                setUserBooks([]);
+            }
         }
     }, [booksId, booksData]);
 

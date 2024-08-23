@@ -1,11 +1,11 @@
 import { usePersonalAccount } from "./usePersonalAccount"
 import styled from "styled-components"
 import { Link } from "react-router-dom";
-
-
+import { useNavigate } from "react-router-dom";
 
 export default function PersonalAccount() {
-    const { } = usePersonalAccount()
+    const { username, userRole, logout, delBookFromUser, userBooks } = usePersonalAccount()
+    const navigate = useNavigate()
 
     function handleLogout() {
         logout()
@@ -20,28 +20,26 @@ export default function PersonalAccount() {
                 <button onClick={handleLogout}>Logout</button>
             </div>
 
-            {booksId.length > 0 && booksData.length > 0 && (
-                <Div_BooksContainer>
-                    {userBooks.map((book, index) => (
+            <Div_BooksContainer>
+                {userBooks.map((book, index) => (
 
-                        <Div_BookUnit key={index}>
-                            <Link
-                                to={`/book-front/${encodeURIComponent(book.title)}`}
-                                state={{
-                                    chapters: book.chapters,
-                                    title: book.title,
-                                    description: book.description,
-                                    book: book,
-                                }}
-                            >
-                                <img src={book.picture} alt={book.title} />
-                                {book.title}
-                            </Link>
-                            <button onClick={() => delBookFromUser(book)}>Del book</button>
-                        </Div_BookUnit>
-                    ))}
-                </Div_BooksContainer>
-            )}
+                    <Div_BookUnit key={index}>
+                        <Link
+                            to={`/book-front/${encodeURIComponent(book.title)}`}
+                            state={{
+                                chapters: book.chapters,
+                                title: book.title,
+                                description: book.description,
+                                book: book,
+                            }}
+                        >
+                            <img src={book.picture} alt={book.title} />
+                            {book.title}
+                        </Link>
+                        <button onClick={() => delBookFromUser(book)}>Del book</button>
+                    </Div_BookUnit>
+                ))}
+            </Div_BooksContainer>
         </Div_AccContainer>
     )
 }
