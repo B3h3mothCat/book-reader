@@ -1,22 +1,17 @@
 import { useState } from "react";
 // import { BOOKS_DATA_RU } from "../../mock/data_ru"
-import BookUnit from './BookUnit'
-import SearchBar from "../ui/SearchBar";
+import BookUnit from '../../components/Book/BookUnit'
+import SearchBar from "../../components/ui/SearchBar";
 import BookFilter from "./BookFilter";
-import { useBookFilter } from "../../Hooks/useBookFilter";
+import { useBookFilter } from "./useBookFilter";
 import useBooksData from "../../Hooks/useBooksData";
-
 import styled from "styled-components";
-
 
 export default function LibraryOfBooks() {
 
     const { booksData, loading, error } = useBooksData() // fetching from fake API
     const [searchResult, setSearchReasult] = useState([])
     const { filteredBooks, applyFilters, clearFilters } = useBookFilter(booksData);
-
-
-
     const [isSearchOpen, setIsSearchOpen] = useState(false)
 
     function handleSearchResult(result) {

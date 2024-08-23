@@ -1,11 +1,7 @@
-import CustomizerPopup from "../Customizer/CustomizerPopup"
-import Button from "../../modules/Button/Button";
 import { useState, useEffect } from "react";
-import ReaderMenuBar from "./ReaderMenuBar";
-//original customizer context
 import { useCustomizer } from "../Customizer/CustomizerContext";
-
-
+import CustomizerPopup from "../Customizer/CustomizerPopup"
+import ReaderMenuBar from "./ReaderMenuBar";
 import styled from "styled-components"
 
 function splitIntoSentences(text) {
@@ -18,17 +14,6 @@ export default function ReaderScreen({ file, chapters, title: initialTitle }) {
     const [sentences, setSentences] = useState([]);
     const [currentChapterIndex, setCurrentChapterIndex] = useState(0); //
     const [title, setTitle] = useState(initialTitle);
-
-
-    // ModalWrapper logic
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
-
-    function openCustomizer() {
-        setIsModalOpen(true)
-    }
 
 
     useEffect(() => {
@@ -86,7 +71,6 @@ export default function ReaderScreen({ file, chapters, title: initialTitle }) {
                 {sentences.map((sentanse, index) => (
                     <p
                         key={index}
-                    // style={{ fontSize: settings.fontSize + 'px' }}
                     >{sentanse}</p>
                 ))}
 

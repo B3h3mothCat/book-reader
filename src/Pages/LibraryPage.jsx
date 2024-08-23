@@ -1,4 +1,4 @@
-import LibraryOfBooks from "../components/Book/LibraryOfBooks";
+import LibraryOfBooks from "../features/Catalogue/LibraryOfBooks";
 
 export default function LibraryPage() {
     return (

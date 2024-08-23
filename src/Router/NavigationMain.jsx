@@ -1,15 +1,15 @@
-import { Route, Routes, Link } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import MainPage from '../Pages/MainPage'
 import FileReaderPage from '../Pages/FileReaderPage'
 // Book folder imports
-import LibraryOfBooks from '../components/Book/LibraryOfBooks'
+import LibraryOfBooks from '../features/Catalogue/LibraryOfBooks'
 import SingleChapter from '../components/Book/SingleChapter'
 import List from '../components/Book/List'
 import BookFrontPage from '../Pages/BookFrontPage'
 // Book folder imports
 import LoginPage from '../Pages/LoginPage'
 
-import PersonalAccount from '../components/PersonalAccount'
+import PersonalAccount from '../features/PersonalAccount/PersonalAccount'
 import LibraryPage from '../Pages/LibraryPage'
 
 import MainNavBarLayout from '../components/layouts/MainNavBarLayout'
