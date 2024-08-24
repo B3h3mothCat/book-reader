@@ -4,14 +4,18 @@ import CustomizerPopup from "../Customizer/CustomizerPopup"
 import ReaderMenuBar from "./ReaderMenuBar";
 import styled from "styled-components"
 
-function splitIntoSentences(text) {
-    return text.split(/[\.\?!]\s/);
+// function splitIntoSentences(text) {
+//     return text.split(/[\.\?!]\s/);
+// }
+
+function splitIntoParagraphs(text) {
+    return text.split(/\n\s*\n/).filter(paragraph => paragraph.trim().length > 0);
 }
 
 export default function ReaderScreen({ file, chapters, title: initialTitle }) {
     const { settings, saveSettings, popupVisible, openPopup, closePopup } = useCustomizer()
 
-    const [sentences, setSentences] = useState([]);
+    const [paragraphs, setParagraphs] = useState([]);
     const [currentChapterIndex, setCurrentChapterIndex] = useState(0); //
     const [title, setTitle] = useState(initialTitle);
 
@@ -26,13 +30,13 @@ export default function ReaderScreen({ file, chapters, title: initialTitle }) {
             if (chapter && chapter.content.endsWith('.txt')) {
                 fetchContent(chapter.content);
             } else if (chapter) {
-                setSentences(splitIntoSentences(chapter.content));
+                setParagraphs(splitIntoParagraphs(chapter.content));
             }
         } else {
             if (file.endsWith('.txt')) {
                 fetchContent(file);
             } else {
-                setSentences(splitIntoSentences(file));
+                setParagraphs(splitIntoParagraphs(file));
             }
         }
 
@@ -41,7 +45,7 @@ export default function ReaderScreen({ file, chapters, title: initialTitle }) {
     async function fetchContent(filePath) {
         const response = await fetch(filePath);
         const text = await response.text();
-        setSentences(splitIntoSentences(text));
+        setParagraphs(splitIntoParagraphs(text));
     }
 
     return (
@@ -53,7 +57,6 @@ export default function ReaderScreen({ file, chapters, title: initialTitle }) {
                 <ReaderMenuBar
                     currentChapterIndex={currentChapterIndex}
                     chapters={chapters}
-                    // openCustomizer={openCustomizer}
                     openPopup={openPopup}
 
                     title={title}
@@ -68,10 +71,10 @@ export default function ReaderScreen({ file, chapters, title: initialTitle }) {
 
             }}>
                 <h1>Название главы</h1>
-                {sentences.map((sentanse, index) => (
+                {paragraphs.map((item, index) => (
                     <p
                         key={index}
-                    >{sentanse}</p>
+                    >{item}</p>
                 ))}
 
             </Div_TextWrapper>

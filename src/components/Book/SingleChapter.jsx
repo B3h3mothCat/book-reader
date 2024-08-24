@@ -7,7 +7,7 @@ export default function SingleChapter() {
     const { chapters, title } = useLocation().state
 
     return (
-        <div>
+        <>
             <CustomizerProvider>
                 <ReaderScreen
                     file={decodeURIComponent(chapterId)}
@@ -15,10 +15,10 @@ export default function SingleChapter() {
                     title={title}
                 ></ReaderScreen>
             </CustomizerProvider>
-        </div>
+        </>
     )
 }
 
-// нужен ли этот компонент "прокладка" ?
+// классификация компонента <= container
 // похоже что нужен! Тут мы можем обернуть ридер в контекст! [навигация страниц]
 // попробовать добавить сюда FileReader <=

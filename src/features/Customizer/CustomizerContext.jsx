@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const CustomizerContext = createContext()
 
@@ -8,13 +8,26 @@ export const useCustomizer = () => useContext(CustomizerContext)
 export default function CustomizerProvider({ children }) {
 
     const [popupVisible, setPopupVisible] = useState(false);
-    const [settings, setSettings] = useState({
-        color: '',
-        width: '',
-        fontSize: '',
-        textPosition: '',
-        textColor: '',
-    });
+    const [settings, setSettings] = useState(loadSettings);
+
+    function loadSettings() {
+        const savedSettings = localStorage.getItem('customizerSettings');
+        if (savedSettings) {
+            return JSON.parse(savedSettings)
+        }
+        return {
+            color: '',
+            width: '65',
+            fontSize: '16',
+            textPosition: '',
+            textColor: '',
+        }
+    }
+
+    useEffect(() => {
+        localStorage.setItem('customizerSettings', JSON.stringify(settings));
+    }, [settings]);
+
 
     const updateSetting = (key, value) => {
         setSettings((prevSettings) => {

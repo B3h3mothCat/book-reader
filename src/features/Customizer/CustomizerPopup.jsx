@@ -1,12 +1,19 @@
 import Button from "../../modules/Button/Button";
 import { useState, useEffect } from "react";
 import { useCustomizer } from "./CustomizerContext";
+import debounce from "lodash/debounce"
 
 import styled from "styled-components";
 
 export default function CustomizerPopup({ onClose, onSave }) {
     const { settings, updateSetting } = useCustomizer()
     const [isMounted, setIsMounted] = useState(false)
+
+    // const [localSettings, setLocalSettings] = useState(settings);
+
+    // useEffect(() => {
+    //     setLocalSettings(settings);
+    // }, [settings]);
 
     useEffect(() => {
         setIsMounted(true);

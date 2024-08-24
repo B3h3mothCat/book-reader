@@ -8,12 +8,9 @@ import List from '../components/Book/List'
 import BookFrontPage from '../Pages/BookFrontPage'
 // Book folder imports
 import LoginPage from '../Pages/LoginPage'
-
 import PersonalAccount from '../features/PersonalAccount/PersonalAccount'
 import LibraryPage from '../Pages/LibraryPage'
-
 import MainNavBarLayout from '../components/layouts/MainNavBarLayout'
-
 
 export default function NavigationMain() {
     return (
