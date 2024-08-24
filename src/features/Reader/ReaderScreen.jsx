@@ -74,6 +74,7 @@ export default function ReaderScreen({ file, chapters, title: initialTitle }) {
                 {paragraphs.map((item, index) => (
                     <p
                         key={index}
+                        style={{ textIndent: settings.textIndent + '%' }}
                     >{item}</p>
                 ))}
 

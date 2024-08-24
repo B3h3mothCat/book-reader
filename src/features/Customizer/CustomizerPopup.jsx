@@ -2,18 +2,20 @@ import Button from "../../modules/Button/Button";
 import { useState, useEffect } from "react";
 import { useCustomizer } from "./CustomizerContext";
 import debounce from "lodash/debounce"
-
 import styled from "styled-components";
+
+const colorPresets = [
+    { backgroundColor: '#f2f2f3', textColor: '#212529' },
+    { backgroundColor: '#dce5e2', textColor: '#27262b' },
+    { backgroundColor: '#f5f1e5', textColor: '#28282a' },
+    { backgroundColor: '#e5cf9d', textColor: '#262425' },
+    { backgroundColor: '#434751', textColor: '#dbdbdb' },
+    { backgroundColor: '#141414', textColor: '#dddddd' },
+]
 
 export default function CustomizerPopup({ onClose, onSave }) {
     const { settings, updateSetting } = useCustomizer()
     const [isMounted, setIsMounted] = useState(false)
-
-    // const [localSettings, setLocalSettings] = useState(settings);
-
-    // useEffect(() => {
-    //     setLocalSettings(settings);
-    // }, [settings]);
 
     useEffect(() => {
         setIsMounted(true);
@@ -27,21 +29,53 @@ export default function CustomizerPopup({ onClose, onSave }) {
         }, 250);
     }
 
+    function handleColorPreset(bgColor, txtColor) {
+        updateSetting('color', bgColor)
+        updateSetting('textColor', txtColor)
+    }
+
     return (
         <Div_ModalOverlay isMounted={isMounted} onClick={handleSave}>
             <Div_Customizer isActive={isMounted} onClick={(e) => e.stopPropagation()}>
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: "space-between",
+                    paddingLeft: '10%',
+                    paddingRight: '5%'
+                }}>
+                    <h3>Settings</h3>
+                    <span onClick={handleSave}>X</span>
+                </div>
                 <form>
                     <Div_CustomizerItem>
-                        <label>
-                            <select
-                                value={settings.color}
-                                onChange={(e) => updateSetting('color', e.target.value)}
-                            >
-                                <option value="">Select a color</option>
-                                <option value="#e5cf9d">Good one</option>
-                                <option value="brown">Okay color</option>
-                            </select>
-                        </label>
+                        <div style={{
+                            display: "flex",
+                            justifyContent: "space-around",
+
+                        }}>
+                            {colorPresets.map((preset, index) => (
+                                <div
+                                    key={index}
+                                    onClick={() => handleColorPreset(preset.backgroundColor, preset.textColor)}
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        padding: '10px',
+                                        marginBottom: '5px',
+                                        cursor: 'pointer',
+                                        backgroundColor: preset.backgroundColor,
+                                        color: preset.textColor,
+                                        borderRadius: '35%',
+                                        width: '45px',
+                                        justifyContent: 'center'
+                                    }}
+                                >
+                                    <span>A</span>
+                                </div>
+                            ))}
+                        </div>
+
                     </Div_CustomizerItem>
 
                     <Div_CustomizerItem>
@@ -95,8 +129,16 @@ export default function CustomizerPopup({ onClose, onSave }) {
                     <Div_CustomizerItem>
                         <label>
                             Text position:
-                            <button type="button" onClick={() => updateSetting('textPosition', 'center')}>Center</button>
                             <button type="button" onClick={() => updateSetting('textPosition', 'start')}>Start</button>
+                            <button type="button" onClick={() => updateSetting('textPosition', 'center')}>Center</button>
+                        </label>
+                    </Div_CustomizerItem>
+
+                    <Div_CustomizerItem>
+                        <label>
+                            Text Indent:
+                            <button type="button" onClick={() => updateSetting('textIndent', '0')}>None</button>
+                            <button type="button" onClick={() => updateSetting('textIndent', '2')}>Indent</button>
                         </label>
                     </Div_CustomizerItem>
                 </form>

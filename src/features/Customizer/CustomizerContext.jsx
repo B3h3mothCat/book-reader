@@ -21,6 +21,7 @@ export default function CustomizerProvider({ children }) {
             fontSize: '16',
             textPosition: '',
             textColor: '',
+            textIndent: ''
         }
     }
 
