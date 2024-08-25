@@ -42,6 +42,9 @@ export default function SearchBar({ books, onSearch }) {
 
 const Div_SearchBarContainer = styled.div`
   height: 50px;
+  background-color: var(--background-module-light);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 
   input {
     margin-top: 1%;

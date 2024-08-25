@@ -135,10 +135,10 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
 
 const Div_Container = styled.div`
     width: 30%;
+    max-width: 333px;
     background-color: var(--background-module-light);
     border-radius: 5px;
     height: 100%;
-    margin-top: 1%;
     margin-bottom: 1%;
 `;
 

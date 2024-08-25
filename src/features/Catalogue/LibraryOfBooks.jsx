@@ -62,13 +62,11 @@ const Div_ModalOverlay = styled.div`
 `;
 
 const Div_CatalogContainer = styled.div`
+    margin-top: 1%;
     display: flex;
+    justify-content: center;
     background-color: var(--background-color-light);
-    padding-left: 1%;
-    padding-right: 3%;
-    gap: 3%;
-    margin-left: auto;
-    margin-right: auto;
+    gap: 20px;
     overflow-x: hidden;
     min-width: calc(100vw - 17px);
 `;
@@ -76,12 +74,11 @@ const Div_CatalogContainer = styled.div`
 const Div_BookList = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.5em;
-    width: 100%;
-    padding: 1%;
+    gap: 0.3em;
+    max-width: 920px;
+    /* padding: 1%; */
     background-color: var(--background-module-light);
     height: 100%;
-    border-radius: 5px;
     overflow-x: hidden;
 `;
 
@@ -99,7 +96,7 @@ const Div_BookListModal = styled.div`
 `;
 
 const Div_BookListContainer = styled.div`
-    display: flex;
-    flex-direction: column; 
-    width: 100%;
+        display: flex;
+        flex-direction: column; 
+        max-width: 65%;
 `;
