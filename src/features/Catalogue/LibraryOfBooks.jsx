@@ -21,16 +21,19 @@ export default function LibraryOfBooks() {
 
     return (
         <>
-            <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
-            <Div_CatalogContainer>
-                <Div_BookList>
-                    {filteredBooks.map((book, index) => (
-                        <BookUnit book={book} key={index} />
-                    ))}
-                </Div_BookList>
 
+            <Div_CatalogContainer>
+                <Div_BookListContainer>
+                    <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
+                    <Div_BookList>
+                        {filteredBooks.map((book, index) => (
+                            <BookUnit book={book} key={index} />
+                        ))}
+                    </Div_BookList>
+                </Div_BookListContainer>
                 <BookFilter onApplyFilters={applyFilters} onClearFilters={clearFilters} />
             </Div_CatalogContainer>
+
 
             {isSearchOpen && (
                 <Div_ModalOverlay onClick={() => setIsSearchOpen(false)}>
@@ -61,13 +64,13 @@ const Div_ModalOverlay = styled.div`
 const Div_CatalogContainer = styled.div`
     display: flex;
     background-color: var(--background-color-light);
-    padding-left: 3%;
+    padding-left: 1%;
     padding-right: 3%;
-    gap: 1%;
+    gap: 3%;
     margin-left: auto;
     margin-right: auto;
     overflow-x: hidden;
-    width: 100vw;
+    min-width: calc(100vw - 17px);
 `;
 
 const Div_BookList = styled.div`
@@ -93,4 +96,10 @@ const Div_BookListModal = styled.div`
     z-index: 99;
     box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
     gap: 5px;
+`;
+
+const Div_BookListContainer = styled.div`
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
 `;

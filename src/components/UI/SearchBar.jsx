@@ -46,15 +46,24 @@ const Div_SearchBarContainer = styled.div`
   input {
     margin-top: 1%;
     width: 50%;
-    height: 25px;
+    height: 30px;
     background-color: var(--background-module-light);
     border-radius: 5px;
     border: 1px solid grey;
     outline: none;
     color: var(--primary-text-color-light);
+    padding: 1%;
 
     &:focus {
       border-color: rgb(198, 198, 216);
     }
+  }
+
+  button {
+    padding: 5px;
+    margin-left: 4px;
+    border-radius: 7px;
+    border: none;
+    background-color: #6fb2fa;
   }
 `

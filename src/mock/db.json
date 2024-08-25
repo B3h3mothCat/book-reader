@@ -227,6 +227,118 @@
           "content": "Content of Chapter 3..."
         }
       ]
+    },
+    {
+      "id": "7",
+      "title": "b77ook6",
+      "description": "book6book6",
+      "picture": "",
+      "filterInfo": {
+        "genres": [
+          "Fantasy",
+          "Cruelty"
+        ],
+        "adultRating": "18+",
+        "titleStatus": "Ongoing"
+      },
+      "chapters": [
+        {
+          "title": "Chapter 1",
+          "content": "Content of Chapter 1..."
+        },
+        {
+          "title": "Chapter 2",
+          "content": "Content of Chapter 2..."
+        },
+        {
+          "title": "Chapter 3",
+          "content": "Content of Chapter 3..."
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "book336",
+      "description": "book6bo334ok6",
+      "picture": "",
+      "filterInfo": {
+        "genres": [
+          "Fantasy",
+          "Cruelty"
+        ],
+        "adultRating": "18+",
+        "titleStatus": "Ongoing"
+      },
+      "chapters": [
+        {
+          "title": "Chapter 1",
+          "content": "Content of Chapter 1..."
+        },
+        {
+          "title": "Chapter 2",
+          "content": "Content of Chapter 2..."
+        },
+        {
+          "title": "Chapter 3",
+          "content": "Content of Chapter 3..."
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "bo999ok6",
+      "description": "book6b99ook6",
+      "picture": "",
+      "filterInfo": {
+        "genres": [
+          "Fantasy",
+          "Cruelty"
+        ],
+        "adultRating": "18+",
+        "titleStatus": "Ongoing"
+      },
+      "chapters": [
+        {
+          "title": "Chapter 1",
+          "content": "Content of Chapter 1..."
+        },
+        {
+          "title": "Chapter 2",
+          "content": "Content of Chapter 2..."
+        },
+        {
+          "title": "Chapter 3",
+          "content": "Content of Chapter 3..."
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "b11243ook6",
+      "description": "boo4242k6book6",
+      "picture": "",
+      "filterInfo": {
+        "genres": [
+          "Fantasy",
+          "Cruelty"
+        ],
+        "adultRating": "18+",
+        "titleStatus": "Ongoing"
+      },
+      "chapters": [
+        {
+          "title": "Chapter 1",
+          "content": "Content of Chapter 1..."
+        },
+        {
+          "title": "Chapter 2",
+          "content": "Content of Chapter 2..."
+        },
+        {
+          "title": "Chapter 3",
+          "content": "Content of Chapter 3..."
+        }
+      ]
     }
   ]
 }

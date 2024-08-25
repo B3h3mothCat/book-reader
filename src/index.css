@@ -30,8 +30,9 @@
   --reader-background-dark: rgb(28,28,28);
 
   width: 100%;
-  /* max-width: 1920px; */
+  /* min-width: calc(100vh - 17px); */
   height: 100vh;
+
   background-color: var(--background-color-light);
   transition: 
     background-color 250ms ease-in-out;

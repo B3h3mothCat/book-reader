@@ -134,14 +134,17 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
 // Styled Components
 
 const Div_Container = styled.div`
-  width: 20%;
-  background-color: var(--background-module-light);
-  border-radius: 5px;
+    width: 30%;
+    background-color: var(--background-module-light);
+    border-radius: 5px;
+    height: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 `;
 
 const Div_Section = styled.div`
   border-bottom: 1px gray solid;
-  padding: 10%;
+  padding: 5%;
 `;
 
 const Div_InputGroup = styled.div`
@@ -152,14 +155,17 @@ const Div_InputGroup = styled.div`
 
 const Input_Field = styled.input`
   outline: none;
-  width: 80px;
+  width: 100%;
+  max-width: 80px; 
+  padding: 5px; 
+  background-color: #f0efeeeb;
 `;
 
 const Div_ButtonGroup = styled.div`
   padding-top: 5%;
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 7%;
   place-items: center;
 
   button {
@@ -171,7 +177,16 @@ const Div_ButtonGroup = styled.div`
     font-family: inherit;
     cursor: pointer;
     transition: border-color 0.25s;
+    padding: 5px; 
+    transition: color 0.3s ease, box-shadow 0.25s ease;
+    background-color: gray;
+
+    &:hover {
+        box-shadow: 0 0 10px rgba(223, 221, 221, 0.3);
+        /* color: #0056b3 */
+    }
   }
+
 `;
 
 const Label_CheckboxItem = styled.label`
