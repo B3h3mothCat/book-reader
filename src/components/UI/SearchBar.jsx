@@ -1,5 +1,6 @@
 import { useState } from "react"
 import styled from "styled-components"
+import searchIcon from "../../assets/img/search.svg"
 
 export default function SearchBar({ books, onSearch }) {
     const [query, setQuery] = useState('')
@@ -28,6 +29,9 @@ export default function SearchBar({ books, onSearch }) {
 
     return (
         <Div_SearchBarContainer>
+            <button onClick={handleSearch}>
+                <img src={searchIcon} alt="Search" />
+            </button>
             <input
                 type="text"
                 value={query}
@@ -35,7 +39,6 @@ export default function SearchBar({ books, onSearch }) {
                 onKeyDown={handleKeyDown}
                 placeholder="Search for a book..."
             />
-            <button onClick={handleSearch}>Find it!</button>
         </Div_SearchBarContainer>
     )
 }
@@ -45,10 +48,13 @@ const Div_SearchBarContainer = styled.div`
   background-color: var(--background-module-light);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+    display: flex;
+    width: 100%;
+
 
   input {
     margin-top: 1%;
-    width: 50%;
+    width: 93%;
     height: 30px;
     background-color: var(--background-module-light);
     border-radius: 5px;
@@ -58,15 +64,16 @@ const Div_SearchBarContainer = styled.div`
     padding: 1%;
 
     &:focus {
-      border-color: rgb(198, 198, 216);
+      border-color: var(--focus-color-light);
     }
   }
 
   button {
-    padding: 5px;
-    margin-left: 4px;
+    margin-top: 1%;
+    height: 30px;
     border-radius: 7px;
-    border: none;
-    background-color: #6fb2fa;
+    background-color: gray;
+    border: 1px solid grey;
+    width: 30px;
   }
 `

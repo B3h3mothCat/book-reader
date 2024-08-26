@@ -46,7 +46,7 @@ const Div_Container = styled.div`
     color: var(--primary-text-color-light);
 
         &:hover {
-        color: #f71f79;
+        color: var(--focus-color-light)
         }
 
   }

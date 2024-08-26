@@ -92,11 +92,11 @@ export default function ReaderScreen({ file, chapters, title: initialTitle }) {
 }
 
 const Div_InitialWrapper = styled.div`
-     display: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    width: calc(100vw - 17px); // temp solution
+    width: var(--container-width); // temp solution
     background-color: var(--background-module-light); 
 `
 const Div_TextWrapper = styled.div`

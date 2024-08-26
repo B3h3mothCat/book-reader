@@ -6,36 +6,34 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  width: 100%;
+  height: 100vh;
+  line-height: 1.5;
 
   text-align: center;
   box-sizing: border-box;
   color: var(--primary-text-color-light);
-  line-height: 1.5;
+  background-color: var(--background-color-light);
+  /* transition: 
+    background-color 250ms ease-in-out; */
 
+  --container-width: calc(100vw - 17px);
+  
   --background-color-light: rgb(242,242,243); 
-  /* Default light background color */
   --background-color-dark: rgb(20, 20, 19);
-  /* Dark theme background color */
 
   --primary-text-color-light: #0a0a0a;
   --primary-text-color-dark: rgb(145,145,145);
   
-  --toggle-bg: #f0eb9d;
-  --toggle-fg: #ffd000;
-
   --background-module-light: rgb(255,255,255);
   --background-module-dark: rgb(28,28,28);
 
   --reader-background-light: rgb(255,255,255);
   --reader-background-dark: rgb(28,28,28);
 
-  width: 100%;
-  /* min-width: calc(100vh - 17px); */
-  height: 100vh;
-
-  background-color: var(--background-color-light);
-  transition: 
-    background-color 250ms ease-in-out;
+  --focus-color-light: #f71f79;;
+  --focus-color-dark: #6fb2fa;
 }
 
 
@@ -45,6 +43,7 @@
   --primary-text-color-light: var(--primary-text-color-dark);
   --background-module-light: var(--background-module-dark);
   --reader-background-light: var(--reader-background-dark);
+  --focus-color-light: var(--focus-color-dark);
 
 }
 

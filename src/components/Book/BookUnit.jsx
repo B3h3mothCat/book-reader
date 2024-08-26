@@ -36,7 +36,8 @@ const Div_BookUnit = styled.div`
     transition: background-color 0.3s ease, box-shadow 0.25s ease;
 
   &:hover {
-    box-shadow: 0 0 10px rgba(223, 221, 221, 0.479);
+    /* box-shadow: 0 0 10px rgba(223, 221, 221, 0.479); */
+    box-shadow: 0 0 10px var(--focus-color-light);
   }
 
     img {

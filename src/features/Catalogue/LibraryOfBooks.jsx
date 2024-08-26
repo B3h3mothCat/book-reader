@@ -68,18 +68,18 @@ const Div_CatalogContainer = styled.div`
     background-color: var(--background-color-light);
     gap: 20px;
     overflow-x: hidden;
-    min-width: calc(100vw - 17px);
+    min-width: var(--container-width);
 `;
 
 const Div_BookList = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.3em;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     max-width: 920px;
-    /* padding: 1%; */
     background-color: var(--background-module-light);
     height: 100%;
     overflow-x: hidden;
+    gap: 10px;
+    padding: 10px;
 `;
 
 const Div_BookListModal = styled.div`
