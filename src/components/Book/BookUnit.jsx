@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { useState } from "react";
+import { useState, useRef } from "react";
+import PropTypes from 'prop-types';
 
 export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave = () => { } }) {
     const [hoverTimeout, setHoverTimeout] = useState(null);
+    const bookRef = useRef(null);
 
 
     const handleMouseEnter = (event) => {
@@ -11,12 +13,17 @@ export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave 
             clearTimeout(hoverTimeout);
         }
 
-        const timer = setTimeout(() => {
-            event.stopPropagation();
-            onMouseEnter();
-        }, 500);
+        const rect = bookRef.current?.getBoundingClientRect(); // Ensure rect is defined
 
-        setHoverTimeout(timer);
+        if (rect) {
+            // Delay to avoid immediate trigger
+            const timer = setTimeout(() => {
+                // event.stopPropagation();
+                onMouseEnter(book, rect); // Pass book and rect
+            }, 500);
+
+            setHoverTimeout(timer);
+        }
     };
 
     const handleMouseLeave = () => {
@@ -25,6 +32,7 @@ export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave 
         }
         onMouseLeave();
     };
+
 
     return (
         <Div_BookUnit
@@ -38,8 +46,10 @@ export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave 
                     description: book.description,
                     book: book,
                 }}
-                onMouseEnter={onMouseEnter ? handleMouseEnter : undefined} // Attach handler only if onMouseEnter is provided
-                onMouseLeave={onMouseLeave ? handleMouseLeave : undefined} // Attach handler only if onMouseLeave is provided
+                ref={bookRef}
+                // Attach handlers only if provided
+                onMouseEnter={onMouseEnter ? handleMouseEnter : undefined}
+                onMouseLeave={onMouseLeave ? handleMouseLeave : undefined}
             >
                 <img
                     src={book.picture}
@@ -48,7 +58,6 @@ export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave 
                 {book.title}
             </Link>
         </Div_BookUnit>
-
     )
 }
 
@@ -83,3 +92,9 @@ const Div_BookUnit = styled.div`
     width: 100%; 
     }
 `
+
+BookUnit.propTypes = {
+    book: PropTypes.object.isRequired,
+    onMouseEnter: PropTypes.func.isRequired,
+    onMouseLeave: PropTypes.func.isRequired
+};

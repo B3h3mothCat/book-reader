@@ -16,38 +16,62 @@ export default function LibraryOfBooks() {
     const { filteredBooks, applyFilters, clearFilters } = useBookFilter(booksData);
     const [isSearchOpen, setIsSearchOpen] = useState(false)
 
-    const [hoveredBook, setHoveredBook] = useState(null);
+    const [hoveredBook, setHoveredBook] = useState([]);
+    const [showInfo, setShowInfo] = useState(false)
+    const [descriptionPosition, setDescriptionPosition] = useState({ top: 0, left: 0 });
 
     function handleSearchResult(result) {
         setSearchReasult(result)
         setIsSearchOpen(true)
     }
 
+    function handleBookHover(book, rect) {
+        if (rect) {
+            setHoveredBook(book);
+            setShowInfo(true);
+            setDescriptionPosition({
+                top: rect.top + window.scrollY + rect.height,
+                left: rect.left + window.scrollX
+            });
+        }
+    }
 
-    // console.log(hoveredBook?.title);
+    function handleBookUnhover() {
+        setHoveredBook([])
+        setShowInfo(false)
+    }
 
 
     return (
         <>
 
             <Div_CatalogContainer >
+                {showInfo && (
+                    <div style={{
+                        position: 'absolute',
+                        height: '500px',
+                        width: '500px',
+                        top: `${descriptionPosition.top}px`,
+                        left: `${descriptionPosition.left}px`,
+                        background: 'white',
+                        zIndex: '300',
+                    }}>
+                        <p>{hoveredBook.description}</p>
+                    </div>
+                )}
                 <Div_BookListContainer>
                     <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
                     <Div_BookList
-                        style={{ position: 'relative' }}
                     >
                         {filteredBooks.map((book, index) => (
                             <BookUnit
                                 book={book}
                                 key={index}
-                            // onMouseEnter={() => setHoveredBook(book)}
-                            // onMouseLeave={() => setHoveredBook(null)}
+                                onMouseEnter={() => handleBookHover(book)}
+                                onMouseLeave={() => handleBookUnhover([])}
                             />
                         ))}
                     </Div_BookList>
-                    {hoveredBook && (
-                        <BookModal book={hoveredBook} />
-                    )}
                 </Div_BookListContainer>
                 <BookFilter onApplyFilters={applyFilters} onClearFilters={clearFilters} />
             </Div_CatalogContainer>
