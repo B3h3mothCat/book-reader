@@ -1,10 +1,35 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { useState } from "react";
 
-export default function BookUnit({ book }) {
+export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave = () => { } }) {
+    const [hoverTimeout, setHoverTimeout] = useState(null);
+
+
+    const handleMouseEnter = (event) => {
+        if (hoverTimeout) {
+            clearTimeout(hoverTimeout);
+        }
+
+        const timer = setTimeout(() => {
+            event.stopPropagation();
+            onMouseEnter();
+        }, 500);
+
+        setHoverTimeout(timer);
+    };
+
+    const handleMouseLeave = () => {
+        if (hoverTimeout) {
+            clearTimeout(hoverTimeout);
+        }
+        onMouseLeave();
+    };
+
     return (
-        <Div_BookUnit>
+        <Div_BookUnit
 
+        >
             <Link
                 to={`/book-front/${encodeURIComponent(book.title)}`}
                 state={{
@@ -13,8 +38,13 @@ export default function BookUnit({ book }) {
                     description: book.description,
                     book: book,
                 }}
+                onMouseEnter={onMouseEnter ? handleMouseEnter : undefined} // Attach handler only if onMouseEnter is provided
+                onMouseLeave={onMouseLeave ? handleMouseLeave : undefined} // Attach handler only if onMouseLeave is provided
             >
-                <img src={book.picture} alt={book.title} />
+                <img
+                    src={book.picture}
+                    alt={book.title}
+                />
                 {book.title}
             </Link>
         </Div_BookUnit>
@@ -45,6 +75,7 @@ const Div_BookUnit = styled.div`
     width: 160px;
     object-fit: cover; 
     border-radius: 10px;
+    pointer-events: none; /* Ignore pointer events on this element */
     }  
 
     a {

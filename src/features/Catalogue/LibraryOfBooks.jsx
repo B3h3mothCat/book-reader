@@ -7,6 +7,8 @@ import { useBookFilter } from "./useBookFilter";
 import useBooksData from "../../Hooks/useBooksData";
 import styled from "styled-components";
 
+import BookModal from "./BookModal";
+
 export default function LibraryOfBooks() {
 
     const { booksData, loading, error } = useBooksData() // fetching from fake API
@@ -14,22 +16,38 @@ export default function LibraryOfBooks() {
     const { filteredBooks, applyFilters, clearFilters } = useBookFilter(booksData);
     const [isSearchOpen, setIsSearchOpen] = useState(false)
 
+    const [hoveredBook, setHoveredBook] = useState(null);
+
     function handleSearchResult(result) {
         setSearchReasult(result)
         setIsSearchOpen(true)
     }
 
+
+    // console.log(hoveredBook?.title);
+
+
     return (
         <>
 
-            <Div_CatalogContainer>
+            <Div_CatalogContainer >
                 <Div_BookListContainer>
                     <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
-                    <Div_BookList>
+                    <Div_BookList
+                        style={{ position: 'relative' }}
+                    >
                         {filteredBooks.map((book, index) => (
-                            <BookUnit book={book} key={index} />
+                            <BookUnit
+                                book={book}
+                                key={index}
+                            // onMouseEnter={() => setHoveredBook(book)}
+                            // onMouseLeave={() => setHoveredBook(null)}
+                            />
                         ))}
                     </Div_BookList>
+                    {hoveredBook && (
+                        <BookModal book={hoveredBook} />
+                    )}
                 </Div_BookListContainer>
                 <BookFilter onApplyFilters={applyFilters} onClearFilters={clearFilters} />
             </Div_CatalogContainer>
