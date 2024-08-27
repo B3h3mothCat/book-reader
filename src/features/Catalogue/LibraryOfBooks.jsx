@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 // import { BOOKS_DATA_RU } from "../../mock/data_ru"
 import BookUnit from '../../components/Book/BookUnit'
 import SearchBar from "../../components/ui/SearchBar";
@@ -7,10 +7,8 @@ import { useBookFilter } from "./useBookFilter";
 import useBooksData from "../../Hooks/useBooksData";
 import styled from "styled-components";
 
-import BookModal from "./BookModal";
 
 export default function LibraryOfBooks() {
-
     const { booksData, loading, error } = useBooksData() // fetching from fake API
     const [searchResult, setSearchReasult] = useState([])
     const { filteredBooks, applyFilters, clearFilters } = useBookFilter(booksData);
@@ -18,22 +16,15 @@ export default function LibraryOfBooks() {
 
     const [hoveredBook, setHoveredBook] = useState([]);
     const [showInfo, setShowInfo] = useState(false)
-    const [descriptionPosition, setDescriptionPosition] = useState({ top: 0, left: 0 });
 
     function handleSearchResult(result) {
         setSearchReasult(result)
         setIsSearchOpen(true)
     }
 
-    function handleBookHover(book, rect) {
-        if (rect) {
-            setHoveredBook(book);
-            setShowInfo(true);
-            setDescriptionPosition({
-                top: rect.top + window.scrollY + rect.height,
-                left: rect.left + window.scrollX
-            });
-        }
+    function handleBookHover(book) {
+        setHoveredBook(book);
+        setShowInfo(true);
     }
 
     function handleBookUnhover() {
@@ -42,23 +33,11 @@ export default function LibraryOfBooks() {
     }
 
 
+
     return (
         <>
 
             <Div_CatalogContainer >
-                {showInfo && (
-                    <div style={{
-                        position: 'absolute',
-                        height: '500px',
-                        width: '500px',
-                        top: `${descriptionPosition.top}px`,
-                        left: `${descriptionPosition.left}px`,
-                        background: 'white',
-                        zIndex: '300',
-                    }}>
-                        <p>{hoveredBook.description}</p>
-                    </div>
-                )}
                 <Div_BookListContainer>
                     <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
                     <Div_BookList
@@ -73,7 +52,20 @@ export default function LibraryOfBooks() {
                         ))}
                     </Div_BookList>
                 </Div_BookListContainer>
-                <BookFilter onApplyFilters={applyFilters} onClearFilters={clearFilters} />
+
+                <Div_FilterContainer>
+                    <div className={showInfo ? 'hidden' : ''}>
+                        <BookFilter
+                            onApplyFilters={applyFilters}
+                            onClearFilters={clearFilters}
+                        />
+                    </div>
+
+                    {showInfo && (
+                        <p>{hoveredBook.description}</p>
+                    )}
+                </Div_FilterContainer>
+
             </Div_CatalogContainer>
 
 
@@ -141,4 +133,17 @@ const Div_BookListContainer = styled.div`
         display: flex;
         flex-direction: column; 
         max-width: 65%;
+`;
+
+const Div_FilterContainer = styled.div`
+    width: 30%;
+    max-width: 333px;
+    background-color: var(--background-module-light);
+    border-radius: 5px;
+    height: 100%;
+    margin-bottom: 1%;
+    
+    .hidden {
+        display: none; 
+    }
 `;

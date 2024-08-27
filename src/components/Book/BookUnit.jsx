@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { useState, useRef } from "react";
-import PropTypes from 'prop-types';
+import { useState } from "react";
 
 export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave = () => { } }) {
     const [hoverTimeout, setHoverTimeout] = useState(null);
-    const bookRef = useRef(null);
 
 
     const handleMouseEnter = (event) => {
@@ -13,18 +11,13 @@ export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave 
             clearTimeout(hoverTimeout);
         }
 
-        const rect = bookRef.current?.getBoundingClientRect(); // Ensure rect is defined
+        const timer = setTimeout(() => {
+            onMouseEnter(book);
+        }, 500);
 
-        if (rect) {
-            // Delay to avoid immediate trigger
-            const timer = setTimeout(() => {
-                // event.stopPropagation();
-                onMouseEnter(book, rect); // Pass book and rect
-            }, 500);
+        setHoverTimeout(timer);
+    }
 
-            setHoverTimeout(timer);
-        }
-    };
 
     const handleMouseLeave = () => {
         if (hoverTimeout) {
@@ -46,7 +39,6 @@ export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave 
                     description: book.description,
                     book: book,
                 }}
-                ref={bookRef}
                 // Attach handlers only if provided
                 onMouseEnter={onMouseEnter ? handleMouseEnter : undefined}
                 onMouseLeave={onMouseLeave ? handleMouseLeave : undefined}
@@ -92,9 +84,3 @@ const Div_BookUnit = styled.div`
     width: 100%; 
     }
 `
-
-BookUnit.propTypes = {
-    book: PropTypes.object.isRequired,
-    onMouseEnter: PropTypes.func.isRequired,
-    onMouseLeave: PropTypes.func.isRequired
-};

@@ -59,7 +59,7 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
     }
 
     return (
-        <Div_Container>
+        <>
             <Div_Section>
                 <h3>{t('bookFilterGenres.title')}</h3>
                 {genres.map((genre) => (
@@ -127,7 +127,10 @@ export default function BookFilter({ onApplyFilters, onClearFilters }) {
                 <button onClick={handleApply}>{t('bookFilter.apply')}</button>
                 <button onClick={handleClear}>{t('bookFilter.clearAll')}</button>
             </Div_ButtonGroup>
-        </Div_Container>
+        </>
+        // <Div_Container>
+
+        // </Div_Container>
     )
 }
 
