@@ -83,4 +83,36 @@ const Div_BookUnit = styled.div`
     height: 100%; 
     width: 100%; 
     }
+
+    @media (max-width: 1200px) {
+        height: 270px; 
+        width: 160px; 
+
+        img {
+            height: 200px; 
+            width: 140px; 
+        }
+    }
+
+    @media (max-width: 768px) {
+        height: 220px; 
+        width: 140px; 
+        padding: 8px; 
+
+        img {
+            height: 180px; 
+            width: 120px; 
+        }
+    }
+
+    @media (max-width: 480px) {
+        height: 200px; 
+        width: 120px; 
+        padding: 5px; 
+
+        img {
+            height: 150px; 
+            width: 100px; 
+        }
+    }
 `

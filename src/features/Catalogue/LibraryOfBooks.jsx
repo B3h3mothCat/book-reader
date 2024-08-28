@@ -82,27 +82,38 @@ export default function LibraryOfBooks() {
     );
 }
 
-const Div_ModalOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-`;
 
 const Div_CatalogContainer = styled.div`
-    margin-top: 1%;
-    display: flex;
-    justify-content: center;
-    background-color: var(--background-color-light);
-    gap: 20px;
-    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 920px 333px;
     min-width: var(--container-width);
+    background-color: var(--background-color-light);
+    margin-top: 1%;
+    padding-left: 10%;
+    gap: 20px;
+
+
+    @media (max-width: 1430px) {
+        grid-template-columns: 870px 260px; 
+        padding-left: 5%; 
+    }
+    @media (max-width: 1228px) {
+        /* grid-template-columns: 760px 270px;  */
+        grid-template-columns: 65% 25%; 
+        padding-left: 5%; 
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 620px 220px; 
+        padding-left: 2%; 
+        gap: 10px; 
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 320px 160px; 
+        padding-left: 1%; 
+        gap: 5px; 
+    }
 `;
 
 const Div_BookList = styled.div`
@@ -110,10 +121,59 @@ const Div_BookList = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     max-width: 920px;
     background-color: var(--background-module-light);
-    height: 100%;
-    overflow-x: hidden;
+    height:100%;
     gap: 10px;
     padding: 10px;
+    overflow-y: auto;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+        gap: 5px;
+        padding: 5px;
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 2px;
+        padding: 2px;
+    }
+`;
+
+
+const Div_BookListContainer = styled.div`
+        display: flex;
+        flex-direction: column; 
+
+        @media (max-width: 1200px) {
+        /* placeholder */
+    }
+    
+`;
+
+const Div_FilterContainer = styled.div`
+    background-color: var(--background-module-light);
+    border-radius: 5px;
+    position: sticky;
+    top: 0;
+
+    height: 90vh;
+    overflow-y: hidden;
+
+    .hidden {
+        display: none; 
+    }
+
+    @media (max-width: 1200px) {
+
+    }
+
+    @media (max-width: 768px) {
+
+    }
+
+    @media (max-width: 480px) {
+
+    }
 `;
 
 const Div_BookListModal = styled.div`
@@ -129,21 +189,15 @@ const Div_BookListModal = styled.div`
     gap: 5px;
 `;
 
-const Div_BookListContainer = styled.div`
-        display: flex;
-        flex-direction: column; 
-        max-width: 65%;
-`;
-
-const Div_FilterContainer = styled.div`
-    width: 30%;
-    max-width: 333px;
-    background-color: var(--background-module-light);
-    border-radius: 5px;
+const Div_ModalOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    margin-bottom: 1%;
-    
-    .hidden {
-        display: none; 
-    }
+    background-color: rgba(0, 0, 0, 0.6); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 `;
