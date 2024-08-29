@@ -35,7 +35,9 @@ export default function LibraryOfBooks() {
 
 
     return (
-        <Div_CatalogContainer >
+        <Div_CatalogContainer
+            className="custom-scrollbar"
+        >
             <Div_BookListContainer>
                 <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
                 <Div_BookList
@@ -85,9 +87,11 @@ const Div_CatalogContainer = styled.div`
     background-color: var(--background-color-light);
     padding-left: 10%;
     gap: 20px;
-    overflow: s;
+    /* overflow: hidden; */
+    overflow: auto;
     height: 100vh;
-    padding-top: 65px;
+    padding-top: calc(var(--navbar-height) + 15px);
+
 
 
     @media (max-width: 1430px) {
@@ -142,7 +146,7 @@ const Div_BookList = styled.div`
 const Div_BookListContainer = styled.div`
         display: flex;
         flex-direction: column; 
-        overflow: auto;
+        /* overflow: auto; */
         height: 100vh;
         background-color: var(--background-module-light);
 

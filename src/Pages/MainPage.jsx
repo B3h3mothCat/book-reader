@@ -45,14 +45,15 @@ export default function MainPage() {
 }
 
 const Div_HomePage = styled.div`
-background-color: var(--background-color);
-width: 100vw;
+    padding-top: calc(var(--navbar-height) + 15px);
+    background-color: var(--background-color);
+    width: 100vw;
 `;
 const Div_Dashboard = styled.div`
-width: 100%;
-display: flex;
-justify-content: center;
-flex-direction: column;
-align-items: center;
-margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
 `;

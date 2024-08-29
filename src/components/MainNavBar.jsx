@@ -28,7 +28,7 @@ export default function MainNavBar() {
 
 const Div_Container = styled.div`
   border-bottom: 2px gray solid;
-  height: 3em;
+  height: var(--navbar-height);
   width: 100%;
   display: flex;
   justify-content: space-around;

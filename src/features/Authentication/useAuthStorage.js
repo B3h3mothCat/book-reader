@@ -4,7 +4,7 @@ function useAuthStorage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userRole, setUserRole] = useState('guest');
     const [username, setUsername] = useState('');
-    const [currentUser, setCurrentUser] = useState(null);
+    const [currentUser, setCurrentUser] = useState({ bookCollections: {} });
 
     useEffect(() => {
         const storedIsLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -13,10 +13,11 @@ function useAuthStorage() {
         const storedCurrentUser = localStorage.getItem('currentUser');
 
         if (storedIsLoggedIn && storedCurrentUser) {
+            const user = JSON.parse(storedCurrentUser);
             setIsLoggedIn(storedIsLoggedIn);
-            setUserRole(storedUserRole || 'guest');
-            setUsername(storedUsername || '');
-            setCurrentUser(JSON.parse(storedCurrentUser));
+            setUserRole(user.role || 'guest');
+            setUsername(user.username || '');
+            setCurrentUser(user);
         }
     }, []);
 
@@ -24,19 +25,19 @@ function useAuthStorage() {
         setIsLoggedIn(true);
         setUserRole(user.role || 'user');
         setUsername(user.username);
-        setCurrentUser(user);
+        setCurrentUser({ ...user, bookCollections: user.bookCollections || {} });
 
         localStorage.setItem('isLoggedIn', true);
         localStorage.setItem('userRole', user.role || 'user');
         localStorage.setItem('username', user.username);
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('currentUser', JSON.stringify({ ...user, bookCollections: user.bookCollections || {} }));
     };
 
     const clearUserData = () => {
         setIsLoggedIn(false);
         setUserRole('guest');
         setUsername('');
-        setCurrentUser(null);
+        setCurrentUser({ bookCollections: {} });
 
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('userRole');

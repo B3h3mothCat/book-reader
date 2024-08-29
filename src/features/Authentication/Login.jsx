@@ -78,5 +78,6 @@ export default function Login() {
 }
 
 const Div_Container = styled.div`
+    padding-top: calc(var(--navbar-height) + 15px);
     width: 100vw; 
 `;

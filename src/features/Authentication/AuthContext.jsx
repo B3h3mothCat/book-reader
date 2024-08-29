@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { ENDPOINTS } from "../../utils/apiEndpoints";
 import useAuthStorage from './useAuthStorage'
 
-
+const DEFAULT_COLLECTION = 'Reading';
 const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext)
@@ -44,11 +44,12 @@ export default function AuthProvider({ children }) {
 
 
     // BOOKS RELATED LOGIC <>
-    function updateUserBooksId(updatedBooksId) {
+    function updateUserBooksId(updatedBookCollections) {
         if (currentUser) {
             const updatedUser = {
                 ...currentUser,
-                booksId: updatedBooksId,  // we passing only booksId in functions below
+                // booksId: updatedBooksId, 
+                bookCollections: updatedBookCollections,
             };
 
             fetch(ENDPOINTS.UPDATE_USER_BY_ID(currentUser.id), {
@@ -66,22 +67,46 @@ export default function AuthProvider({ children }) {
         }
     }
 
-    function addBookToUser(book) {
+    function addBookToUser(book, collection = DEFAULT_COLLECTION) {
+        // if (currentUser) {
+        //     // Check if the book is already in the user's booksId array
+        //     if (!currentUser.booksId.includes(book.id)) {
+        //         const updatedBooksId = [...currentUser.booksId, book.id];
+        //         updateUserBooksId(updatedBooksId);
+        //     } else {
+        //         alert("Book is already in your collection.");
+        //     }
+        // }
+
         if (currentUser) {
-            // Check if the book is already in the user's booksId array
-            if (!currentUser.booksId.includes(book.id)) {
-                const updatedBooksId = [...currentUser.booksId, book.id];
-                updateUserBooksId(updatedBooksId);
+            const updatedCollections = { ...currentUser.bookCollections };
+            // Ensure the collection exists
+            if (!updatedCollections[collection]) {
+                updatedCollections[collection] = [];
+            }
+            // Check if the book is already in the collection
+            if (!updatedCollections[collection].includes(book.id)) {
+                updatedCollections[collection].push(book.id);
+                updateUserBooksId(updatedCollections);
             } else {
-                alert("Book is already in your collection.");
+                alert("Book is already in this collection.");
             }
         }
+
     }
 
-    function delBookFromUser(book) {
+    function delBookFromUser(book, collection) {
+        // if (currentUser) {
+        //     const updatedBooksId = currentUser.booksId.filter(id => id !== book.id);
+        //     updateUserBooksId(updatedBooksId);
+        // }
+
         if (currentUser) {
-            const updatedBooksId = currentUser.booksId.filter(id => id !== book.id);
-            updateUserBooksId(updatedBooksId);
+            const updatedCollections = { ...currentUser.bookCollections };
+            if (updatedCollections[collection]) {
+                updatedCollections[collection] = updatedCollections[collection].filter(id => id !== book.id);
+                updateUserBooksId(updatedCollections);
+            }
         }
     }
     // BOOKS RELATED LOGIC </>
@@ -95,7 +120,7 @@ export default function AuthProvider({ children }) {
             logout,
             addBookToUser,
             delBookFromUser,
-            booksId: currentUser?.booksId
+            booksId: currentUser?.bookCollections
         }}
         >
             {children}

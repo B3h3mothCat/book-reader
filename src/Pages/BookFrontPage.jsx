@@ -79,6 +79,7 @@ export default function BookFrontPage() {
 }
 
 const Div_Container = styled.div`
+    padding-top: calc(var(--navbar-height) + 15px);
     display: flex;
     justify-content: center;
     align-items: center;

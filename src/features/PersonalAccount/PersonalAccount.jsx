@@ -46,6 +46,7 @@ export default function PersonalAccount() {
 
 const Div_AccContainer = styled.div`
     width: 100vw;
+    padding-top: calc(var(--navbar-height) + 15px);
 `;
 
 const Div_AccBar = styled.div`
