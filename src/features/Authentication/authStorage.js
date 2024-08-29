@@ -33,3 +33,8 @@ export function loadUserFromStorage() {
         currentUser: null,
     };
 }
+
+export function getCurrentUserFromStorage() {
+    const { currentUser } = loadUserFromStorage();
+    return currentUser;
+}

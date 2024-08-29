@@ -17,7 +17,8 @@ export default function AuthProvider({ children }) {
         currentUser,
         saveUserData,
         clearUserData,
-        setCurrentUser,  // setter from the custom hook
+        setCurrentUser,
+        loadUserFromStorage,  // setter from the custom hook
     } = useAuthStorage();
 
     function login(username, password) {
@@ -77,7 +78,7 @@ export default function AuthProvider({ children }) {
         //         alert("Book is already in your collection.");
         //     }
         // }
-
+        const currentUser = loadUserFromStorage().currentUser;
         if (currentUser) {
             const updatedCollections = { ...currentUser.bookCollections };
             // Ensure the collection exists
@@ -120,7 +121,8 @@ export default function AuthProvider({ children }) {
             logout,
             addBookToUser,
             delBookFromUser,
-            booksId: currentUser?.bookCollections
+            // bookCollections: currentUser?.bookCollections,
+            currentUser
         }}
         >
             {children}
