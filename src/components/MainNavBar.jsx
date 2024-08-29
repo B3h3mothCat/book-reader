@@ -37,6 +37,8 @@ const Div_Container = styled.div`
   z-index: 11;
   flex-wrap: wrap;
 
+  position: fixed;
+
   a {
     height: 100%;
     display: flex;

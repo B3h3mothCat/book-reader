@@ -35,39 +35,34 @@ export default function LibraryOfBooks() {
 
 
     return (
-        <>
-
-            <Div_CatalogContainer >
-                <Div_BookListContainer>
-                    <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
-                    <Div_BookList
-                    >
-                        {filteredBooks.map((book, index) => (
-                            <BookUnit
-                                book={book}
-                                key={index}
-                                onMouseEnter={() => handleBookHover(book)}
-                                onMouseLeave={() => handleBookUnhover([])}
-                            />
-                        ))}
-                    </Div_BookList>
-                </Div_BookListContainer>
-
-                <Div_FilterContainer>
-                    <div className={showInfo ? 'hidden' : ''}>
-                        <BookFilter
-                            onApplyFilters={applyFilters}
-                            onClearFilters={clearFilters}
+        <Div_CatalogContainer >
+            <Div_BookListContainer>
+                <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
+                <Div_BookList
+                >
+                    {filteredBooks.map((book, index) => (
+                        <BookUnit
+                            book={book}
+                            key={index}
+                            onMouseEnter={() => handleBookHover(book)}
+                            onMouseLeave={() => handleBookUnhover([])}
                         />
-                    </div>
+                    ))}
+                </Div_BookList>
+            </Div_BookListContainer>
 
-                    {showInfo && (
-                        <p>{hoveredBook.description}</p>
-                    )}
-                </Div_FilterContainer>
+            <Div_FilterContainer>
+                <div className={showInfo ? 'hidden' : ''}>
+                    <BookFilter
+                        onApplyFilters={applyFilters}
+                        onClearFilters={clearFilters}
+                    />
+                </div>
 
-            </Div_CatalogContainer>
-
+                {showInfo && (
+                    <p>{hoveredBook.description}</p>
+                )}
+            </Div_FilterContainer>
 
             {isSearchOpen && (
                 <Div_ModalOverlay onClick={() => setIsSearchOpen(false)}>
@@ -78,7 +73,7 @@ export default function LibraryOfBooks() {
                     </Div_BookListModal>
                 </Div_ModalOverlay>
             )}
-        </>
+        </Div_CatalogContainer>
     );
 }
 
@@ -88,9 +83,11 @@ const Div_CatalogContainer = styled.div`
     grid-template-columns: 920px 333px;
     min-width: var(--container-width);
     background-color: var(--background-color-light);
-    margin-top: 1%;
     padding-left: 10%;
     gap: 20px;
+    overflow: s;
+    height: 100vh;
+    padding-top: 65px;
 
 
     @media (max-width: 1430px) {
@@ -98,7 +95,7 @@ const Div_CatalogContainer = styled.div`
         padding-left: 5%; 
     }
     @media (max-width: 1228px) {
-        /* grid-template-columns: 760px 270px;  */
+        grid-template-columns: 760px 270px;  //this causing NavBar shrink ??
         grid-template-columns: 65% 25%; 
         padding-left: 5%; 
     }
@@ -121,11 +118,13 @@ const Div_BookList = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     max-width: 920px;
     background-color: var(--background-module-light);
-    height:100%;
+    height:100;
     gap: 10px;
     padding: 10px;
-    overflow-y: auto;
 
+    /* overflow: hidden; */
+
+    
     @media (max-width: 768px) {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
         gap: 5px;
@@ -143,6 +142,9 @@ const Div_BookList = styled.div`
 const Div_BookListContainer = styled.div`
         display: flex;
         flex-direction: column; 
+        overflow: auto;
+        height: 100vh;
+        background-color: var(--background-module-light);
 
         @media (max-width: 1200px) {
         /* placeholder */
@@ -157,7 +159,8 @@ const Div_FilterContainer = styled.div`
     top: 0;
 
     height: 90vh;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
+    overflow: auto;
 
     .hidden {
         display: none; 
