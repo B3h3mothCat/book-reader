@@ -3,7 +3,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { ENDPOINTS } from "../../utils/apiEndpoints";
 import useAuthStorage from './useAuthStorage'
 
-const DEFAULT_COLLECTION = 'Reading';
 const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext)
@@ -18,7 +17,6 @@ export default function AuthProvider({ children }) {
         saveUserData,
         clearUserData,
         setCurrentUser,
-        loadUserFromStorage,  // setter from the custom hook
     } = useAuthStorage();
 
     function login(username, password) {
@@ -45,12 +43,11 @@ export default function AuthProvider({ children }) {
 
 
     // BOOKS RELATED LOGIC <>
-    function updateUserBooksId(updatedBookCollections) {
+    function updateUserBooksId(updatedBooksId) {
         if (currentUser) {
             const updatedUser = {
                 ...currentUser,
-                // booksId: updatedBooksId, 
-                bookCollections: updatedBookCollections,
+                booksId: updatedBooksId,
             };
 
             fetch(ENDPOINTS.UPDATE_USER_BY_ID(currentUser.id), {
@@ -63,51 +60,27 @@ export default function AuthProvider({ children }) {
                 .then(response => response.json())
                 .then(data => {
                     setCurrentUser(data)
+                    saveUserData(data) // local storage save
                 })
                 .catch(error => console.error('Error updating user books:', error));
         }
     }
 
-    function addBookToUser(book, collection = DEFAULT_COLLECTION) {
-        // if (currentUser) {
-        //     // Check if the book is already in the user's booksId array
-        //     if (!currentUser.booksId.includes(book.id)) {
-        //         const updatedBooksId = [...currentUser.booksId, book.id];
-        //         updateUserBooksId(updatedBooksId);
-        //     } else {
-        //         alert("Book is already in your collection.");
-        //     }
-        // }
-        const currentUser = loadUserFromStorage().currentUser;
+    function addBookToUser(book) {
         if (currentUser) {
-            const updatedCollections = { ...currentUser.bookCollections };
-            // Ensure the collection exists
-            if (!updatedCollections[collection]) {
-                updatedCollections[collection] = [];
-            }
-            // Check if the book is already in the collection
-            if (!updatedCollections[collection].includes(book.id)) {
-                updatedCollections[collection].push(book.id);
-                updateUserBooksId(updatedCollections);
+            if (!currentUser.booksId.includes(book.id)) {
+                const updatedBooksId = [...currentUser.booksId, book.id];
+                updateUserBooksId(updatedBooksId);
             } else {
-                alert("Book is already in this collection.");
+                alert("Book is already in your collection.");
             }
         }
-
     }
 
-    function delBookFromUser(book, collection) {
-        // if (currentUser) {
-        //     const updatedBooksId = currentUser.booksId.filter(id => id !== book.id);
-        //     updateUserBooksId(updatedBooksId);
-        // }
-
+    function delBookFromUser(book) {
         if (currentUser) {
-            const updatedCollections = { ...currentUser.bookCollections };
-            if (updatedCollections[collection]) {
-                updatedCollections[collection] = updatedCollections[collection].filter(id => id !== book.id);
-                updateUserBooksId(updatedCollections);
-            }
+            const updatedBooksId = currentUser.booksId.filter(id => id !== book.id);
+            updateUserBooksId(updatedBooksId);
         }
     }
     // BOOKS RELATED LOGIC </>
@@ -121,8 +94,7 @@ export default function AuthProvider({ children }) {
             logout,
             addBookToUser,
             delBookFromUser,
-            // bookCollections: currentUser?.bookCollections,
-            currentUser
+            booksId: currentUser?.booksId,
         }}
         >
             {children}
