@@ -47,7 +47,6 @@ export default function AuthProvider({ children }) {
         if (currentUser) {
             const updatedUser = {
                 ...currentUser,
-                // booksId: updatedBooksId,
                 bookCollections: updatedBookCollections,
             };
 
@@ -61,28 +60,19 @@ export default function AuthProvider({ children }) {
                 .then(response => response.json())
                 .then(data => {
                     setCurrentUser(data)
-                    saveUserData(data) // local storage save
+                    saveUserData(data) // local storage update
                 })
                 .catch(error => console.error('Error updating user books:', error));
         }
     }
 
-    function addBookToUser(book) {
-        // if (currentUser) {
-        //     if (!currentUser.booksId.includes(book.id)) {
-        //         const updatedBooksId = [...currentUser.booksId, book.id];
-        //         updateUserBooksId(updatedBooksId);
-        //     } else {
-        //         alert("Book is already in your collection.");
-        //     }
-        // }
-
+    function addBookToUser(book, group) {
         if (currentUser) {
             const existingBook = currentUser.bookCollections.find(b => b.id === book.id);
             if (!existingBook) {
                 const newBookCollection = {
                     id: book.id,
-                    group: 'Reading', // Default or set this as needed
+                    group: group, // Default or set this as needed
                     bookmarks: [],
                 };
                 const updatedBookCollections = [...currentUser.bookCollections, newBookCollection];
@@ -94,11 +84,6 @@ export default function AuthProvider({ children }) {
     }
 
     function delBookFromUser(book) {
-        // if (currentUser) {
-        //     const updatedBooksId = currentUser.booksId.filter(id => id !== book.id);
-        //     updateUserBooks(updatedBooksId);
-        // }
-
         if (currentUser) {
             const updatedBookCollections = currentUser.bookCollections.filter(b => b.id !== book.id);
             updateUserBooks(updatedBookCollections);

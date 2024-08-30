@@ -5,6 +5,8 @@ import { useAuth } from "../features/Authentication/AuthContext";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components"
 
+import BookDropdown from "../components/BookDropdown";
+
 export default function BookFrontPage() {
     const { chapters, title, description, book } = useLocation().state;
     const [activeTab, setActiveTab] = useState('description')
@@ -23,8 +25,8 @@ export default function BookFrontPage() {
         });
     };
 
-    const handleAddToPersonalList = () => {
-        addBookToUser(book)
+    const handleAddToPersonalList = (group) => {
+        addBookToUser(book, group)
         // add some indication if done
     };
 
@@ -38,7 +40,11 @@ export default function BookFrontPage() {
                 <button onClick={handleStartReading}>{t('bookFrontPage.startReading')}</button>
 
                 {isLoggedIn && (
-                    <button onClick={handleAddToPersonalList}>{t('bookFrontPage.addBook')}</button>
+                    // <button onClick={handleAddToPersonalList}>{t('bookFrontPage.addBook')}</button>
+                    <>
+                        <h3>Book Management</h3>
+                        <BookDropdown onAddToPersonalList={handleAddToPersonalList}></BookDropdown>
+                    </>
                 )}
 
                 <div className="">Navbar for book tabs

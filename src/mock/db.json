@@ -15,17 +15,17 @@
       "bookCollections": [
         {
           "id": "1",
-          "group": "Reading",
-          "bookmarks": []
-        },
-        {
-          "id": "3",
-          "group": "Reading",
+          "group": "reading",
           "bookmarks": []
         },
         {
           "id": "9",
-          "group": "Reading",
+          "group": "reading",
+          "bookmarks": []
+        },
+        {
+          "id": "10",
+          "group": "inPlans",
           "bookmarks": []
         }
       ]
