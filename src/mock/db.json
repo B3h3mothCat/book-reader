@@ -12,15 +12,23 @@
         "6",
         "10"
       ],
-      "bookCollections": {
-        "Reading": [
-          "1",
-          "4",
-          "5",
-          "9",
-          "3"
-        ]
-      }
+      "bookCollections": [
+        {
+          "id": "1",
+          "group": "Reading",
+          "bookmarks": []
+        },
+        {
+          "id": "3",
+          "group": "Reading",
+          "bookmarks": []
+        },
+        {
+          "id": "9",
+          "group": "Reading",
+          "bookmarks": []
+        }
+      ]
     },
     {
       "id": "2",

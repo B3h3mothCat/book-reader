@@ -43,11 +43,12 @@ export default function AuthProvider({ children }) {
 
 
     // BOOKS RELATED LOGIC <>
-    function updateUserBooksId(updatedBooksId) {
+    function updateUserBooks(updatedBookCollections) {
         if (currentUser) {
             const updatedUser = {
                 ...currentUser,
-                booksId: updatedBooksId,
+                // booksId: updatedBooksId,
+                bookCollections: updatedBookCollections,
             };
 
             fetch(ENDPOINTS.UPDATE_USER_BY_ID(currentUser.id), {
@@ -67,10 +68,25 @@ export default function AuthProvider({ children }) {
     }
 
     function addBookToUser(book) {
+        // if (currentUser) {
+        //     if (!currentUser.booksId.includes(book.id)) {
+        //         const updatedBooksId = [...currentUser.booksId, book.id];
+        //         updateUserBooksId(updatedBooksId);
+        //     } else {
+        //         alert("Book is already in your collection.");
+        //     }
+        // }
+
         if (currentUser) {
-            if (!currentUser.booksId.includes(book.id)) {
-                const updatedBooksId = [...currentUser.booksId, book.id];
-                updateUserBooksId(updatedBooksId);
+            const existingBook = currentUser.bookCollections.find(b => b.id === book.id);
+            if (!existingBook) {
+                const newBookCollection = {
+                    id: book.id,
+                    group: 'Reading', // Default or set this as needed
+                    bookmarks: [],
+                };
+                const updatedBookCollections = [...currentUser.bookCollections, newBookCollection];
+                updateUserBooks(updatedBookCollections);
             } else {
                 alert("Book is already in your collection.");
             }
@@ -78,9 +94,14 @@ export default function AuthProvider({ children }) {
     }
 
     function delBookFromUser(book) {
+        // if (currentUser) {
+        //     const updatedBooksId = currentUser.booksId.filter(id => id !== book.id);
+        //     updateUserBooks(updatedBooksId);
+        // }
+
         if (currentUser) {
-            const updatedBooksId = currentUser.booksId.filter(id => id !== book.id);
-            updateUserBooksId(updatedBooksId);
+            const updatedBookCollections = currentUser.bookCollections.filter(b => b.id !== book.id);
+            updateUserBooks(updatedBookCollections);
         }
     }
     // BOOKS RELATED LOGIC </>
@@ -94,7 +115,9 @@ export default function AuthProvider({ children }) {
             logout,
             addBookToUser,
             delBookFromUser,
-            booksId: currentUser?.booksId,
+            // booksId: currentUser?.booksId,
+            bookCollections: currentUser?.bookCollections || [],
+
         }}
         >
             {children}
