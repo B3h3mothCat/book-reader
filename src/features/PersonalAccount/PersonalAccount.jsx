@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function PersonalAccount() {
-    const { username, userRole, logout, delBookFromUser, userBooks } = usePersonalAccount()
+    const { username, userRole, logout, delBookFromUser, userBooks, sortOption, setSortOption } = usePersonalAccount()
     const navigate = useNavigate()
 
     function handleLogout() {
@@ -19,6 +19,12 @@ export default function PersonalAccount() {
                 <div>Your current role is: {userRole}</div>
                 <button onClick={handleLogout}>Logout</button>
             </div>
+
+            <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+                <option value="all">All Books</option>
+                <option value="reading">Reading</option>
+                <option value="inPlans">In Plans</option>
+            </select>
 
             <Div_BooksContainer>
                 {userBooks.map((book, index) => (

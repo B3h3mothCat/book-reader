@@ -10,7 +10,7 @@ const options = [
 
 export default function BookDropdown({ onAddToPersonalList }) {
     const [selectedOption, setSelectedOption] = useState(options[0]);
-    //here we should add actual state
+    // here we should add actual state
 
     const handleChange = (option) => {
         setSelectedOption(option);
