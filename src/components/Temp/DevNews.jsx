@@ -16,7 +16,7 @@ export default function DevNews() {
     return (
         <>
             <h3>Developer News</h3>
-            <Div_NewsContainer className="custom-scrollbar no-select">
+            <Div_NewsContainer className="devnews-scrollbar no-select">
                 {/* <ReactMarkdown>{content}</ReactMarkdown> */}
                 <pre>{content}</pre>
             </Div_NewsContainer>

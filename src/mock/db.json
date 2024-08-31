@@ -15,16 +15,6 @@
       "bookCollections": [
         {
           "id": "1",
-          "group": "reading",
-          "bookmarks": []
-        },
-        {
-          "id": "9",
-          "group": "reading",
-          "bookmarks": []
-        },
-        {
-          "id": "3",
           "group": "inPlans",
           "bookmarks": []
         }

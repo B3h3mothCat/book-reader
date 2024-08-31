@@ -1,24 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Select from 'react-select';
 
-// Define options for the dropdown
+
 const options = [
-    { value: 'reading', label: 'Reading' },
     { value: 'inPlans', label: 'In Plans to Read' },
-    // Add more options as needed
+    { value: 'reading', label: 'Reading' },
+
 ];
 
-export default function BookDropdown({ onAddToPersonalList }) {
+export default function BookDropdown({ onAddToPersonalList, isBookListed, book, onMoveBook }) {
     const [selectedOption, setSelectedOption] = useState(options[0]);
-    // here we should add actual state
+
+    useEffect(() => {
+        const defaultOption = options.find(option => option.value === isBookListed);
+        setSelectedOption(defaultOption || options[0]);
+    }, [isBookListed]);
 
     const handleChange = (option) => {
         setSelectedOption(option);
     };
 
-    const handleAddBook = () => {
+    // const handleAddBook = () => {
+    //     if (selectedOption) {
+    //         onAddToPersonalList(selectedOption.value);
+    //         // Clear selection if needed
+    //         setSelectedOption(null);
+    //     }
+    // };
+    const handleAction = () => {
         if (selectedOption) {
-            onAddToPersonalList(selectedOption.value);
+            if (isBookListed) {
+                onMoveBook(book, selectedOption.value);
+            } else {
+                onAddToPersonalList(selectedOption.value);
+            }
             // Clear selection if needed
             setSelectedOption(null);
         }
@@ -32,7 +47,9 @@ export default function BookDropdown({ onAddToPersonalList }) {
                 options={options}
                 placeholder="Select a group"
             />
-            <button onClick={handleAddBook}>Add Book</button>
+            <button onClick={handleAction}>
+                {isBookListed ? 'Move Book' : 'Add Book'}
+            </button>
         </>
     );
 }

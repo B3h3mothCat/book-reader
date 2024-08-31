@@ -1,19 +1,33 @@
 import List from "../components/Book/List"
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../features/Authentication/AuthContext";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components"
-
 import BookDropdown from "../components/BookDropdown";
 
 export default function BookFrontPage() {
+    const { t } = useTranslation()
+    const navigate = useNavigate()
+
     const { chapters, title, description, book } = useLocation().state;
     const [activeTab, setActiveTab] = useState('description')
-    const navigate = useNavigate()
-    const { t } = useTranslation()
+    const { addBookToUser,
+        isLoggedIn,
+        bookCollections,
+        moveBook,
+        currentUser,  // can use it to make more robust code <==
+    } = useAuth()
 
-    const { addBookToUser, isLoggedIn } = useAuth()
+    const [isBookListed, setIsBookListed] = useState('')
+
+    useEffect(() => {
+        if (bookCollections) {
+            const existingBook = bookCollections.find(b => b.id === book.id);
+            setIsBookListed(existingBook ? existingBook.group : 'Not listed');
+        }
+    }, [bookCollections])
+
 
     const handleStartReading = () => {
         navigate(`/chapter/${encodeURIComponent(chapters[0].content)}`, {
@@ -27,7 +41,10 @@ export default function BookFrontPage() {
 
     const handleAddToPersonalList = (group) => {
         addBookToUser(book, group)
-        // add some indication if done
+    };
+
+    const handleMoveBook = (book, newGroup) => {
+        moveBook(book, newGroup);
     };
 
     return (
@@ -40,10 +57,15 @@ export default function BookFrontPage() {
                 <button onClick={handleStartReading}>{t('bookFrontPage.startReading')}</button>
 
                 {isLoggedIn && (
-                    // <button onClick={handleAddToPersonalList}>{t('bookFrontPage.addBook')}</button>
+                    // {t('bookFrontPage.addBook')}
                     <>
-                        <h3>Book Management</h3>
-                        <BookDropdown onAddToPersonalList={handleAddToPersonalList}></BookDropdown>
+                        <h3>Here is book status: {isBookListed} </h3>
+                        <BookDropdown
+                            onAddToPersonalList={handleAddToPersonalList}
+                            isBookListed={isBookListed}
+                            onMoveBook={handleMoveBook}
+                            book={book}
+                        ></BookDropdown>
                     </>
                 )}
 

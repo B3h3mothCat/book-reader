@@ -26,7 +26,8 @@ export default function AuthProvider({ children }) {
                 if (data.length > 0) {
                     const user = data[0];
                     if (user.password === password) {
-                        saveUserData({ ...user, username })
+                        saveUserData({ ...user, username }) // only usermame? 
+                        // saveUserData(user)
                     } else {
                         alert('Invalid username or password');
                     }
@@ -89,6 +90,15 @@ export default function AuthProvider({ children }) {
             updateUserBooks(updatedBookCollections);
         }
     }
+
+    function moveBook(book, newGroup) {
+        if (currentUser) {
+            const updatedBookCollections = currentUser.bookCollections.map(b =>
+                b.id === book.id ? { ...b, group: newGroup } : b
+            );
+            updateUserBooks(updatedBookCollections);
+        }
+    }
     // BOOKS RELATED LOGIC </>
 
     return (
@@ -102,6 +112,8 @@ export default function AuthProvider({ children }) {
             delBookFromUser,
             // booksId: currentUser?.booksId,
             bookCollections: currentUser?.bookCollections || [],
+            moveBook,
+            currentUser,
 
         }}
         >
