@@ -2,7 +2,8 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { useState } from "react";
 
-export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave = () => { } }) {
+
+export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave = () => { }, similarBooks }) {
     const [hoverTimeout, setHoverTimeout] = useState(null);
 
 
@@ -38,6 +39,7 @@ export default function BookUnit({ book, onMouseEnter = () => { }, onMouseLeave 
                     title: book.title,
                     description: book.description,
                     book: book,
+                    similarBooks: similarBooks  // we passing similar books here
                 }}
                 // Attach handlers only if provided
                 onMouseEnter={onMouseEnter ? handleMouseEnter : undefined}

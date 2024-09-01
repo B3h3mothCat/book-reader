@@ -32,7 +32,11 @@ export default function LibraryOfBooks() {
         setShowInfo(false)
     }
 
-
+    function findSimilarBooks(currentBook, allBooks) {
+        return allBooks
+            .filter(book => book.genre === currentBook.genre && book.id !== currentBook.id)
+            .slice(0, 3);
+    }
 
     return (
         <Div_CatalogContainer
@@ -42,14 +46,18 @@ export default function LibraryOfBooks() {
                 <SearchBar books={filteredBooks} onSearch={handleSearchResult}></SearchBar>
                 <Div_BookList
                 >
-                    {filteredBooks.map((book, index) => (
-                        <BookUnit
-                            book={book}
-                            key={index}
-                            onMouseEnter={() => handleBookHover(book)}
-                            onMouseLeave={() => handleBookUnhover([])}
-                        />
-                    ))}
+                    {filteredBooks.map((book, index) => {
+                        const similarBooks = findSimilarBooks(book, filteredBooks);
+                        return (
+                            <BookUnit
+                                book={book}
+                                key={index}
+                                onMouseEnter={() => handleBookHover(book)}
+                                onMouseLeave={() => handleBookUnhover([])}
+                                similarBooks={similarBooks}
+                            />
+                        );
+                    })}
                 </Div_BookList>
             </Div_BookListContainer>
 

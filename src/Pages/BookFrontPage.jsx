@@ -6,11 +6,13 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components"
 import BookDropdown from "../components/BookDropdown";
 
+import BookUnit from '../components/Book/BookUnit'
+
 export default function BookFrontPage() {
     const { t } = useTranslation()
     const navigate = useNavigate()
 
-    const { chapters, title, description, book } = useLocation().state;
+    const { chapters, title, description, book, similarBooks } = useLocation().state;
     const [activeTab, setActiveTab] = useState('description')
     const { addBookToUser,
         isLoggedIn,
@@ -20,6 +22,7 @@ export default function BookFrontPage() {
     } = useAuth()
 
     const [isBookListed, setIsBookListed] = useState('')
+    const [similarBooksState, setSimilarBooksState] = useState([]);
 
     useEffect(() => {
         if (bookCollections) {
@@ -27,6 +30,12 @@ export default function BookFrontPage() {
             setIsBookListed(existingBook ? existingBook.group : 'Not listed');
         }
     }, [bookCollections])
+
+    useEffect(() => {
+        if (similarBooks) {
+            setSimilarBooksState(similarBooks);
+        }
+    }, [similarBooks]);
 
 
     const handleStartReading = () => {
@@ -47,10 +56,27 @@ export default function BookFrontPage() {
         moveBook(book, newGroup);
     };
 
+    console.log(similarBooksState);
+
+
     return (
         <>
             <Div_Container>
-                <Div_BannerWrapper> cover of book
+                {/* WORK IS PROGRESS */}
+                <h2>Similar Books: </h2>
+                {similarBooksState.map((similarBook, index) => (
+                    <div key={similarBook.id}>
+                        <p>{similarBook.title}</p>
+                    </div>
+
+                    // <BookUnit
+                    //     book={similarBook}
+                    //     key={index}
+                    // />
+                ))}
+                {/* WORK IS PROGRESS */}
+
+                <Div_BannerWrapper>
                     <img src={book.banner} alt={'banner-tile'} />
                 </Div_BannerWrapper>
 
