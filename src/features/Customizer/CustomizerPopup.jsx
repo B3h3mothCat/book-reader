@@ -4,6 +4,10 @@ import { useCustomizer } from "./CustomizerContext";
 import debounce from "lodash/debounce"
 import styled from "styled-components";
 
+import { HexColorPicker } from 'react-colorful';
+
+import ModalWrapper from "../../components/ui/ModalWrapper"
+
 const colorPresets = [
     { backgroundColor: '#f2f2f3', textColor: '#212529' },
     { backgroundColor: '#dce5e2', textColor: '#27262b' },
@@ -16,6 +20,8 @@ const colorPresets = [
 export default function CustomizerPopup({ onClose, onSave }) {
     const { settings, updateSetting } = useCustomizer()
     const [isMounted, setIsMounted] = useState(false)
+
+    const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
@@ -77,8 +83,9 @@ export default function CustomizerPopup({ onClose, onSave }) {
                         </div>
 
                     </Div_CustomizerItem>
+                    {/* Original color picker */}
 
-                    <Div_CustomizerItem>
+                    {/* <Div_CustomizerItem>
                         <label>
                             <span>Screen desired color:</span>
                             <Input_ColorPicker
@@ -87,7 +94,30 @@ export default function CustomizerPopup({ onClose, onSave }) {
                             />
                         </label>
                         <Span_ColorHexCode>{settings.color}</Span_ColorHexCode>
-                    </Div_CustomizerItem>
+                    </Div_CustomizerItem> */}
+
+                    {/* Original color picker */}
+
+                    {/* here is picker with modal */}
+                    <div>
+                        <Div_CustomizerItem>
+                            <label>
+                                <span>Screen desired color:</span>
+                                <input
+                                    type="text"
+                                    value={settings.color}
+                                    onFocus={() => setIsColorPickerOpen(true)}
+                                    readOnly
+                                />
+                            </label>
+                            <Span_ColorHexCode>{settings.color}</Span_ColorHexCode>
+                        </Div_CustomizerItem>
+
+
+
+                    </div>
+
+                    {/* here is picker with modal */}
 
                     <Div_CustomizerItem>
                         <label>
@@ -143,6 +173,20 @@ export default function CustomizerPopup({ onClose, onSave }) {
                     </Div_CustomizerItem>
                 </form>
             </Div_Customizer>
+
+            {isColorPickerOpen && (
+                <div style={{ top: '50%', left: '50%', backgroundColor: "gray" }}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <HexColorPicker
+                        color={settings.color}
+                        onChange={(color) => updateSetting('color', color)}
+                    />
+                    <button onClick={() => setIsColorPickerOpen(false)}>CLOSE</button>
+                </div>
+            )}
+
+
         </Div_ModalOverlay>
     )
 }
@@ -178,6 +222,7 @@ const Div_Customizer = styled.div.withConfig({
     background-color: var(--background-module-light);
     transition: transform 0.25s ease-in-out;
     transform: ${({ isActive }) => (isActive ? 'translateX(0)' : 'translateX(100%)')};
+    
 `;
 
 const Div_CustomizerItem = styled.div`
@@ -193,6 +238,7 @@ const Input_ColorPicker = styled.input.attrs({ type: 'color' })`
         background: none;
         cursor: pointer;
         appearance: none; 
+
 
 &::-webkit-color-swatch {
     border: none; 
