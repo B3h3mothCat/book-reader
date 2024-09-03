@@ -22,6 +22,7 @@ export default function CustomizerPopup({ onClose, onSave }) {
     const [isMounted, setIsMounted] = useState(false)
 
     const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
+    const [isTextColorPickerOpen, setIsTextColorPickerOpen] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
@@ -41,7 +42,12 @@ export default function CustomizerPopup({ onClose, onSave }) {
     }
 
     return (
-        <Div_ModalOverlay isMounted={isMounted} onClick={handleSave}>
+        <Div_ModalOverlay
+            isMounted={isMounted}
+            onClick={handleSave}
+            isColorPickerOpen={isColorPickerOpen}
+            isTextColorPickerOpen={isTextColorPickerOpen}
+        >
             <Div_Customizer isActive={isMounted} onClick={(e) => e.stopPropagation()}>
                 <div style={{
                     display: 'flex',
@@ -102,24 +108,23 @@ export default function CustomizerPopup({ onClose, onSave }) {
                     <div>
                         <Div_CustomizerItem>
                             <label>
-                                <span>Screen desired color:</span>
-                                <input
-                                    type="text"
-                                    value={settings.color}
-                                    onFocus={() => setIsColorPickerOpen(true)}
-                                    readOnly
-                                />
+                                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                    <span>Screen desired color:</span>
+                                    <Div_ColorPicker
+                                        onClick={() => setIsColorPickerOpen(true)}
+                                        style={{ backgroundColor: settings.color }}
+                                    ></Div_ColorPicker>
+                                </div>
                             </label>
                             <Span_ColorHexCode>{settings.color}</Span_ColorHexCode>
                         </Div_CustomizerItem>
-
-
 
                     </div>
 
                     {/* here is picker with modal */}
 
-                    <Div_CustomizerItem>
+                    {/* here is original text color picker */}
+                    {/* <Div_CustomizerItem>
                         <label>
                             <span>Text desired color:</span>
                             <Input_ColorPicker
@@ -128,7 +133,23 @@ export default function CustomizerPopup({ onClose, onSave }) {
                             />
                         </label>
                         <Span_ColorHexCode>{settings.textColor}</Span_ColorHexCode>
+                    </Div_CustomizerItem> */}
+                    {/* here is original text color picker */}
+
+                    {/* new text color picker */}
+                    <Div_CustomizerItem>
+                        <label>
+                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                <span>Text desired color:</span>
+                                <Div_ColorPicker
+                                    onClick={() => setIsTextColorPickerOpen(true)}
+                                    style={{ backgroundColor: settings.textColor }}
+                                ></Div_ColorPicker>
+                            </div>
+                        </label>
+                        <Span_ColorHexCode>{settings.textColor}</Span_ColorHexCode>
                     </Div_CustomizerItem>
+                    {/* new text color picker */}
 
                     <Div_CustomizerItem>
                         <label>
@@ -175,31 +196,69 @@ export default function CustomizerPopup({ onClose, onSave }) {
             </Div_Customizer>
 
             {isColorPickerOpen && (
-                <div style={{ top: '50%', left: '50%', backgroundColor: "gray" }}
+                <div style={{
+                    top: '50%',
+                    left: '50%',
+                    backgroundColor: settings.color,
+                    borderBottomLeftRadius: '10px',
+                    borderBottomRightRadius: '10px'
+                }}
                     onClick={(e) => e.stopPropagation()}
                 >
                     <HexColorPicker
                         color={settings.color}
                         onChange={(color) => updateSetting('color', color)}
                     />
+                    <div
+                        style={{
+                            backgroundColor: settings.color,
+                            color: settings.textColor,
+                        }}
+                    >Color sample</div>
                     <button onClick={() => setIsColorPickerOpen(false)}>CLOSE</button>
                 </div>
             )}
 
+            {isTextColorPickerOpen && (
+                <div style={{
+                    top: '50%',
+                    left: '50%',
+                    backgroundColor: settings.color,
+                    borderBottomLeftRadius: '10px',
+                    borderBottomRightRadius: '10px'
+                }}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <HexColorPicker
+                        color={settings.textColor}
+                        onChange={(color) => updateSetting('textColor', color)}
+                    />
+                    <div
+                        style={{
+                            color: settings.textColor,
+                            backgroundColor: settings.color,
+                        }}
+                    >Text color sample</div>
+                    <button onClick={() => setIsTextColorPickerOpen(false)}>CLOSE</button>
+                </div>
+            )}
 
         </Div_ModalOverlay>
     )
 }
 
 const Div_ModalOverlay = styled.div.withConfig({
-    shouldForwardProp: (prop) => prop !== 'isMounted'
+    shouldForwardProp: (prop) =>
+        prop !== 'isMounted' &&
+        prop !== 'isColorPickerOpen' &&
+        prop !== 'isTextColorPickerOpen'
 })`
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, ${({ isColorPickerOpen, isTextColorPickerOpen }) => (isColorPickerOpen || isTextColorPickerOpen ? 0.7 : 0.4)});
     display: flex;
     align-items: center;
     justify-content: center;
@@ -249,6 +308,15 @@ const Input_ColorPicker = styled.input.attrs({ type: 'color' })`
     padding: 0;
     border-radius: 10%;
 }
+`;
+
+const Div_ColorPicker = styled.div`
+        width: 24px;
+        height: 24px;
+        border: none;
+        border-radius: 10%;
+        cursor: pointer;
+
 `;
 
 const Span_ColorHexCode = styled.span`
