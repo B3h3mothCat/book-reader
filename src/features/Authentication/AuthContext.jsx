@@ -19,6 +19,7 @@ export default function AuthProvider({ children }) {
         setCurrentUser,
     } = useAuthStorage();
 
+
     function login(username, password) {
         fetch(ENDPOINTS.GET_USERNAME(username))
             .then(response => response.json())
@@ -110,10 +111,9 @@ export default function AuthProvider({ children }) {
             logout,
             addBookToUser,
             delBookFromUser,
-            // booksId: currentUser?.booksId,
             bookCollections: currentUser?.bookCollections || [],
             moveBook,
-            currentUser,
+            currentUser, // it's setted to null after we open PA interface? 
 
         }}
         >

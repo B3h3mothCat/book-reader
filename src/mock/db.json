@@ -6,16 +6,10 @@
       "password": "aaa",
       "email": "",
       "role": "user",
-      "booksId": [
-        "1",
-        "2",
-        "6",
-        "10"
-      ],
       "bookCollections": [
         {
           "id": "1",
-          "group": "reading",
+          "group": "inPlans",
           "bookmarks": []
         }
       ]
@@ -26,7 +20,7 @@
       "password": "bbb",
       "email": "",
       "role": "user",
-      "booksId": []
+      "bookCollections": []
     },
     {
       "id": "3",

@@ -2,15 +2,34 @@ import { usePersonalAccount } from "./usePersonalAccount"
 import styled from "styled-components"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import useAuthStorage from '../Authentication/useAuthStorage'
 
 export default function PersonalAccount() {
     const { username, userRole, logout, delBookFromUser, userBooks, sortOption, setSortOption } = usePersonalAccount()
     const navigate = useNavigate()
 
+
+    const { currentUser } = useAuthStorage();
+    const [userBookCollections, setUserBookCollections] = useState(null);
+
     function handleLogout() {
         logout()
         navigate('/login')
     }
+
+    useEffect(() => {
+        if (currentUser) {
+            setUserBookCollections(currentUser.bookCollections);
+        }
+    }, [currentUser]);
+
+    useEffect(() => {
+        if (userBookCollections) {
+            console.log(userBookCollections);
+        }
+    }, [userBookCollections]);
 
     return (
         <Div_AccContainer>
