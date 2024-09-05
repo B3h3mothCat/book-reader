@@ -11,6 +11,11 @@
           "id": "1",
           "group": "inPlans",
           "bookmarks": []
+        },
+        {
+          "id": "2",
+          "group": "reading",
+          "bookmarks": []
         }
       ]
     },
