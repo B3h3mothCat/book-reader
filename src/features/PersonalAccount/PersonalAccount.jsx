@@ -3,8 +3,9 @@ import styled from "styled-components"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import useAuthStorage from '../Authentication/useAuthStorage'
+
+import { ENDPOINTS } from '../../utils/apiEndpoints'
 
 export default function PersonalAccount() {
 
@@ -20,27 +21,18 @@ export default function PersonalAccount() {
 
     const navigate = useNavigate()
 
-    // const { currentUser } = useAuthStorage();
-    // const [userBookCollections, setUserBookCollections] = useState([]);
+    const { currentUser } = useAuthStorage();
+    const [userBookCollections, setUserBookCollections] = useState([]);
+
+
+    // useEffect(() => {
+    //     console.log(currentUser.id);
+    // }, [currentUser])
 
     function handleLogout() {
         logout()
         navigate('/login')
     }
-
-    // useEffect(() => {
-    //     if (currentUser) {
-    //         setUserBookCollections(currentUser.bookCollections || []);
-    //         console.log(userBookCollections);
-    //     }
-    // }, [currentUser, userBookCollections]);
-
-    // useEffect(() => {
-    //     console.log(userBooks);
-
-    // }, [userBooks])
-
-
 
     return (
         <Div_AccContainer>

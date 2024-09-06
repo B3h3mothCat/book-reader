@@ -102,6 +102,7 @@ export default function AuthProvider({ children }) {
             updateUserBooks(updatedBookCollections);
         }
     }
+
     // BOOKS RELATED LOGIC </>
 
     return (

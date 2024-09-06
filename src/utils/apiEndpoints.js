@@ -9,4 +9,5 @@ export const ENDPOINTS = {
     UPDATE_USER_BY_ID: (userId) => `${API_BASE_URL}/users/${userId}`,
     GET_USERS: `${API_BASE_URL}/users`,
 
+    GET_USER_BY_ID: (userId) => `${API_BASE_URL}/users/${userId}`
 }
