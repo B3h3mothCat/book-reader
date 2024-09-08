@@ -21,13 +21,8 @@ export default function PersonalAccount() {
 
     const navigate = useNavigate()
 
-    const { currentUser } = useAuthStorage();
-    const [userBookCollections, setUserBookCollections] = useState([]);
-
-
-    // useEffect(() => {
-    //     console.log(currentUser.id);
-    // }, [currentUser])
+    // const { currentUser } = useAuthStorage();
+    // const [userBookCollections, setUserBookCollections] = useState([]);
 
     function handleLogout() {
         logout()

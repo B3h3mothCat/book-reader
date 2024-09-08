@@ -7,3 +7,6 @@ export default function LibraryPage() {
         </>
     )
 }
+
+
+// there is no need create such fake pages
