@@ -21,13 +21,13 @@ export default function BookFrontPage() {
         currentUser,  // can use it to make more robust code <==
     } = useAuth()
 
-    const [isBookListed, setIsBookListed] = useState('')
+    const [isBookListed, setIsBookListed] = useState(false)
     const [similarBooksState, setSimilarBooksState] = useState([]);
 
     useEffect(() => {
         if (bookCollections) {
             const existingBook = bookCollections.find(b => b.id === book.id);
-            setIsBookListed(existingBook ? existingBook.group : 'Not listed');
+            setIsBookListed(!!existingBook);
         }
     }, [bookCollections])
 
@@ -56,7 +56,7 @@ export default function BookFrontPage() {
         moveBook(book, newGroup);
     };
 
-    console.log(similarBooksState);
+    // console.log(similarBooksState);
 
 
     return (

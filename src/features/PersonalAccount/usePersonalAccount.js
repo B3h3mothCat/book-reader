@@ -72,8 +72,6 @@ export function usePersonalAccount() {
 
     
 
-
-
     const sortedBooks = () => {
         const groupMap = {
             reading: 'reading',
@@ -88,6 +86,20 @@ export function usePersonalAccount() {
             userBooks.filter(book => bookCollections.find(col => col.id === book.id)?.group === group) 
             : userBooks;
     };
+
+    // Enhanced delBookFromUser function to update UI immediately
+    const handleDeleteBook = async (book) => {
+        try {
+            // Call the API to delete the book
+            await delBookFromUser(book);
+            
+            // After successful deletion, update the state locally
+            setBookCollections(prevCollections => prevCollections.filter(col => col.id !== book.id));
+            setUserBooks(prevBooks => prevBooks.filter(b => b.id !== book.id));
+        } catch (error) {
+            console.error('Failed to delete book:', error);
+        }
+    };
     
     return { 
         username,
@@ -96,6 +108,6 @@ export function usePersonalAccount() {
         sortOption,           
         setSortOption, 
         logout,
-        delBookFromUser 
+        delBookFromUser : handleDeleteBook,
     };
 }

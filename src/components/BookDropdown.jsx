@@ -20,13 +20,7 @@ export default function BookDropdown({ onAddToPersonalList, isBookListed, book, 
         setSelectedOption(option);
     };
 
-    // const handleAddBook = () => {
-    //     if (selectedOption) {
-    //         onAddToPersonalList(selectedOption.value);
-    //         // Clear selection if needed
-    //         setSelectedOption(null);
-    //     }
-    // };
+
     const handleAction = () => {
         if (selectedOption) {
             if (isBookListed) {

@@ -9,12 +9,12 @@
       "bookCollections": [
         {
           "id": "1",
-          "group": "inPlans",
+          "group": "reading",
           "bookmarks": []
         },
         {
           "id": "2",
-          "group": "reading",
+          "group": "inPlans",
           "bookmarks": []
         }
       ]

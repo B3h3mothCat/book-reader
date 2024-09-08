@@ -12,6 +12,8 @@ import PersonalAccount from '../features/PersonalAccount/PersonalAccount'
 import LibraryPage from '../Pages/LibraryPage'
 import MainNavBarLayout from '../components/layouts/MainNavBarLayout'
 
+import MockPage from '../Pages/MockPage'
+
 export default function NavigationMain() {
     return (
         <>
@@ -24,6 +26,7 @@ export default function NavigationMain() {
                     <Route path='/book-front/:bookId' element={<BookFrontPage />} />
                     <Route path='/account' element={<PersonalAccount />} />
 
+                    <Route path='/mock' element={<MockPage />} />
                     <Route path='*' element={<MainPage />} />
                 </Route>
 
