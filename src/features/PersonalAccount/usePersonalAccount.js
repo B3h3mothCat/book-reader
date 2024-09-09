@@ -9,29 +9,30 @@ export function usePersonalAccount() {
     const { currentUser } = useAuthStorage();
 
     const { 
-            username,
-            userRole,
-            isLoggedIn,
+            // username,
+            // userRole,
+            // isLoggedIn,
             logout,
             delBookFromUser,
-            // bookCollections = [] 
             } = useAuth();
             
     const { booksData = [] } = useBooksData();
     const [userBooks, setUserBooks] = useState([]);
-    const isLoggedInRef = useRef(isLoggedIn);
     const [sortOption, setSortOption] = useState('reading');
+
+    // const isLoggedInRef = useRef(isLoggedIn);
+    const isLoggedIn = currentUser !== null;
 
     const [bookCollections, setBookCollections] = useState([]);
 
-    useEffect(() => {
-        isLoggedInRef.current = isLoggedIn;
-    }, [isLoggedIn]);
+    // useEffect(() => {
+    //     isLoggedIn = isLoggedIn;
+    // }, [isLoggedIn]);
     
 
     useEffect(() => {
         const fetchBookCollections = async () => {
-            if (isLoggedInRef.current && currentUser) {
+            if (isLoggedIn && currentUser) {
                 try {
                     const response = await fetch(ENDPOINTS.GET_USER_BY_ID(currentUser.id));
                     if (response.ok) {
@@ -46,17 +47,17 @@ export function usePersonalAccount() {
                 }
             }
         };
+        // Initial fetch
+        fetchBookCollections(); 
 
-        fetchBookCollections(); // Initial fetch
-
-        const intervalId = setInterval(fetchBookCollections, 60000); // Poll every 60 seconds
-
+        const intervalId = setInterval(fetchBookCollections, 60000); 
+        // Poll every 60 seconds
         return () => clearInterval(intervalId);
     }, [currentUser]);
 
 
     useEffect(() => {
-        if (isLoggedInRef.current) {
+        if (isLoggedIn) {
             if (booksData.length > 0) {
                 const accountBooks = booksData.filter(book => bookCollections.some(col => col.id === book.id));
                 setUserBooks(accountBooks);
@@ -102,12 +103,13 @@ export function usePersonalAccount() {
     };
     
     return { 
-        username,
-        userRole,
+        username: currentUser?.username || '',
+        userRole: currentUser?.role || 'guest',
         userBooks: sortedBooks(),
         sortOption,           
         setSortOption, 
         logout,
         delBookFromUser : handleDeleteBook,
+        currentUser,
     };
 }

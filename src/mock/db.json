@@ -16,6 +16,11 @@
           "id": "2",
           "group": "inPlans",
           "bookmarks": []
+        },
+        {
+          "id": "4",
+          "group": "reading",
+          "bookmarks": []
         }
       ]
     },
@@ -33,7 +38,7 @@
       "password": "sss",
       "email": "",
       "role": "user",
-      "booksId": []
+      "bookCollections": []
     },
     {
       "id": "4",
@@ -41,11 +46,12 @@
       "password": "ddd",
       "email": "",
       "role": "premium member",
-      "booksId": [
-        "1",
-        "3",
-        "2",
-        "4"
+      "bookCollections": [
+        {
+          "id": "4",
+          "group": "reading",
+          "bookmarks": []
+        }
       ]
     },
     {
@@ -54,9 +60,7 @@
       "password": "sss",
       "email": "sss@ss.ss",
       "role": "user",
-      "booksId": [
-        "1"
-      ]
+      "bookCollections": []
     }
   ],
   "books": [

@@ -10,7 +10,15 @@ export default function Login() {
     const [usernameInput, setUsernameInput] = useState('');
     const [password, setPassword] = useState('');
     const [isNewAccount, setItNewAccount] = useState(false)
-    const { isLoggedIn, userRole, username, login, logout } = useAuth();
+    
+    const { 
+            isLoggedIn,
+            userRole,
+            username,
+            login,
+            logout
+            } = useAuth();
+
     const navigate = useNavigate()
 
     function handleSubmit(e) {

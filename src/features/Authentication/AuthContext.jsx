@@ -20,8 +20,6 @@ export default function AuthProvider({ children }) {
     } = useAuthStorage();
 
 
-    // add fetching logc and useEffect for book collection
-
     function login(username, password) {
         fetch(ENDPOINTS.GET_USERNAME(username))
             .then(response => response.json())
