@@ -41,7 +41,7 @@ export default function RegistrationForm({ onCancel }) {
                     password,
                     email,
                     role: "user",
-                    booksId: []
+                    bookCollections: []
                 }),
             });
         }

@@ -1,33 +1,26 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../Authentication/AuthContext';
 import  useBooksData  from '../../Hooks/useBooksData';
-
-import useAuthStorage from '../Authentication/useAuthStorage';
 import { ENDPOINTS } from '../../utils/apiEndpoints'
 
 export function usePersonalAccount() {
-    const { currentUser } = useAuthStorage();
-
     const { 
             // username,
             // userRole,
             // isLoggedIn,
             logout,
             delBookFromUser,
+            currentUser
             } = useAuth();
             
     const { booksData = [] } = useBooksData();
     const [userBooks, setUserBooks] = useState([]);
     const [sortOption, setSortOption] = useState('reading');
 
-    // const isLoggedInRef = useRef(isLoggedIn);
     const isLoggedIn = currentUser !== null;
 
     const [bookCollections, setBookCollections] = useState([]);
 
-    // useEffect(() => {
-    //     isLoggedIn = isLoggedIn;
-    // }, [isLoggedIn]);
     
 
     useEffect(() => {
@@ -71,8 +64,6 @@ export function usePersonalAccount() {
         }
     }, [bookCollections, booksData]);
 
-    
-
     const sortedBooks = () => {
         const groupMap = {
             reading: 'reading',
@@ -83,10 +74,13 @@ export function usePersonalAccount() {
         const group = groupMap[sortOption];
     
         // Return filtered books based on the selected group or all books if no group is specified
-        return group ? 
-            userBooks.filter(book => bookCollections.find(col => col.id === book.id)?.group === group) 
-            : userBooks;
+            if (group) {
+              return userBooks.filter(book => bookCollections.find(col => col.id === book.id)?.group === group) 
+            } else {
+                return userBooks
+            }
     };
+
 
     // Enhanced delBookFromUser function to update UI immediately
     const handleDeleteBook = async (book) => {

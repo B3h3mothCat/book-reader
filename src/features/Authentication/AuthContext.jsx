@@ -9,6 +9,7 @@ export const useAuth = () => useContext(AuthContext)
 
 export default function AuthProvider({ children }) {
 
+//OTHER COMPONENTS INTERACT WITH THIS, NOT storage and useAuthStorage
     const {
         isLoggedIn,
         userRole,
@@ -114,7 +115,7 @@ export default function AuthProvider({ children }) {
             delBookFromUser,
             bookCollections: currentUser?.bookCollections || [],
             moveBook,
-            currentUser, // it's setted to null after we open PA interface? 
+            currentUser,
 
         }}
         >
