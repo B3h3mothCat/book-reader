@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../Authentication/AuthContext';
 import  useBooksData  from '../../Hooks/useBooksData';
-import { ENDPOINTS } from '../../utils/apiEndpoints'
+import { ENDPOINTS } from '../../api/apiEndpoints'
 
 export function usePersonalAccount() {
     const { 

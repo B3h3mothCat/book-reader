@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ENDPOINTS } from '../utils/apiEndpoints';
+import { ENDPOINTS } from '../api/apiEndpoints';
 
 async function fecthBooksData() {
     const res = await fetch(ENDPOINTS.GET_BOOKS)

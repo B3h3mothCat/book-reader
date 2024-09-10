@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { ENDPOINTS } from "../utils/apiEndpoints";
+import { ENDPOINTS } from "../api/apiEndpoints";
 
 export const updateUserBooks = createAsyncThunk(
     "books/updateUserBooks",
@@ -54,3 +54,5 @@ const bookSlice = createSlice({
 
 export const { addBookToUser, delBookFromUser, moveBook } = bookSlice.actions;
 export default bookSlice.reducer;
+
+// this one we keep as example, not using it

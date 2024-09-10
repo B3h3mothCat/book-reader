@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ENDPOINTS } from "../../utils/apiEndpoints"
+import { ENDPOINTS } from "../../api/apiEndpoints"
 import { useNavigate } from 'react-router-dom';
 import LoadingScreen from "./LoadingScreen"
 

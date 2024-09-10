@@ -7,7 +7,6 @@ import { useBookFilter } from "./useBookFilter";
 import useBooksData from "../../Hooks/useBooksData";
 import styled from "styled-components";
 
-
 export default function LibraryOfBooks() {
     const { booksData, loading, error } = useBooksData() // fetching from fake API
     const [searchResult, setSearchReasult] = useState([])
@@ -16,6 +15,8 @@ export default function LibraryOfBooks() {
 
     const [hoveredBook, setHoveredBook] = useState([]);
     const [showInfo, setShowInfo] = useState(false)
+
+    const { truncatedString, wasTruncated } = cutString(hoveredBook.description, 600);
 
     function handleSearchResult(result) {
         setSearchReasult(result)
@@ -70,7 +71,15 @@ export default function LibraryOfBooks() {
                 </div>
 
                 {showInfo && (
-                    <p>{hoveredBook.description}</p>
+                    <>
+                        <p>{truncatedString}</p>
+                        <br />
+                        {wasTruncated && (
+                            <p
+                                style={{ color: '#dce5e2' }}
+                            >Open book to see full description!</p>
+                        )}
+                    </>
                 )}
             </Div_FilterContainer>
 
@@ -85,6 +94,28 @@ export default function LibraryOfBooks() {
             )}
         </Div_CatalogContainer>
     );
+}
+
+function cutString(str, limit) {
+    if (!str) {
+        return { truncatedString: '', wasTruncated: false };
+    }
+
+
+    if (str.length <= limit) {
+        return { truncatedString: str, wasTruncated: false };
+    }
+
+    // Find the nearest space before the limit
+    const truncated = str.substr(0, limit).trim();
+
+    const lastSpace = truncated.lastIndexOf(' ');
+
+    const truncatedString = lastSpace === -1
+        ? truncated + '...'
+        : truncated.substr(0, lastSpace) + '...';
+
+    return { truncatedString, wasTruncated: true };
 }
 
 
