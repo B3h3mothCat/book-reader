@@ -64,7 +64,29 @@ export default function BookFrontPage() {
         moveBook(book, newGroup);
     };
 
-    // console.log(similarBooksState);
+
+    // This function will be used to handle adding the book to the user's collection
+
+    //   const handleAddToPersonalList = (group) => {
+    //     if (currentUser) {
+    //       const existingBook = currentUser.bookCollections.find((b) => b.id === book.id);
+    //       if (!existingBook) {
+    //         const newBookCollection = {
+    //           id: book.id,
+    //           group: group,
+    //           bookmarks: [],
+    //         };
+
+    //         // Dispatch the action to add the book to Redux state
+    //         dispatch(addBookToUser({ book: book, group }));
+    //       } else {
+    //         alert("Book is already in your collection.");
+    //       }
+    //     } else {
+    //       alert("User is not authenticated.");
+    //     }
+    //   };
+
 
 
     return (
