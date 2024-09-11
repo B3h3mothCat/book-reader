@@ -39,20 +39,23 @@ const bookSlice = createSlice({
         state.bookCollections.push({ id: book.id, group, bookmarks: [] });
       }
     },
-    delBookFromUser: (state, action) => {
-      state.bookCollections = state.bookCollections.filter(b => b.id !== action.payload.id);
-    },
-    moveBook: (state, action) => {
-      const { book, newGroup } = action.payload;
-      const bookToMove = state.bookCollections.find(b => b.id === book.id);
-      if (bookToMove) {
-        bookToMove.group = newGroup;
-      }
-    }
+    // delBookFromUser: (state, action) => {
+    //   state.bookCollections = state.bookCollections.filter(b => b.id !== action.payload.id);
+    // },
+    // moveBook: (state, action) => {
+    //   const { book, newGroup } = action.payload;
+    //   const bookToMove = state.bookCollections.find(b => b.id === book.id);
+    //   if (bookToMove) {
+    //     bookToMove.group = newGroup;
+    //   }
+    // }
   }
 });
 
-export const { addBookToUser, delBookFromUser, moveBook } = bookSlice.actions;
-export default bookSlice.reducer;
+export const { 
+    addBookToUser,
+    // delBookFromUser,
+    // moveBook
+    } = bookSlice.actions;
 
-// this one we keep as example, not using it
+export default bookSlice.reducer;

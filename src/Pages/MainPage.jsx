@@ -7,6 +7,9 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import LoaderScreen from "../components/ui/LoadingScreen";
 
+{/* toolkit example */ }
+import Counter from "../components/Temp/Counter";
+
 export default function MainPage() {
 
     const { userRole } = useAuth()
@@ -40,6 +43,9 @@ export default function MainPage() {
                     <DevNews></DevNews>
                 )}
             </Div_Dashboard>
+
+            {/* toolkit example */}
+            <Counter></Counter>
         </>
     )
 }

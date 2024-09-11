@@ -16,6 +16,7 @@ export default function LibraryOfBooks() {
     const [hoveredBook, setHoveredBook] = useState([]);
     const [showInfo, setShowInfo] = useState(false)
 
+    // fnc retunrs two values and allows us to render comditionally 
     const { truncatedString, wasTruncated } = cutString(hoveredBook.description, 600);
 
     function handleSearchResult(result) {

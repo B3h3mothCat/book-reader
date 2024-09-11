@@ -6,19 +6,27 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components"
 import BookDropdown from "../components/BookDropdown";
 
-import BookUnit from '../components/Book/BookUnit'
+import { useDispatch, useSelector } from "react-redux"
+import { addBookToUser } from "../store/bookSlice"
+
 
 export default function BookFrontPage() {
+    const dispatch = useDispatch();
+
+    // Select the current user from Redux store => undef for now
+    // const currentUser = useSelector((state) => state.user.currentUser);
+
     const { t } = useTranslation()
     const navigate = useNavigate()
 
     const { chapters, title, description, book, similarBooks } = useLocation().state;
     const [activeTab, setActiveTab] = useState('description')
-    const { addBookToUser,
+    const {
+        addBookToUser,
         isLoggedIn,
         bookCollections,
         moveBook,
-        currentUser,  // can use it to make more robust code <==
+        // currentUser, 
     } = useAuth()
 
     const [isBookListed, setIsBookListed] = useState(false)
@@ -128,6 +136,7 @@ export default function BookFrontPage() {
                     )}
                 </Div_TabsSection>
             </Div_Container>
+
         </>
     )
 }
