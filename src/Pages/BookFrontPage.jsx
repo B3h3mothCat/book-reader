@@ -10,11 +10,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { addBookToUser } from "../store/bookSlice"
 
 
+
 export default function BookFrontPage() {
     const dispatch = useDispatch();
 
     // Select the current user from Redux store => undef for now
-    // const currentUser = useSelector((state) => state.user.currentUser);
+    const currentUser = useSelector((state) => state.user.currentUserR);
 
     const { t } = useTranslation()
     const navigate = useNavigate()
@@ -157,6 +158,14 @@ export default function BookFrontPage() {
                         />
                     )}
                 </Div_TabsSection>
+
+                {currentUser ? (
+                    <h2>Welcome, {currentUser.bookCollections.map((book, index) => (
+                        <div key={index}>
+                            <div>{book.id} group -- {book.group}</div>
+                        </div>
+                    ))}</h2>
+                ) : null}
             </Div_Container>
 
         </>
