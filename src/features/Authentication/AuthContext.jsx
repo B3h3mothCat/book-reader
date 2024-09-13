@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { ENDPOINTS } from "../../api/apiEndpoints";
 import useAuthStorage from './useAuthStorage'
 
-import { setCurrentUserR, clearCurrentUserR } from '../../store/userSlice'
+// import { setCurrentUser, clearCurrentUser } from '../../store/userSlice'
 import { useDispatch, useSelector } from "react-redux"
 
 const AuthContext = createContext();
@@ -15,7 +15,7 @@ export default function AuthProvider({ children }) {
     const dispatch = useDispatch();
 
     // to access `currentUserR` from Redux state: 
-    const currentUserR = useSelector((state) => state.user.currentUserR);
+    // const currentUser = useSelector((state) => state.user.currentUserRedux);
 
 
     //OTHER COMPONENTS INTERACT WITH THIS, NOT storage and useAuthStorage
@@ -39,7 +39,8 @@ export default function AuthProvider({ children }) {
                     if (user.password === password) {
                         saveUserData({ ...user, username }) // only usermame? 
 
-                        dispatch(setCurrentUserR(user))
+                        // dispatch(setCurrentUserRedux(user))
+                        // redux
                     } else {
                         alert('Invalid username or password');
                     }
@@ -53,10 +54,10 @@ export default function AuthProvider({ children }) {
     function logout() {
         clearUserData()
 
-        dispatch(clearCurrentUserR()) // redux
+        // dispatch(clearCurrentUserRedux())
+        // redux
     }
 
-    console.log(currentUserR); //is't working!  make sure to clean that mess later! 
 
 
     // BOOKS RELATED LOGIC <>

@@ -7,7 +7,7 @@ import styled from "styled-components"
 import BookDropdown from "../components/BookDropdown";
 
 import { useDispatch, useSelector } from "react-redux"
-import { addBookToUser } from "../store/bookSlice"
+// import { addBookToUser } from "../store/bookSlice"
 
 
 
@@ -15,7 +15,7 @@ export default function BookFrontPage() {
     const dispatch = useDispatch();
 
     // Select the current user from Redux store => undef for now
-    const currentUser = useSelector((state) => state.user.currentUserR);
+    // const currentUser = useSelector((state) => state.user.currentUser);
 
     const { t } = useTranslation()
     const navigate = useNavigate()
@@ -27,11 +27,14 @@ export default function BookFrontPage() {
         isLoggedIn,
         bookCollections,
         moveBook,
-        // currentUser, 
+        currentUser,
     } = useAuth()
 
     const [isBookListed, setIsBookListed] = useState(false)
     const [similarBooksState, setSimilarBooksState] = useState([]);
+
+    // book collections from Redux state
+    // const bookCollections = useSelector((state) => state.books.bookCollections); 
 
     useEffect(() => {
         if (bookCollections) {
@@ -64,29 +67,6 @@ export default function BookFrontPage() {
     const handleMoveBook = (book, newGroup) => {
         moveBook(book, newGroup);
     };
-
-
-    // This function will be used to handle adding the book to the user's collection
-
-    //   const handleAddToPersonalList = (group) => {
-    //     if (currentUser) {
-    //       const existingBook = currentUser.bookCollections.find((b) => b.id === book.id);
-    //       if (!existingBook) {
-    //         const newBookCollection = {
-    //           id: book.id,
-    //           group: group,
-    //           bookmarks: [],
-    //         };
-
-    //         // Dispatch the action to add the book to Redux state
-    //         dispatch(addBookToUser({ book: book, group }));
-    //       } else {
-    //         alert("Book is already in your collection.");
-    //       }
-    //     } else {
-    //       alert("User is not authenticated.");
-    //     }
-    //   };
 
 
 
@@ -159,13 +139,13 @@ export default function BookFrontPage() {
                     )}
                 </Div_TabsSection>
 
-                {currentUser ? (
-                    <h2>Welcome, {currentUser.bookCollections.map((book, index) => (
+                {/* {currentUserRedux ? (
+                    <h2>Welcome, {currentUserRedux.bookCollections.map((book, index) => (
                         <div key={index}>
                             <div>{book.id} group -- {book.group}</div>
                         </div>
                     ))}</h2>
-                ) : null}
+                ) : null} */}
             </Div_Container>
 
         </>
